@@ -8,7 +8,9 @@
 
 import UIKit
 
-class WorkoutTracker: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WorkoutTrackerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     let tableView: UITableView = {
         let tv = UITableView()

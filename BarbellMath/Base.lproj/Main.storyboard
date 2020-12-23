@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="2868.115942028986" y="116.51785714285714"/>
         </scene>
-        <!--Workout Tracker-->
+        <!--Workout TrackerVC-->
         <scene sceneID="Z1q-1X-hnh">
             <objects>
-                <viewController id="Ont-ue-68S" customClass="WorkoutTracker" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ont-ue-68S" customClass="WorkoutTrackerVC" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LB0-mE-w1C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

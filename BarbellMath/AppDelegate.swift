@@ -15,6 +15,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//        
+//        window = UIWindow(windowScene: scene)
+//        
+//        let plateCountVC = PlateCountVC()
+//        let workoutTrackerVC = WorkoutTrackerVC()
+//        
+//        let tabBarController = UITabBarController()
+//        tabBarController.viewControllers = [plateCountVC, workoutTrackerVC]
+//        
+//        tabBarController.selectedViewController = workoutTrackerVC
+//        tabBarController.selectedIndex = 1
+//        
+//        //Instantiating window below fixes Xcode not recognozing window in the following line. BUT, Xcode claims that window is not an optional and therefore doesn't need to be implicitly unwrapped. The app still crashes on launch though.
+//        //let window = UIWindow(frame: UIScreen.main.bounds)
+//        
+//        window?.rootViewController = tabBarController
+//        
+//        window?.makeKeyAndVisible
+        
         return true
     }
 
