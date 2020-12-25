@@ -1,5 +1,5 @@
 //
-//  WorkoutTrackerVC.swift
+//  WorkoutTracker.swift
 //  BarbellMath
 //
 //  Created by Emily Corso on 12/21/20.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-class WorkoutTrackerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+class WorkoutTracker: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let tableView: UITableView = {
         let tv = UITableView()

@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FCCA8752259165EF00789FEB /* WorkoutTrackerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA8751259165EF00789FEB /* WorkoutTrackerVC.swift */; };
+		FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA8751259165EF00789FEB /* WorkoutTracker.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
 		FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */; };
-		FCCA907F253FC7B6009D15C1 /* PlateCountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907E253FC7B6009D15C1 /* PlateCountVC.swift */; };
+		FCCA907F253FC7B6009D15C1 /* PlateCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907E253FC7B6009D15C1 /* PlateCount.swift */; };
 		FCCA9082253FC7B6009D15C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9080253FC7B6009D15C1 /* Main.storyboard */; };
 		FCCA9084253FC7C0009D15C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9083253FC7C0009D15C1 /* Assets.xcassets */; };
 		FCCA9087253FC7C0009D15C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FCCA8751259165EF00789FEB /* WorkoutTrackerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerVC.swift; sourceTree = "<group>"; };
+		FCCA8751259165EF00789FEB /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FCCA907E253FC7B6009D15C1 /* PlateCountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateCountVC.swift; sourceTree = "<group>"; };
+		FCCA907E253FC7B6009D15C1 /* PlateCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateCount.swift; sourceTree = "<group>"; };
 		FCCA9081253FC7B6009D15C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCCA9083253FC7C0009D15C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCCA9086253FC7C0009D15C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,8 +60,8 @@
 			children = (
 				FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */,
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
-				FCCA907E253FC7B6009D15C1 /* PlateCountVC.swift */,
-				FCCA8751259165EF00789FEB /* WorkoutTrackerVC.swift */,
+				FCCA907E253FC7B6009D15C1 /* PlateCount.swift */,
+				FCCA8751259165EF00789FEB /* WorkoutTracker.swift */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
 				FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */,
@@ -141,8 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCCA907F253FC7B6009D15C1 /* PlateCountVC.swift in Sources */,
-				FCCA8752259165EF00789FEB /* WorkoutTrackerVC.swift in Sources */,
+				FCCA907F253FC7B6009D15C1 /* PlateCount.swift in Sources */,
+				FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 			);
