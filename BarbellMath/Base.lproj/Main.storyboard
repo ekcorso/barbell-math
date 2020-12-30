@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4688.4057971014499" y="116.51785714285714"/>
+            <point key="canvasLocation" x="3778" y="866"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Lnj-V8-dm0">
@@ -93,13 +93,13 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yq-NV-8OJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1975" y="117"/>
+            <point key="canvasLocation" x="3293" y="-658"/>
         </scene>
-        <!--Item-->
+        <!--Workout Tracker-->
         <scene sceneID="CJx-s0-z8K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fIR-eo-54t" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="skR-tK-aTc"/>
+                    <tabBarItem key="tabBarItem" title="Workout Tracker" image="calendar" catalog="system" id="skR-tK-aTc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PgG-Qz-0NY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -107,34 +107,47 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ont-ue-68S" kind="relationship" relationship="rootViewController" id="8ps-wm-qNJ"/>
+                        <segue destination="5R0-20-nts" kind="relationship" relationship="rootViewController" id="zmo-yO-dzM"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIs-Oj-8ez" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2830" y="117"/>
+            <point key="canvasLocation" x="2864" y="117"/>
         </scene>
-        <!--Workout Tracker-->
-        <scene sceneID="Z1q-1X-hnh">
+        <!--Workout Tracker View Controller-->
+        <scene sceneID="wMs-si-fAj">
             <objects>
-                <viewController id="Ont-ue-68S" customClass="WorkoutTracker" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="LB0-mE-w1C">
+                <tableViewController id="5R0-20-nts" customClass="WorkoutTrackerViewController" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AbP-DR-0yh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="h7h-bM-Vv7"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="eXY-mb-zJi"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xMC-ov-KCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="sxe-3s-tsZ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sxe-3s-tsZ" id="j0Y-9D-iLn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5R0-20-nts" id="506-X7-Zl2"/>
+                            <outlet property="delegate" destination="5R0-20-nts" id="CBm-bb-E7q"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9lh-Ib-QlN"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dl-Ef-LAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2864" y="860"/>
+            <point key="canvasLocation" x="2864" y="866"/>
         </scene>
-        <!--Item-->
+        <!--Plate Calculator-->
         <scene sceneID="Ky0-53-f4y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qSV-Do-blm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Qp-95-4EC"/>
+                    <tabBarItem key="tabBarItem" title="Plate Calculator" image="number.square.fill" catalog="system" id="5Qp-95-4EC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nxN-Lk-NEe">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -150,4 +163,8 @@
             <point key="canvasLocation" x="3778.2608695652175" y="116.51785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="number.square.fill" catalog="system" width="128" height="114"/>
+    </resources>
 </document>

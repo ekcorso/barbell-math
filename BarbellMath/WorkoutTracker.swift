@@ -10,6 +10,8 @@ import UIKit
 
 class WorkoutTracker: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    
     let tableView: UITableView = {
         let tv = UITableView()
         tv.backgroundColor = UIColor.white
@@ -52,5 +54,7 @@ class WorkoutTracker: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.backgroundColor = UIColor.white
         return cell
     }
+    
+
     
 }

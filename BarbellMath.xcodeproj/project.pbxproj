@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA8751259165EF00789FEB /* WorkoutTracker.swift */; };
+		FCCA87D42599394100789FEB /* WorkoutTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */; };
+		FCCA87D6259983DB00789FEB /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA87D5259983DB00789FEB /* Exercise.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
 		FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */; };
 		FCCA907F253FC7B6009D15C1 /* PlateCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907E253FC7B6009D15C1 /* PlateCount.swift */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		FCCA8751259165EF00789FEB /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
+		FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerViewController.swift; sourceTree = "<group>"; };
+		FCCA87D5259983DB00789FEB /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCount.swift */,
 				FCCA8751259165EF00789FEB /* WorkoutTracker.swift */,
+				FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */,
+				FCCA87D5259983DB00789FEB /* Exercise.swift */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
 				FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */,
@@ -144,7 +150,9 @@
 				FCCA907F253FC7B6009D15C1 /* PlateCount.swift in Sources */,
 				FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
+				FCCA87D42599394100789FEB /* WorkoutTrackerViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
+				FCCA87D6259983DB00789FEB /* Exercise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

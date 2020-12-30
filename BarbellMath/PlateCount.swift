@@ -28,7 +28,7 @@ class PlateCount: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Barbell Math"
+        self.title = "Plate Calculator"
         
         startingValues()
         
