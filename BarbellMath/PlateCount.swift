@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PlateCount: UIViewController {
     
     var totalWeight: Int = 0
     //should this be nil instead of 0? How would using an optional value here change things? See temp app...? Mike says I could solve this with a "guard let" statement (if total weight is 0) in the math func instead. Look up guard statements.
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Barbell Math"
+        self.title = "Plate Calculator"
         
         startingValues()
         
