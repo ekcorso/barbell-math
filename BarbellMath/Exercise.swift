@@ -12,6 +12,8 @@ import UIKit
 
 struct Exercise {
     var name: String
+    var day: String = "Day 1"
+    // Day should be an enum so there are limited choices. Maybe represented with a segmented control in the UI? Should day be it's own struct so it can be formatted or am I overthinking it? 
     var sets: Int = 0
     var reps: Int = 0
 }

@@ -11,6 +11,8 @@ import UIKit
 class WorkoutTrackerViewController: UITableViewController {
     
     var exercises = [Exercise]()
+    //Ask Mike if sectionHeadings is to vague of a name. Should it be more like workoutDays or similar?
+    var sectionHeadings = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +124,10 @@ class WorkoutTrackerViewController: UITableViewController {
 }
 
 //Add Detail Label text for items: sets x reps
-//Add sections to tableView for workout names/ days
+//Add sections to tableView for workout days-- first the user needs to be able to add this data
+//Add Static Table View to get user input
+//Can I make extra Days sections removable if not needed?
 //Make it possible to open list items and edit them
+//See Day notes in Exercise struct
 
 
