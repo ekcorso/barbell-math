@@ -17,16 +17,13 @@ class WorkoutTrackerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Workout Tracker"
+        
+        createNavBarButtonItems()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-        barButtonSystemItem: .add, target: self, action: #selector(promptForExercise))
-        
-        navigationItem.leftBarButtonItem = editButtonItem
     }
-    // TODO: Extract this into a "helper method". See promptForExercises() for example
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,9 +54,7 @@ class WorkoutTrackerViewController: UITableViewController {
     }
     */
 
-   
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             exercises.remove(at: indexPath.row)
             
@@ -121,6 +116,13 @@ class WorkoutTrackerViewController: UITableViewController {
         exercises.append(exercise)
         // TODO: try with reloadSectionAtIndexPath
         UITableView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+    }
+    
+    func createNavBarButtonItems() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        barButtonSystemItem: .add, target: self, action: #selector(promptForExercise))
+        
+        navigationItem.leftBarButtonItem = editButtonItem
     }
 }
 
