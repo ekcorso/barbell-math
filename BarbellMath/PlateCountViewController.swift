@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlateCount: UIViewController {
+class PlateCountViewController: UIViewController {
     
     var totalWeight: Int = 0
     //should this be nil instead of 0? How would using an optional value here change things? See temp app...? Mike says I could solve this with a "guard let" statement (if total weight is 0) in the math func instead. Look up guard statements.
@@ -20,22 +20,23 @@ class PlateCount: UIViewController {
     @IBOutlet weak var text2_5LbPlates: UILabel!
     //variable names could be better. Ideally would not refer to the datatype in the name.
     
-    var quantity45LbPlates: Int = 0
-    var quantity25LbPlates: Int = 0
-    var quantity10LbPlates: Int = 0
-    var quantity5LbPlates: Int = 0
-    var quantity2_5LbPlates: Int = 0
+    private var quantity45LbPlates: Int = 0
+    private var quantity25LbPlates: Int = 0
+    private var quantity10LbPlates: Int = 0
+    private var quantity5LbPlates: Int = 0
+    private var quantity2_5LbPlates: Int = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Plate Calculator"
         
-        startingValues()
+        setStartingValues()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(promptForWeight))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startingValues))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(setStartingValues))
     }
     
     @objc func promptForWeight() {
@@ -43,8 +44,7 @@ class PlateCount: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) {
-            [unowned self, alert] action in
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, alert] action in
             let answer = alert.textFields![0]
             self.submit(answer.text!)
         }
@@ -58,6 +58,7 @@ class PlateCount: UIViewController {
         self.present(alert, animated: true)
     }
     
+    // TODO: Create helper class or struct called "PlateMathCalculator"
     func doPlateMath(weight: Int) {
         let totalPlateWeight = weight - 45
         var remainderAfter45s = 0
@@ -65,6 +66,8 @@ class PlateCount: UIViewController {
         var remainderAfter10s = 0
         var remainderAfter5s = 0
         
+        //These blocks can use .isMultipleOf instead of % once I update Xcode to the latest version of swift
+        // TODO: Try extracting the logic of the conditional blocks such that it is repeatable between blocks (taking remainder and quantity of prev block as arguments)?
         if Int(totalPlateWeight / 45) % 2 == 0 {
             quantity45LbPlates = Int(totalPlateWeight / 45)
             remainderAfter45s = totalPlateWeight % 45
@@ -115,7 +118,7 @@ class PlateCount: UIViewController {
         updateLabels()
     }
     
-    @objc func startingValues() {
+    @objc func setStartingValues() {
         text45LbPlates.text = "(0) 45lb plates"
         text25LbPlates.text = "(0) 25lb plates"
         text10LbPlates.text = "(0) 10lb plates"

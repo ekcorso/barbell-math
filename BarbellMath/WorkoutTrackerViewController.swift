@@ -11,8 +11,8 @@ import UIKit
 class WorkoutTrackerViewController: UITableViewController {
     
     var exercises = [Exercise]()
-    //Ask Mike if sectionHeadings is to vague of a name. Should it be more like workoutDays or similar?
-    var sectionHeadings = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"]
+    
+    var sectionTitles = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,7 @@ class WorkoutTrackerViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
+    // TODO: Extract this into a "helper method". See promptForExercises() for example
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -101,8 +102,7 @@ class WorkoutTrackerViewController: UITableViewController {
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        let submitAction = UIAlertAction(title: "Submit", style: .default) {
-            [unowned self, alert] action in
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, alert] action in
             let answer = alert.textFields![0]
             self.submit(answer.text!)
         }
@@ -119,7 +119,8 @@ class WorkoutTrackerViewController: UITableViewController {
     @objc func submit(_ answer: String) {
         let exercise = Exercise(name: answer)
         exercises.append(exercise)
-        UITableView.transition(with: tableView, duration: 1.0, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+        // TODO: try with reloadSectionAtIndexPath
+        UITableView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
     }
 }
 

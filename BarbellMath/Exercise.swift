@@ -8,12 +8,13 @@
 
 import UIKit
 
-//SHould this be a class so that it can be exposed to objective c
+//This may need to ba class so that it can be exposed to objective c
 
 struct Exercise {
     var name: String
     var day: String = "Day 1"
-    // Day should be an enum so there are limited choices. Maybe represented with a segmented control in the UI? Should day be it's own struct so it can be formatted or am I overthinking it? 
+    // Day should be an enum so there are limited choices. Maybe represented with a segmented control in the UI? Should day be it's own struct so it can be formatted or am I overthinking it?
+    //Mike suggests tryinig to create a day enum, then have the day variable be an array of day enums
     var sets: Int = 0
     var reps: Int = 0
 }
