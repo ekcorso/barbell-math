@@ -24,7 +24,7 @@ class WorkoutTrackerViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

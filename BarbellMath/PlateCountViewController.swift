@@ -20,12 +20,6 @@ class PlateCountViewController: UIViewController {
     @IBOutlet weak var text2_5LbPlates: UILabel!
     //variable names could be better. Ideally would not refer to the datatype in the name.
     
-    private var quantity45LbPlates: Int = 0
-    private var quantity25LbPlates: Int = 0
-    private var quantity10LbPlates: Int = 0
-    private var quantity5LbPlates: Int = 0
-    private var quantity2_5LbPlates: Int = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,51 +52,7 @@ class PlateCountViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    // TODO: Create helper class or struct called "PlateMathCalculator"
-    func doPlateMath(weight: Int) {
-        let totalPlateWeight = weight - 45
-        var remainderAfter45s = 0
-        var remainderAfter25s = 0
-        var remainderAfter10s = 0
-        var remainderAfter5s = 0
-        
-        //These blocks can use .isMultipleOf instead of % once I update Xcode to the latest version of swift
-        // TODO: Try extracting the logic of the conditional blocks such that it is repeatable between blocks (taking remainder and quantity of prev block as arguments)?
-        if Int(totalPlateWeight / 45) % 2 == 0 {
-            quantity45LbPlates = Int(totalPlateWeight / 45)
-            remainderAfter45s = totalPlateWeight % 45
-        } else {
-            quantity45LbPlates = Int(totalPlateWeight / 45) - 1
-            remainderAfter45s = totalPlateWeight % 45 + 45
-        }
-    
-        if Int(remainderAfter45s / 25) % 2 == 0 {
-            quantity25LbPlates = Int(remainderAfter45s / 25)
-            remainderAfter25s = remainderAfter45s % 25
-        } else {
-            quantity25LbPlates = Int(remainderAfter45s / 25) - 1
-            remainderAfter25s = remainderAfter45s % 25 + 25
-        }
-        
-        if Int(remainderAfter25s / 10) % 2 == 0 {
-            quantity10LbPlates = Int(remainderAfter25s / 10)
-            remainderAfter10s = remainderAfter25s % 10
-        } else {
-            quantity10LbPlates = Int(remainderAfter25s / 10) - 1
-            remainderAfter10s = remainderAfter25s % 10 + 10
-        }
-        
-        if Int(remainderAfter10s / 5) % 2 == 0 {
-            quantity5LbPlates = Int(remainderAfter10s / 5)
-            remainderAfter5s = remainderAfter10s % 5
-        } else {
-            quantity5LbPlates = Int(remainderAfter10s / 5) - 1
-            remainderAfter5s = remainderAfter10s % 5 + 5
-        }
-        
-        quantity2_5LbPlates = Int(Double(remainderAfter5s) / 2.5)
-    }
-    
+    // TODO: Instantiate the PlateCalculator, then call it's funcs to return values that updateLabels can use
     func updateLabels() {
         text45LbPlates.text = "(\(quantity45LbPlates)) 45lb plates"
         text25LbPlates.text = "(\(quantity25LbPlates)) 25lb plates"
@@ -112,8 +62,9 @@ class PlateCountViewController: UIViewController {
     }
     
     @objc func submit(_ answer: String) {
-        totalWeight = Int(answer)!
-        //answer should be an INT. Do I validate this here, or in promptForWeight?
+        totalWeight = Double(answer)!
+        //OLD: answer should be an INT. Do I validate this here, or in promptForWeight?
+        //NEW: answer should be CONVERTED to a double so that plate math can handleit
         doPlateMath(weight: totalWeight)
         updateLabels()
     }
