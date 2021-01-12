@@ -39,8 +39,13 @@ class PlateCountViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, alert] action in
-            let answer = alert.textFields![0]
-            self.submit(answer.text!)
+            if let answerField = alert.textFields?[0],
+                let answer = answerField.text,
+                let doubleAnswer = Double(answer) {
+                    self.submit(doubleAnswer)
+            } else {
+                assertionFailure("Failed to unwrap answer.")
+            }
         }
         
         alert.addAction(submitAction)
@@ -52,21 +57,20 @@ class PlateCountViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    // TODO: Instantiate the PlateCalculator, then call it's funcs to return values that updateLabels can use
-    func updateLabels() {
-        text45LbPlates.text = "(\(quantity45LbPlates)) 45lb plates"
-        text25LbPlates.text = "(\(quantity25LbPlates)) 25lb plates"
-        text10LbPlates.text = "(\(quantity10LbPlates)) 10lb plates"
-        text5LbPlates.text = "(\(quantity5LbPlates)) 5lb plates"
-        text2_5LbPlates.text = "(\(quantity2_5LbPlates)) 2.5lb plates"
+    func updateLabels(plateQuantities: PlateQuantities) {
+        text45LbPlates.text = "(\(Int(plateQuantities.quantity45LbPlates))) 45lb plates"
+        text25LbPlates.text = "(\(Int(plateQuantities.quantity25LbPlates))) 25lb plates"
+        text10LbPlates.text = "(\(Int(plateQuantities.quantity10LbPlates))) 10lb plates"
+        text5LbPlates.text = "(\(Int(plateQuantities.quantity5LbPlates))) 5lb plates"
+        text2_5LbPlates.text = "(\(Int(plateQuantities.quantity2_5LbPlates))) 2.5lb plates"
     }
     
-    @objc func submit(_ answer: String) {
-        totalWeight = Double(answer)!
-        //OLD: answer should be an INT. Do I validate this here, or in promptForWeight?
-        //NEW: answer should be CONVERTED to a double so that plate math can handleit
-        doPlateMath(weight: totalWeight)
-        updateLabels()
+    @objc func submit(_ answer: Double) {
+        let totalWeight = answer
+        //answer should be an Num. Do I validate this here, or in promptForWeight?
+        var plateMathCalculator = PlateMathCalculator()
+        let plateQuantities = plateMathCalculator.doPlateMath(totalWeight: totalWeight)
+        updateLabels(plateQuantities: plateQuantities)
     }
     
     @objc func setStartingValues() {
