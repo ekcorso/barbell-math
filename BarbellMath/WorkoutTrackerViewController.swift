@@ -126,11 +126,4 @@ class WorkoutTrackerViewController: UITableViewController {
     }
 }
 
-//Add Detail Label text for items: sets x reps
-//Add sections to tableView for workout days-- first the user needs to be able to add this data
-//Add Static Table View to get user input
-//Can I make extra Days sections removable if not needed?
-//Make it possible to open list items and edit them
-//See Day notes in Exercise struct
-
 

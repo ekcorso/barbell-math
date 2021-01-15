@@ -11,7 +11,7 @@ import UIKit
 class PlateCountViewController: UIViewController {
     
     var totalWeight: Int = 0
-    //should this be nil instead of 0? How would using an optional value here change things? See temp app...? Mike says I could solve this with a "guard let" statement (if total weight is 0) in the math func instead. Look up guard statements.
+    //should this be nil instead of 0? How would using an optional value here change things? See temp app...? Mike says I could solve this with a "guard let" statement (if total weight is 0) in the plate math func instead. Look up guard statements.
     
     @IBOutlet weak var text45LbPlates: UILabel!
     @IBOutlet weak var text25LbPlates: UILabel!

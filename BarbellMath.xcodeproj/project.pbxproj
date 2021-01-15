@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
 		FC5EB20125ABC08100AC8379 /* PlateQuantities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */; };
-		FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA8751259165EF00789FEB /* WorkoutTracker.swift */; };
 		FCCA87D42599394100789FEB /* WorkoutTrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */; };
 		FCCA87D6259983DB00789FEB /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA87D5259983DB00789FEB /* Exercise.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
 		FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateQuantities.swift; sourceTree = "<group>"; };
-		FCCA8751259165EF00789FEB /* WorkoutTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTracker.swift; sourceTree = "<group>"; };
 		FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutTrackerViewController.swift; sourceTree = "<group>"; };
 		FCCA87D5259983DB00789FEB /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +68,6 @@
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
-				FCCA8751259165EF00789FEB /* WorkoutTracker.swift */,
 				FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */,
 				FCCA87D5259983DB00789FEB /* Exercise.swift */,
 				FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */,
@@ -154,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
-				FCCA8752259165EF00789FEB /* WorkoutTracker.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FCCA87D42599394100789FEB /* WorkoutTrackerViewController.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* PlateQuantities.swift in Sources */,

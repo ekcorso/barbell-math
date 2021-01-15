@@ -49,18 +49,21 @@ struct PlateMathCalculator {
         
         for plate in plateChoices {
             let platesLoaded = findPlateQuantity(weight: weightToBeLoaded, plateSize: plate)
-            //Below should read something like "if weightToBeLoaded >= (plateChoice.last * 2)" but will have to figure out how to unwrap plateChoice.last
-            if weightToBeLoaded >= 5 {
-                platesNeededToLoadBar.append(platesLoaded)
-                weightToBeLoaded = calculateRemainingWeight(weight: weightToBeLoaded, plateSize: plate)
+            if let smallestPlateChoice = plateChoices.last {
+                if weightToBeLoaded >= (smallestPlateChoice * 2) {
+                    platesNeededToLoadBar.append(platesLoaded)
+                    weightToBeLoaded = calculateRemainingWeight(weight: weightToBeLoaded, plateSize: plate)
+                } else {
+                    platesNeededToLoadBar.append(0.0)
+                }
             } else {
-                platesNeededToLoadBar.append(0.0)
+                assertionFailure("Failed to unwrap plateChocies.last.")
             }
         }
         return PlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
-                     quantity25LbPlates: platesNeededToLoadBar[1],
-                     quantity10LbPlates: platesNeededToLoadBar[2],
-                     quantity5LbPlates: platesNeededToLoadBar[3],
-                     quantity2_5LbPlates: platesNeededToLoadBar[4])
+                               quantity25LbPlates: platesNeededToLoadBar[1],
+                               quantity10LbPlates: platesNeededToLoadBar[2],
+                               quantity5LbPlates: platesNeededToLoadBar[3],
+                               quantity2_5LbPlates: platesNeededToLoadBar[4])
     }
 }
