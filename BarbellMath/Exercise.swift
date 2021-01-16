@@ -17,4 +17,5 @@ struct Exercise {
     //Mike suggests tryinig to create a day enum, then have the day variable be an array of day enums
     var sets: Int = 0
     var reps: Int = 0
+    var notes: String = "No notes yet"
 }
