@@ -17,6 +17,4 @@ class ExerciseEntryViewController: UITableViewController {
         super.viewDidLoad()
     }
     
-    
-    
 }
