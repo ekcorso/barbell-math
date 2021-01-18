@@ -12,7 +12,7 @@ class SetPickerViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBOutlet weak var picker: UIPickerView!
     
-    var pickerData: [Int] = Array(1...30)
+    var pickerData = Array(1...30)
     
     override func viewDidLoad() {
         super.viewDidLoad()

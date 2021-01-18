@@ -131,7 +131,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="PZT-PU-7dd" kind="show" id="z62-QP-hod"/>
+                                    <segue destination="GCN-8k-afT" kind="show" id="z62-QP-hod"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -140,7 +140,13 @@
                             <outlet property="delegate" destination="5R0-20-nts" id="CBm-bb-E7q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="9lh-Ib-QlN"/>
+                    <navigationItem key="navigationItem" id="9lh-Ib-QlN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zeT-gV-XW9">
+                            <connections>
+                                <segue destination="GCN-8k-afT" kind="presentation" id="MTE-Jd-mn3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9dl-Ef-LAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -258,11 +264,25 @@
                             <outlet property="delegate" destination="PZT-PU-7dd" id="xla-fL-xtt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Exercise Details" id="JEs-mI-ya0"/>
+                    <navigationItem key="navigationItem" title="Exercise Details" id="JEs-mI-ya0">
+                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="3Cu-D1-b2b">
+                            <connections>
+                                <action selector="tappedCancel:" destination="PZT-PU-7dd" id="zD8-Ew-seq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="18l-Wo-AvT">
+                            <connections>
+                                <action selector="tappedDone:" destination="PZT-PU-7dd" id="6ee-R6-acG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="exerciseName" destination="hgT-TQ-EQv" id="ZA3-Xq-qq6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xnP-7k-7eU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847.826086956522" y="1590.4017857142856"/>
+            <point key="canvasLocation" x="3757.971014492754" y="1590.4017857142856"/>
         </scene>
         <!--Set Picker View Controller-->
         <scene sceneID="h7t-vw-FG2">
@@ -287,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8uN-bc-Gdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880" y="1590"/>
+            <point key="canvasLocation" x="4789.8550724637689" y="1589.7321428571429"/>
         </scene>
         <!--Rep Picker View Controller-->
         <scene sceneID="ldu-k0-CX8">
@@ -333,7 +353,35 @@
             </objects>
             <point key="canvasLocation" x="3778.2608695652175" y="116.51785714285714"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NwD-BP-sZv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GCN-8k-afT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="C0i-Vp-PBu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="bcX-GM-1np"/>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" id="f4n-QF-Xzj"/>
+                            <barButtonItem title="Item" id="9Ou-Ds-IDN"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8sF-VL-gLr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PZT-PU-7dd" kind="relationship" relationship="rootViewController" id="qlV-ph-xhp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKU-Dl-vg9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2847.826086956522" y="1590.4017857142856"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="z62-QP-hod"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="number.square.fill" catalog="system" width="128" height="114"/>

@@ -9,12 +9,36 @@
 import Foundation
 import UIKit
 
-//currently this view controller shows *after* you click on an exercise that has already been entered using the right bar button item. Need to link this to the right bar button item instead and depricate the alert controller
-
 class ExerciseEntryViewController: UITableViewController {
+    
+    @IBOutlet weak var exerciseName: UITextField!
+    
+    var exercises = [Exercise]()
+    
+    //This button doesn't work-- tappedDone needs to append to the exercises list that's in WorkoutTrackerViewController, not the one declared above. How do I access that variable?
+    @IBAction func tappedDone(_ sender: Any) {
+        //answer should be the value of the text field. See the "submitAction" part of promptForWeight method in PlateCountViewController to see how to set this up.
+        if let exerciseNameField = exerciseName, let exerciseName = exerciseNameField.text {
+            let exercise = Exercise(name: exerciseName)
+            exercises.append(exercise)
+        } else {
+            assertionFailure("Failed to unwrap exererciseName.")
+        }
+        
+        UITableView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+    }
+    
+    
+    @IBAction func tappedCancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    @objc func submit(_ answer: String) {
+        
     }
     
 }

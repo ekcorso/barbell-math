@@ -18,7 +18,7 @@ class WorkoutTrackerViewController: UITableViewController {
         super.viewDidLoad()
         self.title = "Workout Tracker"
         
-        createNavBarButtonItems()
+        //createNavBarButtonItems()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -88,42 +88,42 @@ class WorkoutTrackerViewController: UITableViewController {
     }
     */
     
-    @objc func promptForExercise() {
-        let alert = UIAlertController(
-            title: "Enter the name of the exercise you want to add.",
-            message: "",
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, alert] action in
-            let answer = alert.textFields![0]
-            self.submit(answer.text!)
-        }
-        
-        alert.addAction(submitAction)
-        
-        alert.addTextField(configurationHandler: { textField in
-            textField.placeholder = "\"Barbell Deadlift\""
-        })
-        
-        self.present(alert, animated: true)
-    }
-    
-    @objc func submit(_ answer: String) {
-        let exercise = Exercise(name: answer)
-        exercises.append(exercise)
-        // TODO: try with reloadSectionAtIndexPath
-        UITableView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
-    }
-    
-    func createNavBarButtonItems() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-        barButtonSystemItem: .add, target: self, action: #selector(promptForExercise))
-        
-        navigationItem.leftBarButtonItem = editButtonItem
-    }
+//    @objc func promptForExercise() {
+//        let alert = UIAlertController(
+//            title: "Enter the name of the exercise you want to add.",
+//            message: "",
+//            preferredStyle: .alert
+//        )
+//
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//
+//        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned self, alert] action in
+//            let answer = alert.textFields![0]
+//            self.submit(answer.text!)
+//        }
+//
+//        alert.addAction(submitAction)
+//
+//        alert.addTextField(configurationHandler: { textField in
+//            textField.placeholder = "\"Barbell Deadlift\""
+//        })
+//
+//        self.present(alert, animated: true)
+//    }
+//    
+//    @objc func submit(_ answer: String) {
+//        let exercise = Exercise(name: answer)
+//        exercises.append(exercise)
+//        // TODO: try with reloadSectionAtIndexPath
+//        UITableView.transition(with: tableView, duration: 0.2, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+//    }
+//    
+//    func createNavBarButtonItems() {
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//        barButtonSystemItem: .add, target: self, action: #selector(promptForExercise))
+//        
+//        navigationItem.leftBarButtonItem = editButtonItem
+//    }
 }
 
 
