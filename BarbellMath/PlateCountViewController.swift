@@ -18,8 +18,6 @@ class PlateCountViewController: UIViewController {
     @IBOutlet weak var text10LbPlates: UILabel!
     @IBOutlet weak var text5LbPlates: UILabel!
     @IBOutlet weak var text2_5LbPlates: UILabel!
-    //variable names could be better. Ideally would not refer to the datatype in the name.
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

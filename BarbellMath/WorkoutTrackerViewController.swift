@@ -22,7 +22,22 @@ class WorkoutTrackerViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier, identifier == "showExerciseDetails" {
+            if let navigationController = segue.destination as? UINavigationController {
+                if let exerciseDetailViewController = navigationController.viewControllers.first as? ExerciseEntryViewController {
+                    exerciseDetailViewController.workoutTrackerViewController = self
+                }
+            }
+        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

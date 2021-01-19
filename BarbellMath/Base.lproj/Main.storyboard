@@ -131,7 +131,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="GCN-8k-afT" kind="show" id="z62-QP-hod"/>
+                                    <segue destination="GCN-8k-afT" kind="show" identifier="" id="z62-QP-hod"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -143,7 +143,7 @@
                     <navigationItem key="navigationItem" id="9lh-Ib-QlN">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zeT-gV-XW9">
                             <connections>
-                                <segue destination="GCN-8k-afT" kind="presentation" id="MTE-Jd-mn3"/>
+                                <segue destination="GCN-8k-afT" kind="presentation" identifier="showExerciseDetails" id="MTE-Jd-mn3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -157,7 +157,7 @@
             <objects>
                 <tableViewController id="PZT-PU-7dd" customClass="ExerciseEntryViewController" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cEu-dU-WUO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -289,7 +289,7 @@
             <objects>
                 <viewController id="EYC-xN-Ocv" customClass="SetPickerViewController" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zsj-Ji-CkK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hbo-YP-4GR">
@@ -314,7 +314,7 @@
             <objects>
                 <viewController id="Sx3-K1-Lkr" customClass="RepPickerViewController" customModule="BarbellMath" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uat-3m-4cK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7K-3q-p4o">
@@ -366,7 +366,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8sF-VL-gLr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -380,7 +380,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="z62-QP-hod"/>
+        <segue reference="MTE-Jd-mn3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
