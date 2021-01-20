@@ -9,18 +9,23 @@
 import Foundation
 import UIKit
 
-class ExerciseEntryViewController: UITableViewController {
+protocol ExerciseDetailViewControllerDelegate {
+    func exerciseDetailViewControllerDidCreate(exercise: Exercise)
+}
+
+class ExerciseDetailViewController: UITableViewController {
     
     @IBOutlet weak var exerciseName: UITextField!
     
-    var workoutTrackerViewController: WorkoutTrackerViewController?
+    var delgate: ExerciseDetailViewControllerDelegate?
     
     //Rename tappedDone for what it will do rather than what it just did
     @IBAction func tappedDone(_ sender: Any) {
         //answer should be the value of the text field. See the "submitAction" part of promptForWeight method in PlateCountViewController to see how to set this up.
-        if let exerciseNameField = exerciseName, let exerciseName = exerciseNameField.text, let workoutTrackerViewController = workoutTrackerViewController {
+        if let exerciseNameField = exerciseName,
+            let exerciseName = exerciseNameField.text {
             let exercise = Exercise(name: exerciseName)
-            workoutTrackerViewController.exercises.append(exercise)
+            delgate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
         } else {
             assertionFailure("Failed to unwrap exererciseName.")
         }

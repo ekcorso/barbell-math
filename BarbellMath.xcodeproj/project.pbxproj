@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC3FE27225B22BE000F5C996 /* ExerciseEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FE27125B22BE000F5C996 /* ExerciseEntryViewController.swift */; };
+		FC3FE27225B22BE000F5C996 /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FE27125B22BE000F5C996 /* ExerciseDetailViewController.swift */; };
 		FC3FE27825B3AE9D00F5C996 /* RepPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FE27725B3AE9D00F5C996 /* RepPickerViewController.swift */; };
 		FC3FE27A25B3AF9B00F5C996 /* SetPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3FE27925B3AF9B00F5C996 /* SetPickerViewController.swift */; };
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
@@ -23,7 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FC3FE27125B22BE000F5C996 /* ExerciseEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEntryViewController.swift; sourceTree = "<group>"; };
+		FC3FE27125B22BE000F5C996 /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
 		FC3FE27725B3AE9D00F5C996 /* RepPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepPickerViewController.swift; sourceTree = "<group>"; };
 		FC3FE27925B3AF9B00F5C996 /* SetPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPickerViewController.swift; sourceTree = "<group>"; };
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCCA87D32599394100789FEB /* WorkoutTrackerViewController.swift */,
-				FC3FE27125B22BE000F5C996 /* ExerciseEntryViewController.swift */,
+				FC3FE27125B22BE000F5C996 /* ExerciseDetailViewController.swift */,
 				FC3FE27725B3AE9D00F5C996 /* RepPickerViewController.swift */,
 				FC3FE27925B3AF9B00F5C996 /* SetPickerViewController.swift */,
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
@@ -168,7 +168,7 @@
 				FCCA87D6259983DB00789FEB /* Exercise.swift in Sources */,
 				FC3FE27A25B3AF9B00F5C996 /* SetPickerViewController.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
-				FC3FE27225B22BE000F5C996 /* ExerciseEntryViewController.swift in Sources */,
+				FC3FE27225B22BE000F5C996 /* ExerciseDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
