@@ -27,15 +27,6 @@ class WorkoutTrackerViewController: UITableViewController {
         
     }
     
-//    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        //Keeps storyboard magic from overriding the existing item segue
-//        if identifier == "showExistingExerciseDetails"{
-//            return false
-//        } else {
-//            return true
-//        }
-//    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier, identifier == "showExerciseDetails" {
             if let navigationController = segue.destination as? UINavigationController {
