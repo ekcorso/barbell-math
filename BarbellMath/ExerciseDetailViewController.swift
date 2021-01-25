@@ -21,7 +21,6 @@ class ExerciseDetailViewController: UITableViewController {
     var exercise: Exercise?
     
     //TODO: Rename tappedDone for what it will do rather than what it just did
-    //If there is already a value for this view controller's exercise property, then this button updates the value. Otherwise it takes the text the user intered into the text field, turns it into an Exercise object, and sends it back to the workout tracker via the delegate.
     @IBAction func tappedDone(_ sender: Any) {
         if let exercise = exercise {
             if let exerciseNameText = exerciseName.text {
@@ -36,7 +35,6 @@ class ExerciseDetailViewController: UITableViewController {
                 //if the delegate exists, pass it the exercise object created obove.
                 delegate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
             } else {
-                //If any of those optionals are nil, throw an assertion failure.
                 assertionFailure("Failed to unwrap exererciseName.")
             }
         }
@@ -53,10 +51,7 @@ class ExerciseDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad has run. Exercise name: \(exercise?.name). Text field: \(exerciseName).")
-        
         if let exercise = exercise {
-            print("updating text field with exercise name: \(exercise.name)")
             exerciseName.text = exercise.name
         }
     }
