@@ -24,7 +24,6 @@ class WorkoutTrackerViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -73,13 +72,15 @@ class WorkoutTrackerViewController: UITableViewController {
         selectedExercise = exercise
         performSegue(withIdentifier: "showExerciseDetails", sender: nil)
     }
-
 }
 
 extension WorkoutTrackerViewController: ExerciseDetailViewControllerDelegate {
     func exerciseDetailViewControllerDidCreate(exercise: Exercise) {
         exercises.append(exercise)
-        
+        tableView.reloadData()
+    }
+    
+    func didEditExercise() {
         tableView.reloadData()
     }
 }

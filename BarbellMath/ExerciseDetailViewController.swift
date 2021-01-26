@@ -11,6 +11,7 @@ import UIKit
 
 protocol ExerciseDetailViewControllerDelegate {
     func exerciseDetailViewControllerDidCreate(exercise: Exercise)
+    func didEditExercise()
 }
 
 class ExerciseDetailViewController: UITableViewController {
@@ -25,7 +26,7 @@ class ExerciseDetailViewController: UITableViewController {
         if let exercise = exercise {
             if let exerciseNameText = exerciseName.text {
                 exercise.name = exerciseNameText
-                //delegate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
+                delegate?.didEditExercise()
             }
         } else {
             if let exerciseNameField = exerciseName,
@@ -48,6 +49,7 @@ class ExerciseDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         if let exercise = exercise {
             exerciseName.text = exercise.name
