@@ -50,6 +50,7 @@ class ExerciseDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.reloadData()
         
         if let exercise = exercise {
             exerciseName.text = exercise.name

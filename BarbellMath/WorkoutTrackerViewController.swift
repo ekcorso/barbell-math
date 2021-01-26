@@ -12,9 +12,16 @@ class WorkoutTrackerViewController: UITableViewController {
     
     var exercises = [Exercise]()
     var selectedExercise: Exercise?
+    var newExerciseButtonTapped: Bool = false
     
     var sectionTitles = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"]
-
+        
+    @IBAction func addNewExercise(_ sender: UIButton) {
+        if sender.tag == 1 {
+            newExerciseButtonTapped = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Workout Tracker"
@@ -32,7 +39,11 @@ class WorkoutTrackerViewController: UITableViewController {
                 if let exerciseDetailViewController = navigationController.viewControllers.first as? ExerciseDetailViewController {
                     exerciseDetailViewController.delegate = self
                     if let exercise = selectedExercise {
-                        exerciseDetailViewController.exercise = exercise
+                        if newExerciseButtonTapped {
+                            exerciseDetailViewController.exercise = nil
+                        } else {
+                            exerciseDetailViewController.exercise = exercise
+                        }
                     }
                 }
             }
@@ -46,7 +57,6 @@ class WorkoutTrackerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exercises.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)

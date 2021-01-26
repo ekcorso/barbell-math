@@ -138,8 +138,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="9lh-Ib-QlN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="zeT-gV-XW9">
+                        <barButtonItem key="rightBarButtonItem" tag="1" systemItem="add" id="zeT-gV-XW9">
                             <connections>
+                                <action selector="addNewExercise:" destination="5R0-20-nts" id="lSW-4H-Lb2"/>
                                 <segue destination="GCN-8k-afT" kind="presentation" identifier="showExerciseDetails" id="MTE-Jd-mn3"/>
                             </connections>
                         </barButtonItem>
