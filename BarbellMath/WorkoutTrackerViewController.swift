@@ -59,14 +59,17 @@ class WorkoutTrackerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let exercise = exercises[indexPath.row]
         
-        cell.textLabel?.text = exercise.name
-        //cell!.detailTextLabel?.text = exercises[indexPath.row]
-        
-        return cell
+        if let cell = cell {
+                cell.textLabel?.text = exercise.name
+                cell.detailTextLabel?.text = "Sets: \(exercises[indexPath.row].sets), Reps: \(exercises[indexPath.row].reps)"
+            } else {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
+        }
+        return cell!
+        //Ask Mike what consequences force-unwrapping the cell might have
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -94,3 +97,7 @@ extension WorkoutTrackerViewController: ExerciseDetailViewControllerDelegate {
         tableView.reloadData()
     }
 }
+
+//**Cell Restoration identifier doesn't match the custom cell in the storyboard. Storyboard cell has NO identifier.
+//May need to create a custom class of UITableViewCell. Subcalsses will have the detailTextLabel property, but it wont be displayed.
+//Shouldn't need a custom cell. Do a tutorial about using the prototype cell. Look up info on how to create custom table view cells using prototype cells in a storyboard. Might just have to set a diff type on the proptotype cell (dropdown in Storyboard). 

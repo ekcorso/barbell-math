@@ -14,6 +14,8 @@ class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var pickerData: [Int] = Array(1...50)
     
+    var exercise: Exercise?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
