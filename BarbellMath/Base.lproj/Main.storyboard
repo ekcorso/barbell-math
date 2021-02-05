@@ -210,7 +210,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="EYC-xN-Ocv" kind="show" id="Jgu-fH-YBb"/>
+                                            <segue destination="EYC-xN-Ocv" kind="show" identifier="SetPickerSegue" id="Jgu-fH-YBb"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="ExT-24-sdl">
@@ -230,7 +230,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Sx3-K1-Lkr" kind="show" id="5vp-78-w3o"/>
+                                            <segue destination="Sx3-K1-Lkr" kind="show" identifier="RepPickerSegue" id="5vp-78-w3o"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vrh-cO-bGp">
@@ -314,7 +314,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="3KB-Yg-z5A"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AGz-gJ-VpV"/>
+                    <navigationItem key="navigationItem" id="AGz-gJ-VpV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QHd-WC-Zxt">
+                            <connections>
+                                <action selector="tappedDone:" destination="EYC-xN-Ocv" id="UXe-GD-hCk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="picker" destination="Hbo-YP-4GR" id="I9h-Me-pXT"/>
                     </connections>
@@ -339,7 +345,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="frk-cz-0Od"/>
                     </view>
-                    <navigationItem key="navigationItem" id="INW-YJ-gD8"/>
+                    <navigationItem key="navigationItem" id="INW-YJ-gD8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="L4M-Xf-8vd">
+                            <connections>
+                                <action selector="tappedDone:" destination="Sx3-K1-Lkr" id="VYy-FZ-3XB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="picker" destination="L7K-3q-p4o" id="LR6-kC-Hxj"/>
                     </connections>

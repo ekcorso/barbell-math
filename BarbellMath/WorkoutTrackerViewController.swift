@@ -97,7 +97,3 @@ extension WorkoutTrackerViewController: ExerciseDetailViewControllerDelegate {
         tableView.reloadData()
     }
 }
-
-//**Cell Restoration identifier doesn't match the custom cell in the storyboard. Storyboard cell has NO identifier.
-//May need to create a custom class of UITableViewCell. Subcalsses will have the detailTextLabel property, but it wont be displayed.
-//Shouldn't need a custom cell. Do a tutorial about using the prototype cell. Look up info on how to create custom table view cells using prototype cells in a storyboard. Might just have to set a diff type on the proptotype cell (dropdown in Storyboard). 
