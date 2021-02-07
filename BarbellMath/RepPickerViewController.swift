@@ -8,8 +8,6 @@
 
 import UIKit
 
-//To create a delegate pattern: first create a protocol that defines (but does not implement) the delegate's func (VC that the delegate will belong to, eg RepPicker), then create a delegate property (also in RepPicker), then add conformance via an extension in the destination vc (eg. EDVC), then assign the delegate in prepareForSegue (EDVC)
-
 class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var picker: UIPickerView!

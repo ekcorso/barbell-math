@@ -17,10 +17,13 @@ class WorkoutTrackerViewController: UITableViewController {
     var sectionTitles = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"]
         
     @IBAction func addNewExercise(_ sender: UIButton) {
+        //newExerciseButtonTapped isn't being updated to "true" because this line isn't being hit
         if sender.tag == 1 {
             newExerciseButtonTapped = true
         }
     }
+    
+    //Add a property for the button itself (the above is the action)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +37,17 @@ class WorkoutTrackerViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier, identifier == "showExerciseDetails" {
-            if let navigationController = segue.destination as? UINavigationController {
-                if let exerciseDetailViewController = navigationController.viewControllers.first as? ExerciseDetailViewController {
-                    exerciseDetailViewController.delegate = self
-                    if let exercise = selectedExercise {
-                        if newExerciseButtonTapped {
-                            exerciseDetailViewController.exercise = nil
-                        } else {
-                            exerciseDetailViewController.exercise = exercise
+        if let navigationController = segue.destination as? UINavigationController {
+            if let exerciseDetailViewController = navigationController.viewControllers.first as? ExerciseDetailViewController {
+                exerciseDetailViewController.delegate = self
+                if newExerciseButtonTapped {
+                    //this code doesn't run because newExerciseButtonTapped is still false when it gets here
+                    exerciseDetailViewController.exercise = nil
+                } else {
+                    if let identifier = segue.identifier, identifier == "showExerciseDetails" {
+                        //selectedExercise is always nil until a row is tapped, then it is instantialed as that existing exercise (same memory address)
+                        if let existingExercise = selectedExercise {
+                            exerciseDetailViewController.exercise = existingExercise
                         }
                     }
                 }
@@ -95,5 +100,6 @@ extension WorkoutTrackerViewController: ExerciseDetailViewControllerDelegate {
     
     func didEditExercise() {
         tableView.reloadData()
+        selectedExercise = nil
     }
 }

@@ -27,12 +27,14 @@ class ExerciseDetailViewController: UITableViewController {
         if let exercise = exercise {
             if let exerciseNameText = exerciseName.text {
                 exercise.name = exerciseNameText
+                //The line below was updating sets to 0 (the initialized value above) any time ECVD was opened but not edited because sets is only updated to a value when SPVC is opened
+                //exercise.sets = sets
                 delegate?.didEditExercise()
             }
         } else {
             if let exerciseNameField = exerciseName,
                 let exerciseNameText = exerciseNameField.text {
-                //exercise is initialized here, whem the done button is tapped
+                //exercise is initialized here, when the done button is tapped
                 let exercise = Exercise(name: exerciseNameText, sets: sets)
                 delegate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
             } else {
