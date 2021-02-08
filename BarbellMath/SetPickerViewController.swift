@@ -32,6 +32,9 @@ class SetPickerViewController: UIViewController, UIPickerViewDataSource, UIPicke
         self.picker.dataSource = self
         
         title = "Sets"
+        
+        //I want sets below to be the sets property of the EDVC. Do I need another delegate to do this?
+        picker.selectRow(sets, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

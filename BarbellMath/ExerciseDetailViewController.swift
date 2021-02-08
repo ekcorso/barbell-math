@@ -17,13 +17,29 @@ protocol ExerciseDetailViewControllerDelegate: class {
 class ExerciseDetailViewController: UITableViewController {
     
     @IBOutlet weak var exerciseName: UITextField!
+    @IBOutlet weak var setLabel: UILabel!
+    @IBOutlet weak var repLabel: UILabel!
     
     weak var delegate: ExerciseDetailViewControllerDelegate?
     var exercise: Exercise?
     var sets: Int = 0
+    
+    //    var sets: Int {
+//        if let exercise = exercise {
+//            return exercise.sets
+//        } else {
+//            return 0
+//        }
+//    }
     var reps: Int = 0
     
-    //TODO: Rename tappedDone for what it will do rather than what it just did
+    func updateTableProperties(exercise: Exercise) {
+        exerciseName.text = exercise.name
+        
+        setLabel.text = "Sets: \(exercise.sets)"
+        repLabel.text = "Reps: \(exercise.reps)"
+    }
+    
     @IBAction func tappedDone(_ sender: Any) {
         if let exercise = exercise {
             if let exerciseNameText = exerciseName.text {
@@ -57,7 +73,7 @@ class ExerciseDetailViewController: UITableViewController {
         tableView.reloadData()
         
         if let exercise = exercise {
-            exerciseName.text = exercise.name
+            updateTableProperties(exercise: exercise)
         }
     }
     
@@ -78,11 +94,13 @@ class ExerciseDetailViewController: UITableViewController {
 extension ExerciseDetailViewController: SetPickerViewControllerDelegate {
     func setPickerViewControllerDidUpdate(sets: Int) {
         self.sets = sets
+        self.setLabel.text = "Sets: \(sets)"
     }
 }
 
 extension ExerciseDetailViewController: RepPickerViewControllerDelegate {
     func repPickerViewControllerDidUpdate(reps: Int) {
         self.reps = reps
+        self.repLabel.text = "Reps: \(reps)"
     }
 }
