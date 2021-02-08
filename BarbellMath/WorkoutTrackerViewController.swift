@@ -45,7 +45,6 @@ class WorkoutTrackerViewController: UITableViewController {
                     exerciseDetailViewController.exercise = nil
                 } else {
                     if let identifier = segue.identifier, identifier == "showExerciseDetails" {
-                        //selectedExercise is always nil until a row is tapped, then it is instantialed as that existing exercise (same memory address)
                         if let existingExercise = selectedExercise {
                             exerciseDetailViewController.exercise = existingExercise
                         }
@@ -74,7 +73,6 @@ class WorkoutTrackerViewController: UITableViewController {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell")
         }
         return cell!
-        //Ask Mike what consequences force-unwrapping the cell might have
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

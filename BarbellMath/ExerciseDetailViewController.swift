@@ -35,7 +35,6 @@ class ExerciseDetailViewController: UITableViewController {
         } else {
             if let exerciseNameField = exerciseName,
                 let exerciseNameText = exerciseNameField.text {
-                //exercise is initialized here, when the done button is tapped
                 let exercise = Exercise(name: exerciseNameText, sets: sets, reps: reps)
                 delegate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
             } else {
@@ -79,11 +78,6 @@ class ExerciseDetailViewController: UITableViewController {
 extension ExerciseDetailViewController: SetPickerViewControllerDelegate {
     func setPickerViewControllerDidUpdate(sets: Int) {
         self.sets = sets
-        //exercise is nil at this point, so this block is skipped
-        if let exercise = exercise {
-            exercise.sets = sets
-            //reset/ reload the text label that shows the number of sets here
-        }
     }
 }
 
