@@ -12,9 +12,10 @@ import UIKit
 
 class Exercise {
     
-    init(name: String, sets: Int) {
+    init(name: String, sets: Int, reps: Int) {
         self.name = name
         self.sets = sets
+        self.reps = reps
     }
     
     var name: String = ""

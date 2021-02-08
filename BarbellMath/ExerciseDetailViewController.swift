@@ -21,6 +21,7 @@ class ExerciseDetailViewController: UITableViewController {
     weak var delegate: ExerciseDetailViewControllerDelegate?
     var exercise: Exercise?
     var sets: Int = 0
+    var reps: Int = 0
     
     //TODO: Rename tappedDone for what it will do rather than what it just did
     @IBAction func tappedDone(_ sender: Any) {
@@ -35,7 +36,7 @@ class ExerciseDetailViewController: UITableViewController {
             if let exerciseNameField = exerciseName,
                 let exerciseNameText = exerciseNameField.text {
                 //exercise is initialized here, when the done button is tapped
-                let exercise = Exercise(name: exerciseNameText, sets: sets)
+                let exercise = Exercise(name: exerciseNameText, sets: sets, reps: reps)
                 delegate?.exerciseDetailViewControllerDidCreate(exercise: exercise)
             } else {
                 assertionFailure("Failed to unwrap exererciseName.")
@@ -67,6 +68,11 @@ class ExerciseDetailViewController: UITableViewController {
                 setPickerViewController.delegate = self
             }
         }
+        if let indentifier = segue.identifier, indentifier == "RepPickerSegue" {
+            if let repPickerViewController = segue.destination as? RepPickerViewController {
+                repPickerViewController.delegate = self
+            }
+        }
     }
 }
 
@@ -78,5 +84,11 @@ extension ExerciseDetailViewController: SetPickerViewControllerDelegate {
             exercise.sets = sets
             //reset/ reload the text label that shows the number of sets here
         }
+    }
+}
+
+extension ExerciseDetailViewController: RepPickerViewControllerDelegate {
+    func repPickerViewControllerDidUpdate(reps: Int) {
+        self.reps = reps
     }
 }

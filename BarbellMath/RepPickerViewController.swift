@@ -8,16 +8,22 @@
 
 import UIKit
 
+protocol RepPickerViewControllerDelegate: class {
+    func repPickerViewControllerDidUpdate(reps: Int)
+}
+
 class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var picker: UIPickerView!
-    
     var pickerData: [Int] = Array(1...50)
-    
     var exercise: Exercise?
+    var reps: Int = 0
+    weak var delegate: RepPickerViewControllerDelegate?
     
     @IBAction func tappedDone(_ sender: Any) {
-        //update exercise object with rep data and pass it back
+        delegate?.repPickerViewControllerDidUpdate(reps: reps)
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -41,4 +47,8 @@ class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         return String(pickerData[row])
     }
 
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        reps = row + 1
+    }
 }
