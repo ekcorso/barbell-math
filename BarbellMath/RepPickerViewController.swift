@@ -18,6 +18,7 @@ class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var pickerData: [Int] = Array(1...50)
     var exercise: Exercise?
     var reps: Int = 0
+    var startingReps: Int = 0
     weak var delegate: RepPickerViewControllerDelegate?
     
     @IBAction func tappedDone(_ sender: Any) {
@@ -33,7 +34,8 @@ class RepPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.picker.dataSource = self
         
         title = "Reps"
-    }
+        
+        picker.selectRow(startingReps, inComponent: 0, animated: true)    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

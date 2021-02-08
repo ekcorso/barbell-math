@@ -17,6 +17,7 @@ class SetPickerViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var picker: UIPickerView!
     var pickerData = Array(1...30)
     var sets: Int = 0
+    var startingSets: Int = 0
     weak var delegate: SetPickerViewControllerDelegate?
     
     @IBAction func tappedDone(_ sender: Any) {
@@ -33,8 +34,7 @@ class SetPickerViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         title = "Sets"
         
-        //I want sets below to be the sets property of the EDVC. Do I need another delegate to do this?
-        picker.selectRow(sets, inComponent: 0, animated: true)
+        picker.selectRow(startingSets, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -22,16 +22,20 @@ class ExerciseDetailViewController: UITableViewController {
     
     weak var delegate: ExerciseDetailViewControllerDelegate?
     var exercise: Exercise?
-    var sets: Int = 0
-    
-    //    var sets: Int {
-//        if let exercise = exercise {
-//            return exercise.sets
-//        } else {
-//            return 0
-//        }
-//    }
-    var reps: Int = 0
+    var sets: Int = 0 {
+        didSet {
+            if let exercise = exercise {
+                exercise.sets = sets
+            }
+        }
+    }
+    var reps: Int = 0 {
+        didSet {
+            if let exercise = exercise {
+                exercise.sets = sets
+            }
+        }
+    }
     
     func updateTableProperties(exercise: Exercise) {
         exerciseName.text = exercise.name
@@ -81,11 +85,17 @@ class ExerciseDetailViewController: UITableViewController {
         if let identifier = segue.identifier, identifier == "SetPickerSegue" {
             if let setPickerViewController = segue.destination as? SetPickerViewController {
                 setPickerViewController.delegate = self
+                if let exercise = exercise {
+                    setPickerViewController.startingSets = exercise.sets - 1
+                }
             }
         }
         if let indentifier = segue.identifier, indentifier == "RepPickerSegue" {
             if let repPickerViewController = segue.destination as? RepPickerViewController {
                 repPickerViewController.delegate = self
+                if let exercise = exercise {
+                    repPickerViewController.startingReps = exercise.reps - 1
+                }
             }
         }
     }
