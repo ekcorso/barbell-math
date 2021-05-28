@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */; };
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
 		FC5EB20125ABC08100AC8379 /* PlateQuantities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionViewController.swift; sourceTree = "<group>"; };
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
 		FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateQuantities.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
 				FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
+				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
 				FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */,
@@ -147,6 +150,7 @@
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* PlateQuantities.swift in Sources */,
+				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
 			);
