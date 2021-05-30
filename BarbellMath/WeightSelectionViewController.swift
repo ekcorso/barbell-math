@@ -16,7 +16,7 @@ class WeightSelectionViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.title = "Are we gunna lift?"
+        self.navigationItem.title = "Let's do some Barbell Math"
     }
     
     override func viewDidLoad() {
@@ -28,10 +28,16 @@ class WeightSelectionViewController: UIViewController {
         setConstraints()
     }
     
-    func didTapWeightButton() {
+    @objc func didTapWeightButton() {
         //pass the weight to the next vc
+        let viewController = PlateCountViewController()
+        
+        if let text = weightText.text, let weightAsDouble = Double(text) {
+        viewController.totalWeight = weightAsDouble
+        }
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
-    
 }
 
 extension WeightSelectionViewController {
@@ -46,13 +52,12 @@ extension WeightSelectionViewController {
         
         view.addSubview(weightButton)
         weightButton.setTitle("Show me the numbers!", for: UIControl.State.normal)
-        weightButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        weightButton.titleLabel?.textColor = .black
+        weightButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         weightButton.backgroundColor = .systemTeal
         weightButton.layer.cornerRadius = 4
-        //weightButton.layer.borderWidth = 1
-        //weightButton.layer.borderColor = UIColor.gray.cgColor
         weightButton.translatesAutoresizingMaskIntoConstraints = false
-        
+        weightButton.addTarget(self, action: #selector(didTapWeightButton), for: .touchUpInside)
     }
     
     func setConstraints() {
