@@ -21,10 +21,13 @@ class PlateCountViewController: UIViewController {
     var text5LbPlates: UILabel!
     var text2_5LbPlates: UILabel!
     
+    private let horizontalPadding: CGFloat = 50.0
+    private let verticalPadding: CGFloat = 100
+    
     override func loadView() {
         super.loadView()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(patternImage: UIImage(named: "confetti-gym-mats")!)
         establishSubviews()
         setConstraints()
     }
@@ -95,32 +98,36 @@ class PlateCountViewController: UIViewController {
 extension PlateCountViewController {
     func establishSubviews() {
         plateLabelsView = UIView()
-        plateLabelsView.backgroundColor = .lightGray
         plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(plateLabelsView)
         
         text2_5LbPlates = UILabel()
         text2_5LbPlates.text = "(0) 2.5lb plates"
+        text2_5LbPlates.backgroundColor = .lightGray
         text2_5LbPlates.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(text2_5LbPlates)
         
         text5LbPlates = UILabel()
         text5LbPlates.text = "(0) 5lb plates"
+        text5LbPlates.backgroundColor = .darkGray
         text5LbPlates.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(text5LbPlates)
         
         text10LbPlates = UILabel()
         text10LbPlates.text = "(0) 10lb plates"
+        text10LbPlates.backgroundColor = .white
         text10LbPlates.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(text10LbPlates)
         
         text25LbPlates = UILabel()
         text25LbPlates.text = "(0) 25lb plates"
+        text25LbPlates.backgroundColor = .green
         text25LbPlates.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(text25LbPlates)
         
         text45LbPlates = UILabel()
         text45LbPlates.text = "(0) 45lb plates"
+        text45LbPlates.backgroundColor = .blue
         text45LbPlates.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(text45LbPlates)
         
@@ -128,26 +135,37 @@ extension PlateCountViewController {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            plateLabelsView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            plateLabelsView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.5),
-            plateLabelsView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
-            plateLabelsView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
+            plateLabelsView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: verticalPadding),
+            plateLabelsView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: horizontalPadding),
+            plateLabelsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -verticalPadding),
+            plateLabelsView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -horizontalPadding),
             
-            text45LbPlates.topAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.topAnchor),
-            text45LbPlates.centerXAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.centerXAnchor),
+            text45LbPlates.topAnchor.constraint(equalTo: plateLabelsView.topAnchor),
+            text45LbPlates.leadingAnchor.constraint(equalTo: plateLabelsView.leadingAnchor),
+            text45LbPlates.trailingAnchor.constraint(equalTo: plateLabelsView.trailingAnchor),
             
-            text25LbPlates.topAnchor.constraint(equalTo: text45LbPlates.bottomAnchor, constant: 10),
-            text25LbPlates.centerXAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.centerXAnchor),
+            text25LbPlates.topAnchor.constraint(equalTo: text45LbPlates.bottomAnchor),
+            text25LbPlates.leadingAnchor.constraint(equalTo: plateLabelsView.leadingAnchor),
+            text25LbPlates.trailingAnchor.constraint(equalTo: plateLabelsView.trailingAnchor),
             
-            text10LbPlates.topAnchor.constraint(equalTo: text25LbPlates.bottomAnchor, constant: 10),
-            text10LbPlates.centerXAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.centerXAnchor),
+            text10LbPlates.topAnchor.constraint(equalTo: text25LbPlates.bottomAnchor),
+            text10LbPlates.leadingAnchor.constraint(equalTo: plateLabelsView.leadingAnchor),
+            text10LbPlates.trailingAnchor.constraint(equalTo: plateLabelsView.trailingAnchor),
             
-            text5LbPlates.topAnchor.constraint(equalTo: text10LbPlates.bottomAnchor, constant: 10),
-            text5LbPlates.centerXAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.centerXAnchor),
+            text5LbPlates.topAnchor.constraint(equalTo: text10LbPlates.bottomAnchor),
+            text5LbPlates.leadingAnchor.constraint(equalTo: plateLabelsView.leadingAnchor),
+            text5LbPlates.trailingAnchor.constraint(equalTo: plateLabelsView.trailingAnchor),
             
-            text2_5LbPlates.topAnchor.constraint(equalTo: text5LbPlates.bottomAnchor, constant: 10),
-            text2_5LbPlates.centerXAnchor.constraint(equalTo: plateLabelsView.layoutMarginsGuide.centerXAnchor),
-
+            text2_5LbPlates.topAnchor.constraint(equalTo: text5LbPlates.bottomAnchor),
+            text2_5LbPlates.leadingAnchor.constraint(equalTo: plateLabelsView.leadingAnchor),
+            text2_5LbPlates.trailingAnchor.constraint(equalTo: plateLabelsView.trailingAnchor),
+            text2_5LbPlates.bottomAnchor.constraint(equalTo: plateLabelsView.bottomAnchor),
+            
+            text45LbPlates.heightAnchor.constraint(equalTo: plateLabelsView.heightAnchor, multiplier: 1/5),
+            text25LbPlates.heightAnchor.constraint(equalTo: plateLabelsView.heightAnchor, multiplier: 1/5),
+            text10LbPlates.heightAnchor.constraint(equalTo: plateLabelsView.heightAnchor, multiplier: 1/5),
+            text5LbPlates.heightAnchor.constraint(equalTo: plateLabelsView.heightAnchor, multiplier: 1/5),
+            text2_5LbPlates.heightAnchor.constraint(equalTo: plateLabelsView.heightAnchor, multiplier: 1/5),
         ])
     }
 }
