@@ -96,51 +96,47 @@ class PlateCountViewController: UIViewController {
 }
 
 extension PlateCountViewController {
+    func setLabelAttributes(labels: [UILabel?]) {
+        for label in labels {
+            guard let label = label else { break }
+            label.textAlignment = .center
+            label.textColor = .black
+            label.backgroundColor = .white
+            label.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(label)
+        }
+    }
+    
     func establishSubviews() {
         plateLabelsView = UIView()
         plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(plateLabelsView)
         
-        text2_5LbPlates = UILabel()
-        text2_5LbPlates.text = "(0) 2.5lb plates"
-        text2_5LbPlates.textAlignment = .center
-        text2_5LbPlates.backgroundColor = .white
-        text2_5LbPlates.textColor = .black
-        text2_5LbPlates.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(text2_5LbPlates)
-        
-        text5LbPlates = UILabel()
-        text5LbPlates.text = "(0) 5lb plates"
-        text5LbPlates.textAlignment = .center
-        text5LbPlates.textColor = .black
-        text5LbPlates.backgroundColor = .white
-        text5LbPlates.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(text5LbPlates)
-        
-        text10LbPlates = UILabel()
-        text10LbPlates.text = "(0) 10lb plates"
-        text10LbPlates.textAlignment = .center
-        text10LbPlates.backgroundColor = .white
-        text10LbPlates.textColor = .black
-        text10LbPlates.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(text10LbPlates)
+        text45LbPlates = UILabel()
+        text45LbPlates.text = "(0) 45lb plates"
         
         text25LbPlates = UILabel()
         text25LbPlates.text = "(0) 25lb plates"
-        text25LbPlates.textAlignment = .center
-        text25LbPlates.backgroundColor = .white
-        text25LbPlates.textColor = .black
-        text25LbPlates.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(text25LbPlates)
         
-        text45LbPlates = UILabel()
-        text45LbPlates.text = "(0) 45lb plates"
-        text45LbPlates.textAlignment = .center
-        text45LbPlates.textColor = .black
-        text45LbPlates.backgroundColor = .white
-        text45LbPlates.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(text45LbPlates)
+        text10LbPlates = UILabel()
+        text10LbPlates.text = "(0) 10lb plates"
         
+        text5LbPlates = UILabel()
+        text5LbPlates.text = "(0) 5lb plates"
+        
+        text2_5LbPlates = UILabel()
+        text2_5LbPlates.text = "(0) 2.5lb plates"
+        
+        for label in [text45LbPlates, text25LbPlates, text10LbPlates, text5LbPlates, text2_5LbPlates] {
+            guard let label = label else { break }
+            label.textAlignment = .center
+            label.textColor = .black
+            label.backgroundColor = .white
+            label.layer.borderColor = UIColor.black.cgColor
+            label.layer.borderWidth = 5
+            label.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(label)
+        }
     }
     
     func setConstraints() {
