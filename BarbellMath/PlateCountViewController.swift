@@ -21,9 +21,6 @@ class PlateCountViewController: UIViewController {
     var text5LbPlates: UILabel!
     var text2_5LbPlates: UILabel!
     
-    private let horizontalPadding: CGFloat = 50.0
-    private let verticalPadding: CGFloat = 100
-    
     override func loadView() {
         super.loadView()
         
@@ -140,6 +137,9 @@ extension PlateCountViewController {
     }
     
     func setConstraints() {
+        let horizontalPadding: CGFloat = 50.0
+        let verticalPadding: CGFloat = 100
+        
         NSLayoutConstraint.activate([
             plateLabelsView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: verticalPadding),
             plateLabelsView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: horizontalPadding),

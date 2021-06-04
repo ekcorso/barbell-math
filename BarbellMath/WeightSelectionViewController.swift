@@ -62,8 +62,8 @@ extension WeightSelectionViewController {
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            weightText.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 0),
-            weightText.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0),
+            weightText.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 100),
+            weightText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             weightButton.topAnchor.constraint(equalTo: weightText.bottomAnchor, constant: 10),
             weightButton.centerXAnchor.constraint(equalTo: weightText.centerXAnchor, constant: 0),
