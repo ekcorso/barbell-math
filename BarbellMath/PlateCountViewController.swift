@@ -11,15 +11,15 @@ import UIKit
 class PlateCountViewController: UIViewController {
     
     var totalWeight: Double = 0
-    //should this be nil instead of 0? How would using an optional value here change things? See temp app...? Mike says I could solve this with a "guard let" statement (if total weight is 0) in the plate math func instead. Look up guard statements.
+    // TODO: Replace this with an optional Double
     
-    var plateLabelsView: UIView!
+    var plateLabelsView = UIView()
 
-    var text45LbPlates: UILabel!
-    var text25LbPlates: UILabel!
-    var text10LbPlates: UILabel!
-    var text5LbPlates: UILabel!
-    var text2_5LbPlates: UILabel!
+    var text45LbPlates = UILabel()
+    var text25LbPlates = UILabel()
+    var text10LbPlates = UILabel()
+    var text5LbPlates = UILabel()
+    var text2_5LbPlates = UILabel()
     
     override func loadView() {
         super.loadView()
@@ -77,13 +77,14 @@ class PlateCountViewController: UIViewController {
     
     @objc func submit(_ answer: Double) {
         let totalWeight = answer
-        //answer should be an Num. Do I validate this here, or in promptForWeight?
+        // TODO: Validate that answer is a num. Do I do that here, or in promptForWeight when answer is first entered?
         var plateMathCalculator = PlateMathCalculator()
         let plateQuantities = plateMathCalculator.doPlateMath(totalWeight: totalWeight)
         updateLabels(plateQuantities: plateQuantities)
     }
     
     @objc func setStartingValues() {
+        //This will never be seen because the reset button isn't necessary now. The user will just navigate back to the initial view.
         text2_5LbPlates.text = "(0) 2.5lb plates"
         text5LbPlates.text = "(0) 5lb plates"
         text10LbPlates.text = "(0) 10lb plates"
@@ -109,23 +110,7 @@ extension PlateCountViewController {
         plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(plateLabelsView)
         
-        text45LbPlates = UILabel()
-        text45LbPlates.text = "(0) 45lb plates"
-        
-        text25LbPlates = UILabel()
-        text25LbPlates.text = "(0) 25lb plates"
-        
-        text10LbPlates = UILabel()
-        text10LbPlates.text = "(0) 10lb plates"
-        
-        text5LbPlates = UILabel()
-        text5LbPlates.text = "(0) 5lb plates"
-        
-        text2_5LbPlates = UILabel()
-        text2_5LbPlates.text = "(0) 2.5lb plates"
-        
         for label in [text45LbPlates, text25LbPlates, text10LbPlates, text5LbPlates, text2_5LbPlates] {
-            guard let label = label else { break }
             label.textAlignment = .center
             label.textColor = .black
             label.backgroundColor = .white
