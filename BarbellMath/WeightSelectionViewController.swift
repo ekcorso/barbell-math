@@ -10,6 +10,7 @@ import UIKit
 
 class WeightSelectionViewController: UIViewController {
     
+    let directionsLabel = UILabel()
     let weightText = UITextField()
     let weightButton = UIButton()
     
@@ -21,7 +22,7 @@ class WeightSelectionViewController: UIViewController {
     override func loadView() {
         super.loadView()
         
-        self.navigationItem.title = "Let's do some Barbell Math"
+        self.navigationItem.title = "Barbell Math"
     }
     
     override func viewDidLoad() {
@@ -60,8 +61,15 @@ extension WeightSelectionViewController {
 //        //stackView.setCustomSpacing(30, after: weightText)
 //        stackView.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(directionsLabel)
+        directionsLabel.text = "Enter the total weight in pounds that you'd like to lift."
+        directionsLabel.textColor = .black
+        directionsLabel.textAlignment = .center
+        directionsLabel.numberOfLines = 0
+        directionsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(weightText)
-        weightText.placeholder = "Weight in pounds"
+        weightText.placeholder = "Weight"
         weightText.textAlignment = .center
         weightText.borderStyle = .line
         weightText.textColor = .black
@@ -85,7 +93,11 @@ extension WeightSelectionViewController {
 //            stackView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -padding),
 //            stackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
-            weightText.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 120),
+            directionsLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 100),
+            directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            directionsLabel.widthAnchor.constraint(equalToConstant: 225),
+            
+            weightText.topAnchor.constraint(equalTo: directionsLabel.bottomAnchor, constant: 30),
             weightText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             weightText.widthAnchor.constraint(equalToConstant: 225),
             weightText.heightAnchor.constraint(equalToConstant: 40),
