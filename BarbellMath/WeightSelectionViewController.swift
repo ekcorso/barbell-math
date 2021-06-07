@@ -38,8 +38,12 @@ class WeightSelectionViewController: UIViewController {
         //pass the weight to the next vc
         let viewController = PlateCountViewController()
         
-        if let text = weightText.text, let weightAsDouble = Double(text) {
-        viewController.totalWeight = weightAsDouble
+        if let text = weightText.text {
+            if let weightAsDouble = Double(text) {
+                viewController.totalWeight = weightAsDouble
+            } else {
+                print("Weight is not a number")
+            }
         }
         
         navigationController?.pushViewController(viewController, animated: true)

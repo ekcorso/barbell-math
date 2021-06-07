@@ -47,14 +47,6 @@ class PlateCountViewController: UIViewController {
         text5LbPlates.text = "(\(Int(plateQuantities.quantity5LbPlates))) 5lb plates"
         text2_5LbPlates.text = "(\(Int(plateQuantities.quantity2_5LbPlates))) 2.5lb plates"
     }
-    
-    @objc func submit(_ answer: Double) {
-        let totalWeight = answer
-        // TODO: Validate that answer is a num. Four digits or less. Do I do that here, or in promptForWeight when answer is first entered?
-        var plateMathCalculator = PlateMathCalculator()
-        let plateQuantities = plateMathCalculator.doPlateMath(totalWeight: totalWeight)
-        updateLabels(plateQuantities: plateQuantities)
-    }
 }
 
 extension PlateCountViewController {
