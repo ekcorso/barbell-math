@@ -10,8 +10,7 @@ import UIKit
 
 class PlateCountViewController: UIViewController {
     
-    var totalWeight: Double = 0
-    // TODO: Replace this with an optional Double
+    var totalWeight: Double? = 0
     
     var plateLabelsView = UIView()
 
@@ -35,8 +34,12 @@ class PlateCountViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain , target: nil, action: nil)
         
         var plateMathCalculator = PlateMathCalculator()
-        let plateMathQuantitites = plateMathCalculator.doPlateMath(totalWeight: totalWeight)
-        updateLabels(plateQuantities: plateMathQuantitites)
+        if let totalWeight = totalWeight {
+            let plateMathQuantitites = plateMathCalculator.doPlateMath(totalWeight: totalWeight)
+            updateLabels(plateQuantities: plateMathQuantitites)
+        } else {
+            print("Total weight is nil")
+        }
     }
 
     

@@ -43,6 +43,10 @@ class WeightSelectionViewController: UIViewController {
                 viewController.totalWeight = weightAsDouble
             } else {
                 print("Weight is not a number")
+                let alert = UIAlertController(title: "That's not a number...", message: "Please re-enter the weight you want to lift as a numeric value", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(okAction)
+                self.present(alert, animated: true)
             }
         }
         
