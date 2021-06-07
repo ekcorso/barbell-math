@@ -74,6 +74,7 @@ extension WeightSelectionViewController {
         weightText.borderStyle = .line
         weightText.textColor = .black
         weightText.backgroundColor = .white
+        weightText.keyboardType = .numberPad
         weightText.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(weightButton)
