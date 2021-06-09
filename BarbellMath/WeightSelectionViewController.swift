@@ -10,9 +10,13 @@ import UIKit
 
 class WeightSelectionViewController: UIViewController {
     
+    let userChoicesView = UIStackView()
     let directionsLabel = UILabel()
     let weightText = UITextField()
     let weightButton = UIButton()
+    let unitSelector = UISegmentedControl(items: ["lbs", "kgs"])
+    let spacerView1 = UIView()
+    let spacerView2 = UIView()
     
     override func loadView() {
         super.loadView()
@@ -30,7 +34,6 @@ class WeightSelectionViewController: UIViewController {
     }
     
     @objc func didTapWeightButton() {
-        //pass the weight to the next vc
         let viewController = PlateCountViewController()
         
         if let text = weightText.text {
@@ -52,9 +55,20 @@ class WeightSelectionViewController: UIViewController {
 extension WeightSelectionViewController {
     
     func establishSubviews() {
+
+        spacerView1.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spacerView1)
+
+        spacerView2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spacerView2)
+        
+        view.addSubview(unitSelector)
+        unitSelector.apportionsSegmentWidthsByContent = true
+        unitSelector.selectedSegmentIndex = 0
+        unitSelector.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(directionsLabel)
-        directionsLabel.text = "Enter the total weight in pounds that you'd like to lift."
+        directionsLabel.text = "Enter the total weight you want to lift."
         directionsLabel.textColor = .black
         directionsLabel.textAlignment = .center
         directionsLabel.numberOfLines = 0
@@ -77,23 +91,44 @@ extension WeightSelectionViewController {
         weightButton.layer.cornerRadius = 4
         weightButton.translatesAutoresizingMaskIntoConstraints = false
         weightButton.addTarget(self, action: #selector(didTapWeightButton), for: .touchUpInside)
+        
+        view.addSubview(userChoicesView)
+        userChoicesView.translatesAutoresizingMaskIntoConstraints = false
+        userChoicesView.alignment = .center
+        userChoicesView.axis = .horizontal
+        userChoicesView.distribution = .equalSpacing
+        userChoicesView.backgroundColor = .white
+        userChoicesView.addArrangedSubview(spacerView1)
+        userChoicesView.addArrangedSubview(weightText)
+        userChoicesView.addArrangedSubview(unitSelector)
+        userChoicesView.addArrangedSubview(spacerView2)
     }
     
     func setConstraints() {
+        
         NSLayoutConstraint.activate([
-            directionsLabel.bottomAnchor.constraint(equalTo: weightText.topAnchor, constant: -20),
+            directionsLabel.bottomAnchor.constraint(equalTo: userChoicesView.topAnchor, constant: -30),
             directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            directionsLabel.widthAnchor.constraint(equalToConstant: 225),
+            directionsLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 40),
+            directionsLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -40),
             
-            weightText.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            weightText.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            weightText.widthAnchor.constraint(equalToConstant: 225),
+            userChoicesView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userChoicesView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            userChoicesView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+//            userChoicesView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            userChoicesView.heightAnchor.constraint(equalTo: weightText.heightAnchor),
+            userChoicesView.widthAnchor.constraint(equalTo: directionsLabel.widthAnchor),
+            
+            weightText.widthAnchor.constraint(equalToConstant: 130),
             weightText.heightAnchor.constraint(equalToConstant: 40),
+                        
+            spacerView1.widthAnchor.constraint(equalToConstant: 10),
+            spacerView2.widthAnchor.constraint(equalToConstant: 10),
 
-            weightButton.topAnchor.constraint(equalTo: weightText.bottomAnchor, constant: 10),
-            weightButton.centerXAnchor.constraint(equalTo: weightText.centerXAnchor),
-            weightButton.widthAnchor.constraint(equalTo: weightText.widthAnchor),
-            weightButton.heightAnchor.constraint(equalTo: weightText.heightAnchor)
+            weightButton.topAnchor.constraint(equalTo: userChoicesView.bottomAnchor, constant: 12),
+            weightButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            weightButton.widthAnchor.constraint(equalTo: userChoicesView.widthAnchor, multiplier: 0.8),
+            weightButton.heightAnchor.constraint(equalTo: userChoicesView.heightAnchor)
         ])
     }
 }
