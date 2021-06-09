@@ -13,9 +13,7 @@ class PlateCountViewController: UIViewController {
     var totalWeight: Double? = 0
     var barWeight: Int = 45
     var unit: String = "lb"
-    var quantityOfCats: Double? = 100
-    //need func findQuantityOfCats to calculate this
-    
+    var quantityOfCats: Double = 0
     var plateQuantityText: String?
     
     var explanationLabel = UILabel()
@@ -46,6 +44,16 @@ class PlateCountViewController: UIViewController {
         }
     }
     
+    func findThisWeightInCats(totalWeight: Double?) -> Int {
+        var weightInCats = 0.0
+        if let totalWeight = totalWeight {
+            weightInCats = totalWeight / 9.0
+            return Int(weightInCats)
+        } else {
+            return Int(weightInCats)
+        }
+    }
+    
     func updateLabels(plateQuantities: PlateQuantities) {
         plateQuantityText =
             """
@@ -59,9 +67,7 @@ class PlateCountViewController: UIViewController {
         if let plateQuantityText = plateQuantityText {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineSpacing = 15
-            //let font = UIFont.systemFont(ofSize: 20)
             let attributes: [NSAttributedString.Key: Any] = [
-                //.font: font,
                 .paragraphStyle: paragraphStyle
             ]
             let attributedPlateQuantityString = NSAttributedString(string: plateQuantityText, attributes: attributes)
@@ -80,7 +86,7 @@ extension PlateCountViewController {
         explanationLabel.translatesAutoresizingMaskIntoConstraints = false
         explanationLabel.textColor = .black
         explanationLabel.textAlignment = .center
-        explanationLabel.text = "Here's what you'll need to load that on a \(barWeight)\(unit) bar:"
+        explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight ?? 0))\(unit) with a \(barWeight)\(unit) bar:"
         explanationLabel.numberOfLines = 0
         view.addSubview(explanationLabel)
         
@@ -94,8 +100,7 @@ extension PlateCountViewController {
         catLabel.textColor = .black
         catLabel.textAlignment = .center
         catLabel.numberOfLines = 0
-        catLabel.text = "Pick this up and you'll be lifting the weight of \(Int(quantityOfCats ?? 100)) cats."
-        //Remove default value once quantityOfCats is initialized
+        catLabel.text = "Pick this up and you'll be lifting the weight of \(findThisWeightInCats(totalWeight: totalWeight)) cats."
         view.addSubview(catLabel)
     }
     
