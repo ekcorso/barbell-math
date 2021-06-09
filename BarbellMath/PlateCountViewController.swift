@@ -100,22 +100,21 @@ extension PlateCountViewController {
     }
     
     func setConstraints() {
-        let horizontalPadding: CGFloat = 50.0
-        let verticalPadding: CGFloat = 100
+        let verticalPadding: CGFloat = 50
         
         NSLayoutConstraint.activate([
             
-            plateLabelsView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: verticalPadding),
-            plateLabelsView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: horizontalPadding),
-            plateLabelsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -verticalPadding),
-            plateLabelsView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -horizontalPadding),
+            plateLabelsView.topAnchor.constraint(equalTo: explanationLabel.topAnchor, constant: -verticalPadding),
+            plateLabelsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            plateLabelsView.bottomAnchor.constraint(equalTo: catLabel.bottomAnchor, constant: verticalPadding),
+            plateLabelsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             
             explanationLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            explanationLabel.widthAnchor.constraint(equalTo: plateLabelsView.widthAnchor, multiplier: 0.8),
             explanationLabel.bottomAnchor.constraint(equalTo: plateWeightsLabel.topAnchor, constant: -30),
+            explanationLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             
-            plateWeightsLabel.centerXAnchor.constraint(equalTo: plateLabelsView.centerXAnchor),
-            plateWeightsLabel.centerYAnchor.constraint(equalTo: plateLabelsView.centerYAnchor),
+            plateWeightsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            plateWeightsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             catLabel.topAnchor.constraint(equalTo: plateWeightsLabel.bottomAnchor, constant: 30),
             catLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
