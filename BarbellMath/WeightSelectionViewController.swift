@@ -12,6 +12,8 @@ class WeightSelectionViewController: UIViewController {
     
     let directionsLabel = UILabel()
     
+    let allOptionsStackView = UIStackView()
+    
     let unitSelectionStackView = UIStackView()
     let unitLabel = UILabel()
     let unitSelector = UISegmentedControl(items: ["lbs", "kgs"])
@@ -127,7 +129,6 @@ extension WeightSelectionViewController {
         unitSelector.apportionsSegmentWidthsByContent = true
         unitSelector.selectedSegmentIndex = 0
         unitSelector.translatesAutoresizingMaskIntoConstraints = false
-        // unitSelector needs to have a func added to log the choice and/or pass it on to the next view
 
         view.addSubview(unitSelectionStackView)
         unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +142,43 @@ extension WeightSelectionViewController {
         unitSelectionStackView.addArrangedSubview(unitSpacerView2)
         
         //Set up barSelectionStackView and it's subviews
+        barSpacerView1.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(barSpacerView1)
+
+        barSpacerView2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(barSpacerView2)
         
+        view.addSubview(barLabel)
+        barLabel.translatesAutoresizingMaskIntoConstraints = false
+        barLabel.text = "Bar Size"
+        barLabel.textColor = .black
+        barLabel.backgroundColor = .white
+        
+        view.addSubview(barSelector)
+        barSelector.apportionsSegmentWidthsByContent = true
+        barSelector.selectedSegmentIndex = 0
+        barSelector.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(barSelectionStackView)
+        barSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
+        barSelectionStackView.alignment = .fill
+        barSelectionStackView.axis = .horizontal
+        barSelectionStackView.distribution = .equalSpacing
+        barSelectionStackView.backgroundColor = .white
+        barSelectionStackView.addArrangedSubview(barSpacerView1)
+        barSelectionStackView.addArrangedSubview(barLabel)
+        barSelectionStackView.addArrangedSubview(barSelector)
+        barSelectionStackView.addArrangedSubview(barSpacerView2)
+        
+        //Set up allOptionsStackView
+        view.addSubview(allOptionsStackView)
+        allOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
+        allOptionsStackView.axis = .vertical
+        allOptionsStackView.alignment = .fill
+        allOptionsStackView.distribution = .equalSpacing
+        allOptionsStackView.addArrangedSubview(weightSelectionStackView)
+        allOptionsStackView.addArrangedSubview(unitSelectionStackView)
+        allOptionsStackView.addArrangedSubview(barSelectionStackView)
         
         //Set up button
         view.addSubview(submitButton)
@@ -158,29 +195,13 @@ extension WeightSelectionViewController {
     func setConstraints() {
         
         NSLayoutConstraint.activate([
-//            directionsLabel.bottomAnchor.constraint(equalTo: unitSelectionStackView.topAnchor, constant: -30),
-//            directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            directionsLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 40),
-//            directionsLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -40),
-//
-//            unitSelectionStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            unitSelectionStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            unitSelectionStackView.heightAnchor.constraint(equalTo: weightTextField.heightAnchor),
-//            unitSelectionStackView.widthAnchor.constraint(equalTo: directionsLabel.widthAnchor),
-//
+            //            directionsLabel.bottomAnchor.constraint(equalTo: unitSelectionStackView.topAnchor, constant: -30),
+            //            directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            //            directionsLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 40),
+            //            directionsLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -40),
+            
             weightTextField.widthAnchor.constraint(equalToConstant: 130),
             weightTextField.heightAnchor.constraint(equalToConstant: 30),
-
-//
-//            unitSpacerView1.widthAnchor.constraint(equalToConstant: 10),
-//            unitSpacerView2.widthAnchor.constraint(equalToConstant: 10),
-//
-//            submitButton.topAnchor.constraint(equalTo: unitSelectionStackView.bottomAnchor, constant: 12),
-//            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            submitButton.widthAnchor.constraint(equalTo: unitSelectionStackView.widthAnchor, multiplier: 0.8),
-//            submitButton.heightAnchor.constraint(equalTo: unitSelectionStackView.heightAnchor)
-            
-            
             
             weightSelectionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             weightSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
@@ -190,6 +211,13 @@ extension WeightSelectionViewController {
             unitSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             unitSelectionStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
+            barSelectionStackView.topAnchor.constraint(greaterThanOrEqualTo: unitSelectionStackView.bottomAnchor, constant: 30),
+            barSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            barSelectionStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            submitButton.topAnchor.constraint(equalTo: barSelectionStackView.bottomAnchor, constant: 15),
+            submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            submitButton.widthAnchor.constraint(equalTo: directionsLabel.widthAnchor, multiplier: 0.8),
         ])
     }
 }
