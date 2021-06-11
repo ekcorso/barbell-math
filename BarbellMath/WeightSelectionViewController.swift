@@ -16,7 +16,7 @@ class WeightSelectionViewController: UIViewController {
     
     let unitSelectionStackView = UIStackView()
     let unitLabel = UILabel()
-    let unitSelector = UISegmentedControl(items: ["lbs", "kgs"])
+    var unitSelector = UISegmentedControl(items: ["lbs", "kgs"])
     let unitSpacerView1 = UIView()
     let unitSpacerView2 = UIView()
 
@@ -28,7 +28,9 @@ class WeightSelectionViewController: UIViewController {
     
     let barSelectionStackView = UIStackView()
     let barLabel = UILabel()
-    let barSelector = UISegmentedControl(items: ["45lb", "35lb"])
+    let barSelectorItemsInLbs = ["45lb", "35lb"]
+    let barSelectorItemsInKgs = ["20kg", "35kg"]
+    var barSelector = UISegmentedControl(items: [])
     let barSpacerView1 = UIView()
     let barSpacerView2 = UIView()
     
@@ -44,17 +46,25 @@ class WeightSelectionViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        if selectedUnitString() == "lbs" {
+            barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
+            //Needs to reload here? more implementation to a target or action for the selector control itself
+        } else {
+            barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
+        }
     
         establishSubviews()
         setConstraints()
     }
     
-    @objc func didTapWeightButton() {
+    @objc func didTapSubmitButton() {
         let viewController = PlateCountViewController()
         
         if let text = weightTextField.text {
             if let weightAsDouble = Double(text) {
                 viewController.totalWeight = weightAsDouble
+                viewController.unit = selectedUnitString()
             } else {
                 print("Weight is not a number")
                 let alert = UIAlertController(title: "That's not a number...", message: "Please re-enter the weight you want to lift as a numeric value", preferredStyle: .alert)
@@ -65,6 +75,17 @@ class WeightSelectionViewController: UIViewController {
         }
         
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func selectedUnitString() -> String {
+        switch unitSelector.selectedSegmentIndex {
+        case 0:
+            return "lbs"
+        case 1:
+            return "kgs"
+        default:
+            return "lbs"
+        }
     }
 }
 
@@ -126,9 +147,10 @@ extension WeightSelectionViewController {
         unitLabel.backgroundColor = .white
         
         view.addSubview(unitSelector)
+        unitSelector.translatesAutoresizingMaskIntoConstraints = false
         unitSelector.apportionsSegmentWidthsByContent = true
         unitSelector.selectedSegmentIndex = 0
-        unitSelector.translatesAutoresizingMaskIntoConstraints = false
+        //unitSelector.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
 
         view.addSubview(unitSelectionStackView)
         unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -175,7 +197,7 @@ extension WeightSelectionViewController {
         allOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
         allOptionsStackView.axis = .vertical
         allOptionsStackView.alignment = .fill
-        allOptionsStackView.distribution = .equalSpacing
+        allOptionsStackView.distribution = .equalCentering
         allOptionsStackView.addArrangedSubview(weightSelectionStackView)
         allOptionsStackView.addArrangedSubview(unitSelectionStackView)
         allOptionsStackView.addArrangedSubview(barSelectionStackView)
@@ -188,34 +210,27 @@ extension WeightSelectionViewController {
         submitButton.backgroundColor = .systemTeal
         submitButton.layer.cornerRadius = 4
         submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.addTarget(self, action: #selector(didTapWeightButton), for: .touchUpInside)
+        submitButton.addTarget(self, action: #selector(didTapSubmitButton), for: .touchUpInside)
         
     }
     
     func setConstraints() {
         
         NSLayoutConstraint.activate([
-            //            directionsLabel.bottomAnchor.constraint(equalTo: unitSelectionStackView.topAnchor, constant: -30),
-            //            directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            //            directionsLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 40),
-            //            directionsLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -40),
+            directionsLabel.bottomAnchor.constraint(equalTo: allOptionsStackView.topAnchor, constant: -30),
+            directionsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            directionsLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 30),
+            directionsLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -30),
             
             weightTextField.widthAnchor.constraint(equalToConstant: 130),
             weightTextField.heightAnchor.constraint(equalToConstant: 30),
             
-            weightSelectionStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            weightSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            weightSelectionStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-
-            unitSelectionStackView.topAnchor.constraint(greaterThanOrEqualTo: weightSelectionStackView.bottomAnchor, constant: 30),
-            unitSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            unitSelectionStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            allOptionsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            allOptionsStackView.heightAnchor.constraint(equalToConstant: 140),
+            allOptionsStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 40),
+            allOptionsStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -40),
             
-            barSelectionStackView.topAnchor.constraint(greaterThanOrEqualTo: unitSelectionStackView.bottomAnchor, constant: 30),
-            barSelectionStackView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            barSelectionStackView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            
-            submitButton.topAnchor.constraint(equalTo: barSelectionStackView.bottomAnchor, constant: 15),
+            submitButton.topAnchor.constraint(equalTo: barSelectionStackView.bottomAnchor, constant: 30),
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitButton.widthAnchor.constraint(equalTo: directionsLabel.widthAnchor, multiplier: 0.8),
         ])
