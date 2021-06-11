@@ -49,7 +49,6 @@ class WeightSelectionViewController: UIViewController {
         
         if selectedUnitString() == "lbs" {
             barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
-            //Needs to reload here? more implementation to a target or action for the selector control itself
         } else {
             barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
         }
@@ -77,11 +76,19 @@ class WeightSelectionViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func selectedUnitString() -> String {
+    @objc func selectedUnitString() -> String {
         switch unitSelector.selectedSegmentIndex {
         case 0:
+            barSelector.removeAllSegments()
+            barSelector.insertSegment(withTitle: "45lbs", at: 0, animated: false)
+            barSelector.insertSegment(withTitle: "35lbs", at: 1, animated: false)
+            barSelector.selectedSegmentIndex = 0
             return "lbs"
         case 1:
+            barSelector.removeAllSegments()
+            barSelector.insertSegment(withTitle: "20kg", at: 0, animated: false)
+            barSelector.insertSegment(withTitle: "15kg", at: 1, animated: false)
+            barSelector.selectedSegmentIndex = 0
             return "kgs"
         default:
             return "lbs"
@@ -150,7 +157,7 @@ extension WeightSelectionViewController {
         unitSelector.translatesAutoresizingMaskIntoConstraints = false
         unitSelector.apportionsSegmentWidthsByContent = true
         unitSelector.selectedSegmentIndex = 0
-        //unitSelector.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
+        unitSelector.addTarget(self, action: #selector(selectedUnitString), for: .valueChanged)
 
         view.addSubview(unitSelectionStackView)
         unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
