@@ -47,7 +47,7 @@ class WeightSelectionViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        if selectedUnitString() == "lbs" {
+        if unitsSetTo() == "lbs" {
             barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
         } else {
             barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
@@ -63,7 +63,8 @@ class WeightSelectionViewController: UIViewController {
         if let text = weightTextField.text {
             if let weightAsDouble = Double(text) {
                 viewController.totalWeight = weightAsDouble
-                viewController.unit = selectedUnitString()
+                viewController.unit = unitsSetTo()
+                viewController.barWeight = barSetTo()
             } else {
                 print("Weight is not a number")
                 let alert = UIAlertController(title: "That's not a number...", message: "Please re-enter the weight you want to lift as a numeric value", preferredStyle: .alert)
@@ -76,22 +77,52 @@ class WeightSelectionViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @objc func selectedUnitString() -> String {
+    @objc func updateBarSizeOptions() {
         switch unitSelector.selectedSegmentIndex {
         case 0:
             barSelector.removeAllSegments()
             barSelector.insertSegment(withTitle: "45lbs", at: 0, animated: false)
             barSelector.insertSegment(withTitle: "35lbs", at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
-            return "lbs"
         case 1:
             barSelector.removeAllSegments()
             barSelector.insertSegment(withTitle: "20kg", at: 0, animated: false)
             barSelector.insertSegment(withTitle: "15kg", at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
+        default:
+            print("This unit selection is unhandled")
+        }
+    }
+    
+    @objc func unitsSetTo() -> String {
+        switch unitSelector.selectedSegmentIndex {
+        case 0:
+            return "lbs"
+        case 1:
             return "kgs"
         default:
+            print("This unit selection is unhandled")
             return "lbs"
+        }
+    }
+    
+    @objc func barSetTo() -> Int {
+        switch barSelector.selectedSegmentIndex {
+        case 0:
+            if unitsSetTo() == "lbs" {
+                return 45
+            } else {
+                return 20
+            }
+        case 1:
+            if unitsSetTo() == "lbs" {
+                return 35
+            } else {
+                return 15
+            }
+        default:
+            print("This bar size selection is unhandled")
+            return 45
         }
     }
 }
@@ -157,7 +188,8 @@ extension WeightSelectionViewController {
         unitSelector.translatesAutoresizingMaskIntoConstraints = false
         unitSelector.apportionsSegmentWidthsByContent = true
         unitSelector.selectedSegmentIndex = 0
-        unitSelector.addTarget(self, action: #selector(selectedUnitString), for: .valueChanged)
+        unitSelector.addTarget(self, action: #selector(updateBarSizeOptions), for: .valueChanged)
+        unitSelector.addTarget(self, action: #selector(unitsSetTo), for: .valueChanged)
 
         view.addSubview(unitSelectionStackView)
         unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
