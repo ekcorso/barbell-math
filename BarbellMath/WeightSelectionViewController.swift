@@ -28,8 +28,8 @@ class WeightSelectionViewController: UIViewController {
     
     let barSelectionStackView = UIStackView()
     let barLabel = UILabel()
-    let barSelectorItemsInLbs = ["45lb", "35lb"]
-    let barSelectorItemsInKgs = ["20kg", "35kg"]
+    let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.asString(), BarSizeInLbs.thirtyFive.asString()]
+    let barSelectorItemsInKgs = [BarSizeInKilos.twenty.asString(), BarSizeInKilos.fifteen.asString()]
     var barSelector = UISegmentedControl(items: [])
     let barSpacerView1 = UIView()
     let barSpacerView2 = UIView()
@@ -81,13 +81,13 @@ class WeightSelectionViewController: UIViewController {
         switch unitSelector.selectedSegmentIndex {
         case 0:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: "45lbs", at: 0, animated: false)
-            barSelector.insertSegment(withTitle: "35lbs", at: 1, animated: false)
+            barSelector.insertSegment(withTitle: "\(BarSizeInLbs.fourtyFive.asString())", at: 0, animated: false)
+            barSelector.insertSegment(withTitle: "\(BarSizeInLbs.thirtyFive.asString())", at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         case 1:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: "20kg", at: 0, animated: false)
-            barSelector.insertSegment(withTitle: "15kg", at: 1, animated: false)
+            barSelector.insertSegment(withTitle: "\(BarSizeInKilos.twenty.asString())", at: 0, animated: false)
+            barSelector.insertSegment(withTitle: "\(BarSizeInKilos.fifteen.asString())", at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         default:
             print("This unit selection is unhandled")
@@ -110,19 +110,19 @@ class WeightSelectionViewController: UIViewController {
         switch barSelector.selectedSegmentIndex {
         case 0:
             if unitsSetTo() == Units.lbs.rawValue {
-                return 45
+                return BarSizeInLbs.fourtyFive.asInt()
             } else {
-                return 20
+                return BarSizeInKilos.twenty.asInt()
             }
         case 1:
             if unitsSetTo() == Units.lbs.rawValue {
-                return 35
+                return BarSizeInLbs.thirtyFive.asInt()
             } else {
-                return 15
+                return BarSizeInKilos.fifteen.asInt()
             }
         default:
             print("This bar size selection is unhandled")
-            return 45
+            return BarSizeInLbs.fourtyFive.asInt()
         }
     }
 }

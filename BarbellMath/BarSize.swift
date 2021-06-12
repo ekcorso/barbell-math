@@ -20,6 +20,15 @@ enum BarSizeInLbs: Int {
             return 45
         }
     }
+    
+    func asString() -> String {
+        switch self {
+        case .thirtyFive:
+            return "35lb"
+        case .fourtyFive:
+            return "45lb"
+        }
+    }
 }
 
 enum BarSizeInKilos: Int {
@@ -32,6 +41,15 @@ enum BarSizeInKilos: Int {
             return 20
         case .fifteen:
             return 15
+        }
+    }
+    
+    func asString() -> String {
+        switch self {
+        case .twenty:
+            return "20kg"
+        case .fifteen:
+            return "15kg"
         }
     }
     
