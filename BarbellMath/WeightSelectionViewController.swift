@@ -63,7 +63,7 @@ class WeightSelectionViewController: UIViewController {
         if let text = weightTextField.text {
             if let weightAsDouble = Double(text) {
                 viewController.totalWeight = weightAsDouble
-                viewController.unit = unitsSetTo()
+                viewController.units = unitsSetTo()
                 viewController.barWeight = barSetTo()
             } else {
                 print("Weight is not a number")
