@@ -16,6 +16,8 @@
 		FCCA9082253FC7B6009D15C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9080253FC7B6009D15C1 /* Main.storyboard */; };
 		FCCA9084253FC7C0009D15C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9083253FC7C0009D15C1 /* Assets.xcassets */; };
 		FCCA9087253FC7C0009D15C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */; };
+		FCE1948B26740447007E3FD6 /* BarSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1948A26740447007E3FD6 /* BarSize.swift */; };
+		FCE1948D26740478007E3FD6 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1948C26740478007E3FD6 /* Units.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FCCA9083253FC7C0009D15C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCCA9086253FC7C0009D15C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCCA9088253FC7C0009D15C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCE1948A26740447007E3FD6 /* BarSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSize.swift; sourceTree = "<group>"; };
+		FCE1948C26740478007E3FD6 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +69,10 @@
 				FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */,
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
+				FCE1948A26740447007E3FD6 /* BarSize.swift */,
 				FC5EB20025ABC08100AC8379 /* PlateQuantities.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
+				FCE1948C26740478007E3FD6 /* Units.swift */,
 				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
@@ -148,11 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
+				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* PlateQuantities.swift in Sources */,
 				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
+				FCE1948B26740447007E3FD6 /* BarSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

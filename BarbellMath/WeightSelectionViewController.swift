@@ -16,7 +16,7 @@ class WeightSelectionViewController: UIViewController {
     
     let unitSelectionStackView = UIStackView()
     let unitLabel = UILabel()
-    var unitSelector = UISegmentedControl(items: ["lbs", "kgs"])
+    var unitSelector = UISegmentedControl(items: [Units.lbs.rawValue, Units.kgs.rawValue])
     let unitSpacerView1 = UIView()
     let unitSpacerView2 = UIView()
 
@@ -47,7 +47,7 @@ class WeightSelectionViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        if unitsSetTo() == "lbs" {
+        if unitsSetTo() == Units.lbs.rawValue {
             barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
         } else {
             barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
@@ -97,25 +97,25 @@ class WeightSelectionViewController: UIViewController {
     @objc func unitsSetTo() -> String {
         switch unitSelector.selectedSegmentIndex {
         case 0:
-            return "lbs"
+            return Units.lbs.rawValue
         case 1:
-            return "kgs"
+            return Units.kgs.rawValue
         default:
             print("This unit selection is unhandled")
-            return "lbs"
+            return Units.lbs.rawValue
         }
     }
     
     @objc func barSetTo() -> Int {
         switch barSelector.selectedSegmentIndex {
         case 0:
-            if unitsSetTo() == "lbs" {
+            if unitsSetTo() == Units.lbs.rawValue {
                 return 45
             } else {
                 return 20
             }
         case 1:
-            if unitsSetTo() == "lbs" {
+            if unitsSetTo() == Units.lbs.rawValue {
                 return 35
             } else {
                 return 15
