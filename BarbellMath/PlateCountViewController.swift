@@ -11,8 +11,8 @@ import UIKit
 class PlateCountViewController: UIViewController {
     
     var totalWeight: Double? = 0
-    var barWeight: Int = 45
-    var unit: String = "lb"
+    var barWeight: Int = BarSizeInLbs.fourtyFive.asInt()
+    var unit: String = Units.lb.rawValue
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
     
@@ -54,7 +54,7 @@ class PlateCountViewController: UIViewController {
         }
     }
     
-    func updateLabels(plateQuantities: PlateQuantities) {
+    func updateLabels(plateQuantities: LbPlateQuantities) {
         plateQuantityText =
             """
                 (\(Int(plateQuantities.quantity45LbPlates))) 45lb plates

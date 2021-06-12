@@ -41,7 +41,7 @@ struct PlateMathCalculator {
     }
     
     //Takes a given weight and returns an array containing the quantity of each plate necessary to load the bar.
-    mutating func doPlateMath(totalWeight: Double) -> PlateQuantities {
+    mutating func doPlateMath(totalWeight: Double) -> LbPlateQuantities {
         let plateChoices = [45.0, 25.0, 10.0, 5.0, 2.5]
         let barbellWeight = 45.0
         var weightToBeLoaded = totalWeight - barbellWeight
@@ -60,7 +60,7 @@ struct PlateMathCalculator {
                 assertionFailure("Failed to unwrap plateChocies.last.")
             }
         }
-        return PlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
+        return LbPlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
                                quantity25LbPlates: platesNeededToLoadBar[1],
                                quantity10LbPlates: platesNeededToLoadBar[2],
                                quantity5LbPlates: platesNeededToLoadBar[3],

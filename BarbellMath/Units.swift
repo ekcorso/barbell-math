@@ -9,6 +9,6 @@
 import Foundation
 
 enum Units: String {
-    case lbs
-    case kgs
+    case lb
+    case kg
 }
