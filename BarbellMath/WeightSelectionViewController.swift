@@ -132,7 +132,7 @@ extension WeightSelectionViewController {
     func establishSubviews() {
         //Set up directionsLabel
         view.addSubview(directionsLabel)
-        directionsLabel.text = "How are you planning to load the weight?"
+        directionsLabel.text = "How much weight do you want to lift?"
         directionsLabel.textColor = .black
         directionsLabel.textAlignment = .center
         directionsLabel.numberOfLines = 0

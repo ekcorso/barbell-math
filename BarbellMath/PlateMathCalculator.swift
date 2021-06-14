@@ -41,14 +41,12 @@ struct PlateMathCalculator {
     }
     
     //Takes a given weight and returns an array containing the quantity of each plate necessary to load the bar.
-    mutating func doPlateMath(totalWeight: Double, units: String, barWeight: Int) -> PlateQuantity {
+    mutating func doPlateMathInLbs(totalWeight: Double, barWeight: Int) -> LbPlateQuantities {
         let lbPlateChoices = Plate().lbPlateChoices
-        let kgPlateChoices = Plate().kgPlateChoices
         
         var weightToBeLoaded = totalWeight - Double(barWeight)
         var platesNeededToLoadBar = [Double]()
         
-        if units == Units.lb.rawValue {
         for plate in lbPlateChoices {
             let platesLoaded = findPlateQuantity(weight: weightToBeLoaded, plateSize: plate)
             if let smallestPlateChoice = lbPlateChoices.last {
@@ -62,26 +60,32 @@ struct PlateMathCalculator {
                 assertionFailure("Failed to unwrap plateChocies.last.")
             }
         }
-        return PlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
-                               quantity25LbPlates: platesNeededToLoadBar[1],
-                               quantity10LbPlates: platesNeededToLoadBar[2],
-                               quantity5LbPlates: platesNeededToLoadBar[3],
-                               quantity2_5LbPlates: platesNeededToLoadBar[4])
-        } else {
-            for plate in kgPlateChoices {
-                let platesLoaded = findPlateQuantity(weight: weightToBeLoaded, plateSize: plate)
-                if let smallestPlateChoice = lbPlateChoices.last {
-                    if weightToBeLoaded >= (smallestPlateChoice * 2) {
-                        platesNeededToLoadBar.append(platesLoaded)
-                        weightToBeLoaded = calculateRemainingWeight(weight: weightToBeLoaded, plateSize: plate)
-                    } else {
-                        platesNeededToLoadBar.append(0.0)
-                    }
+        return LbPlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
+                                 quantity25LbPlates: platesNeededToLoadBar[1],
+                                 quantity10LbPlates: platesNeededToLoadBar[2],
+                                 quantity5LbPlates: platesNeededToLoadBar[3],
+                                 quantity2_5LbPlates: platesNeededToLoadBar[4])
+    }
+    
+    mutating func doPlateMathInKgs(totalWeight: Double, barWeight: Int) -> KgPlateQuantities {
+        let kgPlateChoices = Plate().kgPlateChoices
+        
+        var weightToBeLoaded = totalWeight - Double(barWeight)
+        var platesNeededToLoadBar = [Double]()
+        
+        for plate in kgPlateChoices {
+            let platesLoaded = findPlateQuantity(weight: weightToBeLoaded, plateSize: plate)
+            if let smallestPlateChoice = kgPlateChoices.last {
+                if weightToBeLoaded >= (smallestPlateChoice * 2) {
+                    platesNeededToLoadBar.append(platesLoaded)
+                    weightToBeLoaded = calculateRemainingWeight(weight: weightToBeLoaded, plateSize: plate)
                 } else {
-                    assertionFailure("Failed to unwrap plateChocies.last.")
+                    platesNeededToLoadBar.append(0.0)
                 }
+            } else {
+                assertionFailure("Failed to unwrap plateChocies.last.")
             }
-            return KgPlateQuantities(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
         }
+        return KgPlateQuantities(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
     }
 }

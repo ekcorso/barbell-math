@@ -10,7 +10,7 @@ import UIKit
 
 class PlateCountViewController: UIViewController {
     
-    var totalWeight: Double? = 0
+    var totalWeight: Double = 0
     var barWeight: Int = BarSizeInLbs.fourtyFive.asInt()
     var units: String = Units.lb.rawValue
     var quantityOfCats: Double = 0
@@ -36,11 +36,12 @@ class PlateCountViewController: UIViewController {
         //Add action for back button that clears the previous vc?
         
         var plateMathCalculator = PlateMathCalculator()
-        if let totalWeight = totalWeight {
-            let plateQuantities = plateMathCalculator.doPlateMath(totalWeight: totalWeight, units: units, barWeight: barWeight)
-            updateLabels(plateQuantities: plateQuantities, units: units)
+        if units == Units.lb.rawValue {
+            let plateQuantities = plateMathCalculator.doPlateMathInLbs(totalWeight:totalWeight , barWeight: barWeight)
+            updateLabelsForLbs(plateQuantities: plateQuantities)
         } else {
-            print("Total weight is nil")
+            let plateQuantities = plateMathCalculator.doPlateMathInKgs(totalWeight: totalWeight, barWeight: barWeight)
+            updateLabelsForKgs(plateQuantities: plateQuantities)
         }
     }
     
@@ -54,25 +55,37 @@ class PlateCountViewController: UIViewController {
         }
     }
     
-    func updateLabels(plateQuantities: PlateQuantity, units: String) {
+    func updateLabelsForLbs(plateQuantities: LbPlateQuantities) {
         
-        if units == Units.lb.rawValue {
-            plateQuantityText = """
+        plateQuantityText = """
                     (\(Int(plateQuantities.quantity45LbPlates))) 45lb plates
                     (\(Int(plateQuantities.quantity25LbPlates))) 25lb plates
                     (\(Int(plateQuantities.quantity10LbPlates))) 10lb plates
                     (\(Int(plateQuantities.quantity5LbPlates))) 5lb plates
                     (\(Int(plateQuantities.quantity2_5LbPlates))) 2.5lb plates
                 """
-        } else {
-//            plateQuantityText = """
-//                    (\(Int(plateQuantities.quantity45LbPlates))) 45lb plates
-//                    (\(Int(plateQuantities.quantity25LbPlates))) 25lb plates
-//                    (\(Int(plateQuantities.quantity10LbPlates))) 10lb plates
-//                    (\(Int(plateQuantities.quantity5LbPlates))) 5lb plates
-//                    (\(Int(plateQuantities.quantity2_5LbPlates))) 2.5lb plates
-//                """
+        
+        if let plateQuantityText = plateQuantityText {
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.lineSpacing = 15
+            let attributes: [NSAttributedString.Key: Any] = [
+                .paragraphStyle: paragraphStyle
+            ]
+            let attributedPlateQuantityString = NSAttributedString(string: plateQuantityText, attributes: attributes)
+            plateWeightsLabel.attributedText = attributedPlateQuantityString
         }
+    }
+    
+    func updateLabelsForKgs(plateQuantities: KgPlateQuantities) {
+        
+        plateQuantityText = """
+                    (\(Int(plateQuantities.quantity20KgPlates))) 20kg plates
+                    (\(Int(plateQuantities.quantity15KgPlates))) 15kg plates
+                    (\(Int(plateQuantities.quantity10KgPlates))) 10kg plates
+                    (\(Int(plateQuantities.quantity5KgPlates))) 5kg plates
+                    (\(Int(plateQuantities.quantity2_5KgPlates))) 2.5kg plates
+                    (\(Int(plateQuantities.quantity1_25KgPlates))) 1.25kg plates
+                """
         
         if let plateQuantityText = plateQuantityText {
             let paragraphStyle = NSMutableParagraphStyle()
@@ -96,7 +109,7 @@ extension PlateCountViewController {
         explanationLabel.translatesAutoresizingMaskIntoConstraints = false
         explanationLabel.textColor = .black
         explanationLabel.textAlignment = .center
-        explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight ?? 0))\(units) with a \(barWeight)\(units) bar:"
+        explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight))\(units) with a \(barWeight)\(units) bar:"
         explanationLabel.numberOfLines = 0
         view.addSubview(explanationLabel)
         
