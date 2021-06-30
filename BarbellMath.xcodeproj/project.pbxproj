@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC02EA7D268BFEA400F54FA7 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EA7C268BFEA400F54FA7 /* Plate.swift */; };
 		FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */; };
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
-		FC5EB20125ABC08100AC8379 /* PlateQuantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* PlateQuantity.swift */; };
+		FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* BarLoad.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
 		FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */; };
 		FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */; };
@@ -21,9 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC02EA7C268BFEA400F54FA7 /* Plate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plate.swift; sourceTree = "<group>"; };
 		FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionViewController.swift; sourceTree = "<group>"; };
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
-		FC5EB20025ABC08100AC8379 /* PlateQuantity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateQuantity.swift; sourceTree = "<group>"; };
+		FC5EB20025ABC08100AC8379 /* BarLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarLoad.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +72,8 @@
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
 				FCE1948A26740447007E3FD6 /* BarSize.swift */,
-				FC5EB20025ABC08100AC8379 /* PlateQuantity.swift */,
+				FC5EB20025ABC08100AC8379 /* BarLoad.swift */,
+				FC02EA7C268BFEA400F54FA7 /* Plate.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCE1948C26740478007E3FD6 /* Units.swift */,
 				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
@@ -154,9 +157,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
+				FC02EA7D268BFEA400F54FA7 /* Plate.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
-				FC5EB20125ABC08100AC8379 /* PlateQuantity.swift in Sources */,
+				FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */,
 				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,

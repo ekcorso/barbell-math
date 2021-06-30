@@ -41,7 +41,7 @@ struct PlateMathCalculator {
     }
     
     //Takes a given weight and returns an array containing the quantity of each plate necessary to load the bar.
-    mutating func doPlateMathInLbs(totalWeight: Double, barWeight: Int) -> LbPlateQuantities {
+    mutating func doPlateMathInLbs(totalWeight: Double, barWeight: Int) -> BarLoadInLbs {
         let lbPlateChoices = Plate().lbPlateChoices
         
         var weightToBeLoaded = totalWeight - Double(barWeight)
@@ -60,14 +60,14 @@ struct PlateMathCalculator {
                 assertionFailure("Failed to unwrap plateChocies.last.")
             }
         }
-        return LbPlateQuantities(quantity45LbPlates: platesNeededToLoadBar[0],
+        return BarLoadInLbs(quantity45LbPlates: platesNeededToLoadBar[0],
                                  quantity25LbPlates: platesNeededToLoadBar[1],
                                  quantity10LbPlates: platesNeededToLoadBar[2],
                                  quantity5LbPlates: platesNeededToLoadBar[3],
                                  quantity2_5LbPlates: platesNeededToLoadBar[4])
     }
     
-    mutating func doPlateMathInKgs(totalWeight: Double, barWeight: Int) -> KgPlateQuantities {
+    mutating func doPlateMathInKgs(totalWeight: Double, barWeight: Int) -> BarLoadInKgs {
         let kgPlateChoices = Plate().kgPlateChoices
         
         var weightToBeLoaded = totalWeight - Double(barWeight)
@@ -86,6 +86,6 @@ struct PlateMathCalculator {
                 assertionFailure("Failed to unwrap plateChocies.last.")
             }
         }
-        return KgPlateQuantities(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
+        return BarLoadInKgs(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
     }
 }

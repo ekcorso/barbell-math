@@ -8,23 +8,15 @@
 
 import UIKit
 
-struct Plate {
-    
-    let lbPlateChoices = [45.0, 25.0, 10.0, 5.0, 2.5]
-    let kgPlateChoices = [20, 15, 10, 5, 2.5, 1.25]
-    
-}
-
-struct LbPlateQuantities {
+struct BarLoadInLbs {
     var quantity45LbPlates: Double = 0
     var quantity25LbPlates: Double = 0
     var quantity10LbPlates: Double = 0
     var quantity5LbPlates: Double = 0
     var quantity2_5LbPlates: Double = 0
-    
 }
 
-struct KgPlateQuantities {
+struct BarLoadInKgs {
     var quantity20KgPlates: Double = 0
     var quantity15KgPlates: Double = 0
     var quantity10KgPlates: Double = 0

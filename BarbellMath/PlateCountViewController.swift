@@ -55,7 +55,7 @@ class PlateCountViewController: UIViewController {
         return Int(weightInCats)
     }
     
-    func updateLabelsForLbs(plateQuantities: LbPlateQuantities) {
+    func updateLabelsForLbs(plateQuantities: BarLoadInLbs) {
         
         plateQuantityText = """
                     (\(Int(plateQuantities.quantity45LbPlates))) 45lb plates
@@ -76,7 +76,7 @@ class PlateCountViewController: UIViewController {
         }
     }
     
-    func updateLabelsForKgs(plateQuantities: KgPlateQuantities) {
+    func updateLabelsForKgs(plateQuantities: BarLoadInKgs) {
         
         plateQuantityText = """
                     (\(Int(plateQuantities.quantity20KgPlates))) 20kg plates
