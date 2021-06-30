@@ -9,7 +9,8 @@
 import UIKit
 
 class WeightSelectionViewController: UIViewController {
-    
+
+    // MARK: - Properties
     let directionsLabel = UILabel()
     
     let allOptionsStackView = UIStackView()
@@ -30,12 +31,30 @@ class WeightSelectionViewController: UIViewController {
     let barLabel = UILabel()
     let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.asString(), BarSizeInLbs.thirtyFive.asString()]
     let barSelectorItemsInKgs = [BarSizeInKilos.twenty.asString(), BarSizeInKilos.fifteen.asString()]
-    var barSelector = UISegmentedControl(items: [])
+    lazy var barSelector: UISegmentedControl = {
+        var barSelector = UISegmentedControl(items: [])
+        
+        barSelector.apportionsSegmentWidthsByContent = true
+        barSelector.translatesAutoresizingMaskIntoConstraints = false
+        
+        //Set default units selection
+        if unitsSetTo() == Units.lb.rawValue {
+            barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
+        } else {
+            barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
+        }
+        barSelector.selectedSegmentIndex = 0
+        
+        view.addSubview(barSelector)
+        return barSelector
+    }()
+    
     let barSpacerView1 = UIView()
     let barSpacerView2 = UIView()
     
     let submitButton = UIButton()
     
+    // MARK: - View Lifecycle
     override func loadView() {
         super.loadView()
         
@@ -46,18 +65,14 @@ class WeightSelectionViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
-        if unitsSetTo() == Units.lb.rawValue {
-            barSelector = UISegmentedControl(items: barSelectorItemsInLbs)
-        } else {
-            barSelector = UISegmentedControl(items: barSelectorItemsInKgs)
-        }
     
-        establishSubviews()
+        configureSubviews()
         setConstraints()
     }
     
-    @objc func didTapSubmitButton() {
+    // MARK: - Actions
+
+    @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
         
         if let text = weightTextField.text {
@@ -127,9 +142,10 @@ class WeightSelectionViewController: UIViewController {
     }
 }
 
+// MARK: - Programmatic UI
 extension WeightSelectionViewController {
     
-    func establishSubviews() {
+    func configureSubviews() {
         //Set up directionsLabel
         view.addSubview(directionsLabel)
         directionsLabel.text = "How much weight do you want to lift?"
@@ -215,10 +231,10 @@ extension WeightSelectionViewController {
         barLabel.textColor = .black
         barLabel.backgroundColor = .white
         
-        view.addSubview(barSelector)
-        barSelector.apportionsSegmentWidthsByContent = true
-        barSelector.selectedSegmentIndex = 0
-        barSelector.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(barSelector)
+//        barSelector.apportionsSegmentWidthsByContent = true
+//        barSelector.selectedSegmentIndex = 0
+//        barSelector.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(barSelectionStackView)
         barSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -249,7 +265,7 @@ extension WeightSelectionViewController {
         submitButton.backgroundColor = .systemTeal
         submitButton.layer.cornerRadius = 4
         submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.addTarget(self, action: #selector(didTapSubmitButton), for: .touchUpInside)
+        submitButton.addTarget(self, action: #selector(submitUserSelections), for: .touchUpInside)
         
     }
     

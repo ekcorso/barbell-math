@@ -9,7 +9,7 @@
 import UIKit
 
 class PlateCountViewController: UIViewController {
-    
+    // MARK: - Properties
     var totalWeight: Double = 0
     var barWeight: Int = BarSizeInLbs.fourtyFive.asInt()
     var units: String = Units.lb.rawValue
@@ -21,11 +21,12 @@ class PlateCountViewController: UIViewController {
     var plateWeightsLabel = UILabel()
     var catLabel = UILabel()
     
+    // MARK: - View Lifecycle
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = UIColor(patternImage: UIImage(named: "confetti-gym-mats")!)
-        establishSubviews()
+        configureSubviews()
         setConstraints()
     }
     
@@ -50,9 +51,8 @@ class PlateCountViewController: UIViewController {
         if let totalWeight = totalWeight {
             weightInCats = totalWeight / 9.0
             return Int(weightInCats)
-        } else {
-            return Int(weightInCats)
         }
+        return Int(weightInCats)
     }
     
     func updateLabelsForLbs(plateQuantities: LbPlateQuantities) {
@@ -99,9 +99,11 @@ class PlateCountViewController: UIViewController {
     }
 }
 
+// MARK: - Programmatic UI
+
 extension PlateCountViewController {
     
-    func establishSubviews() {
+    func configureSubviews() {
         plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
         plateLabelsView.backgroundColor = .white
         view.addSubview(plateLabelsView)
