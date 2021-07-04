@@ -10,27 +10,165 @@ import UIKit
 
 class WeightSelectionViewController: UIViewController {
 
-    // MARK: - Properties
-    let directionsLabel = UILabel()
+    // MARK: - UI Properties
     
-    let allOptionsStackView = UIStackView()
+    lazy var directionsLabel: UILabel = {
+        var directionsLabel = UILabel()
+        directionsLabel.text = "How much weight do you want to lift?"
+        directionsLabel.textColor = .black
+        directionsLabel.textAlignment = .center
+        directionsLabel.numberOfLines = 0
+        directionsLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(directionsLabel)
+        return directionsLabel
+    }()
     
-    let unitSelectionStackView = UIStackView()
-    let unitLabel = UILabel()
-    var unitSelector = UISegmentedControl(items: [Units.lb.rawValue, Units.kg.rawValue])
-    let unitSpacerView1 = UIView()
-    let unitSpacerView2 = UIView()
+    lazy var allOptionsStackView: UIStackView = {
+        let allOptionsStackView = UIStackView()
+        view.addSubview(allOptionsStackView)
+        allOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
+        allOptionsStackView.axis = .vertical
+        allOptionsStackView.alignment = .fill
+        allOptionsStackView.distribution = .equalCentering
+        allOptionsStackView.addArrangedSubview(weightSelectionStackView)
+        allOptionsStackView.addArrangedSubview(unitSelectionStackView)
+        allOptionsStackView.addArrangedSubview(barSelectionStackView)
+        return allOptionsStackView
+    }()
+    
+    //Set up unitSelectionStackView and it's subviews
+    lazy var unitSelectionStackView: UIStackView = {
+        let unitSelectionStackView = UIStackView()
+        view.addSubview(unitSelectionStackView)
+        unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
+        unitSelectionStackView.alignment = .fill
+        unitSelectionStackView.axis = .horizontal
+        unitSelectionStackView.distribution = .equalSpacing
+        unitSelectionStackView.backgroundColor = .white
+        unitSelectionStackView.addArrangedSubview(unitSpacerView1)
+        unitSelectionStackView.addArrangedSubview(unitLabel)
+        unitSelectionStackView.addArrangedSubview(unitSelector)
+        unitSelectionStackView.addArrangedSubview(unitSpacerView2)
+        return unitSelectionStackView
+    }()
+    
+    lazy var unitLabel: UILabel = {
+        let unitLabel = UILabel()
+        view.addSubview(unitLabel)
+        unitLabel.translatesAutoresizingMaskIntoConstraints = false
+        unitLabel.text = "Units"
+        unitLabel.textColor = .black
+        unitLabel.backgroundColor = .white
+        return unitLabel
+    }()
 
-    let weightSelectionStackView = UIStackView()
-    let weightLabel = UILabel()
-    let weightTextField = UITextField()
-    let weightSpacerView1 = UIView()
-    let weightSpacerView2 = UIView()
+    lazy var unitSelector: UISegmentedControl = {
+        var unitSelector = UISegmentedControl(items: [Units.lb.rawValue, Units.kg.rawValue])
+        view.addSubview(unitSelector)
+        unitSelector.translatesAutoresizingMaskIntoConstraints = false
+        unitSelector.apportionsSegmentWidthsByContent = true
+        unitSelector.selectedSegmentIndex = 0
+        unitSelector.addTarget(self, action: #selector(updateBarSizeOptions), for: .valueChanged)
+        unitSelector.addTarget(self, action: #selector(unitsSetTo), for: .valueChanged)
+        return unitSelector
+    }()
+
+    lazy var unitSpacerView1: UIView = {
+        let unitSpacerView1 = UIView()
+        unitSpacerView1.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(unitSpacerView1)
+        return unitSpacerView1
+    }()
     
-    let barSelectionStackView = UIStackView()
-    let barLabel = UILabel()
+    lazy var unitSpacerView2: UIView = {
+        let unitSpacerView2 = UIView()
+        unitSpacerView2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(unitSpacerView2)
+        return unitSpacerView2
+    }()
+    
+    //Set up weightSelectionStackView and it's subviews
+    lazy var weightSelectionStackView: UIStackView = {
+        let weightSelectionStackView = UIStackView()
+        view.addSubview(weightSelectionStackView)
+        weightSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
+        weightSelectionStackView.alignment = .fill
+        weightSelectionStackView.axis = .horizontal
+        weightSelectionStackView.distribution = .equalSpacing
+        weightSelectionStackView.addArrangedSubview(weightSpacerView1)
+        weightSelectionStackView.addArrangedSubview(weightLabel)
+        weightSelectionStackView.addArrangedSubview(weightTextField)
+        weightSelectionStackView.addArrangedSubview(weightSpacerView2)
+        return weightSelectionStackView
+    }()
+    
+    lazy var weightLabel: UILabel = {
+        let weightLabel = UILabel()
+        view.addSubview(weightLabel)
+        weightLabel.translatesAutoresizingMaskIntoConstraints = false
+        weightLabel.text = "Total Weight"
+        weightLabel.textAlignment = .left
+        weightLabel.textColor = .black
+        weightLabel.backgroundColor = .white
+        return weightLabel
+    }()
+    
+    lazy var weightTextField: UITextField = {
+        let weightTextField = UITextField()
+        view.addSubview(weightTextField)
+        weightTextField.translatesAutoresizingMaskIntoConstraints = false
+        weightTextField.placeholder = "Weight"
+        weightTextField.textAlignment = .center
+        weightTextField.borderStyle = .line
+        weightTextField.textColor = .black
+        weightTextField.backgroundColor = .white
+        weightTextField.keyboardType = .numberPad
+        return weightTextField
+        }()
+    
+    lazy var weightSpacerView1: UIView = {
+        let weightSpacerView1 = UIView()
+        view.addSubview(weightSpacerView1)
+        weightSpacerView1.translatesAutoresizingMaskIntoConstraints = false
+        return weightSpacerView1
+    }()
+    
+    lazy var weightSpacerView2: UIView = {
+        let weightSpacerView2 = UIView()
+        view.addSubview(weightSpacerView2)
+        weightSpacerView2.translatesAutoresizingMaskIntoConstraints = false
+        return weightSpacerView2
+    }()
+    
+    //Set up barSelectionStackView and it's subviews
+    lazy var barSelectionStackView: UIStackView = {
+        let barSelectionStackView = UIStackView()
+        view.addSubview(barSelectionStackView)
+        barSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
+        barSelectionStackView.alignment = .fill
+        barSelectionStackView.axis = .horizontal
+        barSelectionStackView.distribution = .equalSpacing
+        barSelectionStackView.backgroundColor = .white
+        barSelectionStackView.addArrangedSubview(barSpacerView1)
+        barSelectionStackView.addArrangedSubview(barLabel)
+        barSelectionStackView.addArrangedSubview(barSelector)
+        barSelectionStackView.addArrangedSubview(barSpacerView2)
+        return barSelectionStackView
+    }()
+        
+    lazy var barLabel: UILabel = {
+        let barLabel = UILabel()
+        view.addSubview(barLabel)
+        barLabel.translatesAutoresizingMaskIntoConstraints = false
+        barLabel.text = "Bar Size"
+        barLabel.textColor = .black
+        barLabel.backgroundColor = .white
+        return barLabel
+    }()
+    
     let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.asString(), BarSizeInLbs.thirtyFive.asString()]
     let barSelectorItemsInKgs = [BarSizeInKilos.twenty.asString(), BarSizeInKilos.fifteen.asString()]
+    
     lazy var barSelector: UISegmentedControl = {
         var barSelector = UISegmentedControl(items: [])
         
@@ -49,10 +187,32 @@ class WeightSelectionViewController: UIViewController {
         return barSelector
     }()
     
-    let barSpacerView1 = UIView()
-    let barSpacerView2 = UIView()
+    lazy var barSpacerView1: UIView = {
+        let barSpacerView1 = UIView()
+        barSpacerView1.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(barSpacerView1)
+        return barSpacerView1
+    }()
     
-    let submitButton = UIButton()
+    lazy var barSpacerView2: UIView = {
+        let barSpacerView2 = UIView()
+        barSpacerView2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(barSpacerView2)
+        return barSpacerView2
+    }()
+    
+    lazy var submitButton: UIButton = {
+        let submitButton = UIButton()
+        view.addSubview(submitButton)
+        submitButton.setTitle("Show me how to load it", for: UIControl.State.normal)
+        submitButton.titleLabel?.textColor = .black
+        submitButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        submitButton.backgroundColor = .systemTeal
+        submitButton.layer.cornerRadius = 4
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.addTarget(self, action: #selector(submitUserSelections), for: .touchUpInside)
+        return submitButton
+    }()
     
     // MARK: - View Lifecycle
     override func loadView() {
@@ -66,7 +226,6 @@ class WeightSelectionViewController: UIViewController {
         
         view.backgroundColor = .white
     
-        configureSubviews()
         setConstraints()
     }
     
@@ -142,133 +301,8 @@ class WeightSelectionViewController: UIViewController {
     }
 }
 
-// MARK: - Programmatic UI
+// MARK: - UI Constraints
 extension WeightSelectionViewController {
-    
-    func configureSubviews() {
-        //Set up directionsLabel
-        view.addSubview(directionsLabel)
-        directionsLabel.text = "How much weight do you want to lift?"
-        directionsLabel.textColor = .black
-        directionsLabel.textAlignment = .center
-        directionsLabel.numberOfLines = 0
-        directionsLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        //Set up weightSelectionStackView and it's subviews
-        view.addSubview(weightLabel)
-        weightLabel.translatesAutoresizingMaskIntoConstraints = false
-        weightLabel.text = "Total Weight"
-        weightLabel.textAlignment = .left
-        weightLabel.textColor = .black
-        weightLabel.backgroundColor = .white
-        
-        view.addSubview(weightTextField)
-        weightTextField.translatesAutoresizingMaskIntoConstraints = false
-        weightTextField.placeholder = "Weight"
-        weightTextField.textAlignment = .center
-        weightTextField.borderStyle = .line
-        weightTextField.textColor = .black
-        weightTextField.backgroundColor = .white
-        weightTextField.keyboardType = .numberPad
-        
-        view.addSubview(weightSpacerView1)
-        weightSpacerView1.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(weightSpacerView2)
-        weightSpacerView2.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(weightSelectionStackView)
-        weightSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
-        weightSelectionStackView.alignment = .fill
-        weightSelectionStackView.axis = .horizontal
-        weightSelectionStackView.distribution = .equalSpacing
-        weightSelectionStackView.addArrangedSubview(weightSpacerView1)
-        weightSelectionStackView.addArrangedSubview(weightLabel)
-        weightSelectionStackView.addArrangedSubview(weightTextField)
-        weightSelectionStackView.addArrangedSubview(weightSpacerView2)
-        
-        //Set up unitSelectionStackView and it's subviews
-        unitSpacerView1.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(unitSpacerView1)
-
-        unitSpacerView2.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(unitSpacerView2)
-        
-        view.addSubview(unitLabel)
-        unitLabel.translatesAutoresizingMaskIntoConstraints = false
-        unitLabel.text = "Units"
-        unitLabel.textColor = .black
-        unitLabel.backgroundColor = .white
-        
-        view.addSubview(unitSelector)
-        unitSelector.translatesAutoresizingMaskIntoConstraints = false
-        unitSelector.apportionsSegmentWidthsByContent = true
-        unitSelector.selectedSegmentIndex = 0
-        unitSelector.addTarget(self, action: #selector(updateBarSizeOptions), for: .valueChanged)
-        unitSelector.addTarget(self, action: #selector(unitsSetTo), for: .valueChanged)
-
-        view.addSubview(unitSelectionStackView)
-        unitSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
-        unitSelectionStackView.alignment = .fill
-        unitSelectionStackView.axis = .horizontal
-        unitSelectionStackView.distribution = .equalSpacing
-        unitSelectionStackView.backgroundColor = .white
-        unitSelectionStackView.addArrangedSubview(unitSpacerView1)
-        unitSelectionStackView.addArrangedSubview(unitLabel)
-        unitSelectionStackView.addArrangedSubview(unitSelector)
-        unitSelectionStackView.addArrangedSubview(unitSpacerView2)
-        
-        //Set up barSelectionStackView and it's subviews
-        barSpacerView1.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(barSpacerView1)
-
-        barSpacerView2.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(barSpacerView2)
-        
-        view.addSubview(barLabel)
-        barLabel.translatesAutoresizingMaskIntoConstraints = false
-        barLabel.text = "Bar Size"
-        barLabel.textColor = .black
-        barLabel.backgroundColor = .white
-        
-//        view.addSubview(barSelector)
-//        barSelector.apportionsSegmentWidthsByContent = true
-//        barSelector.selectedSegmentIndex = 0
-//        barSelector.translatesAutoresizingMaskIntoConstraints = false
-
-        view.addSubview(barSelectionStackView)
-        barSelectionStackView.translatesAutoresizingMaskIntoConstraints = false
-        barSelectionStackView.alignment = .fill
-        barSelectionStackView.axis = .horizontal
-        barSelectionStackView.distribution = .equalSpacing
-        barSelectionStackView.backgroundColor = .white
-        barSelectionStackView.addArrangedSubview(barSpacerView1)
-        barSelectionStackView.addArrangedSubview(barLabel)
-        barSelectionStackView.addArrangedSubview(barSelector)
-        barSelectionStackView.addArrangedSubview(barSpacerView2)
-        
-        //Set up allOptionsStackView
-        view.addSubview(allOptionsStackView)
-        allOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
-        allOptionsStackView.axis = .vertical
-        allOptionsStackView.alignment = .fill
-        allOptionsStackView.distribution = .equalCentering
-        allOptionsStackView.addArrangedSubview(weightSelectionStackView)
-        allOptionsStackView.addArrangedSubview(unitSelectionStackView)
-        allOptionsStackView.addArrangedSubview(barSelectionStackView)
-        
-        //Set up button
-        view.addSubview(submitButton)
-        submitButton.setTitle("Show me how to load it", for: UIControl.State.normal)
-        submitButton.titleLabel?.textColor = .black
-        submitButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        submitButton.backgroundColor = .systemTeal
-        submitButton.layer.cornerRadius = 4
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
-        submitButton.addTarget(self, action: #selector(submitUserSelections), for: .touchUpInside)
-        
-    }
-    
     func setConstraints() {
         
         NSLayoutConstraint.activate([
