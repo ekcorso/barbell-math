@@ -12,7 +12,7 @@ class PlateCountViewController: UIViewController {
     // MARK: - Properties
     var totalWeight: Double = 0
     var barWeight: Int = BarSizeInLbs.fourtyFive.asInt()
-    var units: String = Units.lb.rawValue
+    var units: String = Units.lbs.rawValue
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
     
@@ -37,7 +37,7 @@ class PlateCountViewController: UIViewController {
         //Add action for back button that clears the previous vc?
         
         var plateMathCalculator = PlateMathCalculator()
-        if units == Units.lb.rawValue {
+        if units == Units.lbs.rawValue {
             let plateQuantities = plateMathCalculator.doPlateMathInLbs(totalWeight:totalWeight , barWeight: barWeight)
             updateLabelsForLbs(plateQuantities: plateQuantities)
         } else {
