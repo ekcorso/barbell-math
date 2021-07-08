@@ -270,9 +270,9 @@ class WeightSelectionViewController: UIViewController {
     
     @objc func unitsSetTo() -> String {
         switch unitSelector.selectedSegmentIndex {
-        case 0:
+        case .lbIndex:
             return Units.lbs.rawValue
-        case 1:
+        case .kgIndex:
             return Units.kgs.rawValue
         default:
             print("This unit selection is unhandled")
@@ -282,13 +282,13 @@ class WeightSelectionViewController: UIViewController {
     
     @objc func barSetTo() -> Int {
         switch barSelector.selectedSegmentIndex {
-        case 0:
+        case .standardBarSizeIndex:
             if unitsSetTo() == Units.lbs.rawValue {
                 return BarSizeInLbs.fourtyFive.asInt()
             } else {
                 return BarSizeInKilos.twenty.asInt()
             }
-        case 1:
+        case .smallerBarSizeIndex:
             if unitsSetTo() == Units.lbs.rawValue {
                 return BarSizeInLbs.thirtyFive.asInt()
             } else {
@@ -324,4 +324,12 @@ extension WeightSelectionViewController {
             submitButton.widthAnchor.constraint(equalTo: directionsLabel.widthAnchor, multiplier: 0.8),
         ])
     }
+}
+
+private extension Int {
+    static var lbIndex = 0
+    static var kgIndex = 1
+    
+    static var standardBarSizeIndex = 0
+    static var smallerBarSizeIndex = 1
 }
