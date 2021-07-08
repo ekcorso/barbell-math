@@ -252,13 +252,13 @@ class WeightSelectionViewController: UIViewController {
     }
     
     @objc func updateBarSizeOptions() {
-        switch unitSelector.selectedSegmentIndex {
-        case 0:
+        switch unitsSetTo() {
+        case Units.lbs.rawValue:
             barSelector.removeAllSegments()
             barSelector.insertSegment(withTitle: BarSizeInLbs.fourtyFive.asString(), at: 0, animated: false)
             barSelector.insertSegment(withTitle: BarSizeInLbs.thirtyFive.asString(), at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
-        case 1:
+        case Units.kgs.rawValue:
             barSelector.removeAllSegments()
             barSelector.insertSegment(withTitle: BarSizeInKilos.twenty.asString(), at: 0, animated: false)
             barSelector.insertSegment(withTitle: BarSizeInKilos.fifteen.asString(), at: 1, animated: false)
