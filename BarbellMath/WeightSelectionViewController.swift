@@ -71,9 +71,9 @@ class WeightSelectionViewController: UIViewController {
         unitSelector.addTarget(self, action: #selector(unitsSetTo), for: .valueChanged)
         
         if UserDefaults.standard.value(forKey: "units") as! String == Units.lbs.rawValue {
-            unitSelector.selectedSegmentIndex = 0
+            unitSelector.selectedSegmentIndex = Int.lbsIndex
         } else {
-            unitSelector.selectedSegmentIndex = 1
+            unitSelector.selectedSegmentIndex = Int.kgsIndex
         }
         
         return unitSelector
@@ -129,6 +129,8 @@ class WeightSelectionViewController: UIViewController {
         weightTextField.textColor = .black
         weightTextField.backgroundColor = .white
         weightTextField.keyboardType = .numberPad
+
+        
         return weightTextField
         }()
     
@@ -231,11 +233,16 @@ class WeightSelectionViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-    
+        
         setConstraints()
     }
     
     // MARK: - Actions
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
 
     @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
@@ -259,10 +266,10 @@ class WeightSelectionViewController: UIViewController {
     
     @objc func unitsSetTo() -> String {
         switch unitSelector.selectedSegmentIndex {
-        case .lbIndex:
+        case .lbsIndex:
             UserDefaults.standard.set(Units.lbs.rawValue, forKey: "units")
             return Units.lbs.rawValue
-        case .kgIndex:
+        case .kgsIndex:
             UserDefaults.standard.set(Units.kgs.rawValue, forKey: "units")
             return Units.kgs.rawValue
         default:
@@ -335,8 +342,8 @@ extension WeightSelectionViewController {
 }
 
 private extension Int {
-    static var lbIndex = 0
-    static var kgIndex = 1
+    static var lbsIndex = 0
+    static var kgsIndex = 1
     
     static var standardBarSizeIndex = 0
     static var smallerBarSizeIndex = 1
