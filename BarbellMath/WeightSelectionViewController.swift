@@ -67,9 +67,15 @@ class WeightSelectionViewController: UIViewController {
         view.addSubview(unitSelector)
         unitSelector.translatesAutoresizingMaskIntoConstraints = false
         unitSelector.apportionsSegmentWidthsByContent = true
-        unitSelector.selectedSegmentIndex = 0
         unitSelector.addTarget(self, action: #selector(updateBarSizeOptions), for: .valueChanged)
         unitSelector.addTarget(self, action: #selector(unitsSetTo), for: .valueChanged)
+        
+        if UserDefaults.standard.value(forKey: "units") as! String == Units.lbs.rawValue {
+            unitSelector.selectedSegmentIndex = 0
+        } else {
+            unitSelector.selectedSegmentIndex = 1
+        }
+        
         return unitSelector
     }()
 
@@ -214,7 +220,7 @@ class WeightSelectionViewController: UIViewController {
         return submitButton
     }()
     
-    // MARK: - View Lifecycle
+    // MARK: - Life Cycle
     override func loadView() {
         super.loadView()
         
@@ -251,6 +257,20 @@ class WeightSelectionViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
+    @objc func unitsSetTo() -> String {
+        switch unitSelector.selectedSegmentIndex {
+        case .lbIndex:
+            UserDefaults.standard.set(Units.lbs.rawValue, forKey: "units")
+            return Units.lbs.rawValue
+        case .kgIndex:
+            UserDefaults.standard.set(Units.kgs.rawValue, forKey: "units")
+            return Units.kgs.rawValue
+        default:
+            print("This unit selection is unhandled")
+            return Units.lbs.rawValue
+        }
+    }
+    
     @objc func updateBarSizeOptions() {
         switch unitsSetTo() {
         case Units.lbs.rawValue:
@@ -265,18 +285,6 @@ class WeightSelectionViewController: UIViewController {
             barSelector.selectedSegmentIndex = 0
         default:
             print("This unit selection is unhandled")
-        }
-    }
-    
-    @objc func unitsSetTo() -> String {
-        switch unitSelector.selectedSegmentIndex {
-        case .lbIndex:
-            return Units.lbs.rawValue
-        case .kgIndex:
-            return Units.kgs.rawValue
-        default:
-            print("This unit selection is unhandled")
-            return Units.lbs.rawValue
         }
     }
     
