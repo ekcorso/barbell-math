@@ -105,24 +105,24 @@ extension PlateCountViewController {
     
     func configureSubviews() {
         plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
-        plateLabelsView.backgroundColor = .white
+        plateLabelsView.backgroundColor = .systemBackground
         view.addSubview(plateLabelsView)
         
         explanationLabel.translatesAutoresizingMaskIntoConstraints = false
-        explanationLabel.textColor = .black
+        explanationLabel.textColor = .label
         explanationLabel.textAlignment = .center
         explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight))\(units) with a \(barWeight)\(units) bar:"
         explanationLabel.numberOfLines = 0
         view.addSubview(explanationLabel)
         
         plateWeightsLabel.translatesAutoresizingMaskIntoConstraints = false
-        plateWeightsLabel.textColor = .black
+        plateWeightsLabel.textColor = .label
         plateWeightsLabel.textAlignment = .justified
         plateWeightsLabel.numberOfLines = 0
         view.addSubview(plateWeightsLabel)
         
         catLabel.translatesAutoresizingMaskIntoConstraints = false
-        catLabel.textColor = .black
+        catLabel.textColor = .label
         catLabel.textAlignment = .center
         catLabel.numberOfLines = 0
         catLabel.text = "Pick this up and you'll be lifting the weight of \(findThisWeightInCats(totalWeight: totalWeight)) cats."
