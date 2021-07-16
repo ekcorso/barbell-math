@@ -16,17 +16,52 @@ class PlateCountViewController: UIViewController {
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
     
-    var explanationLabel = UILabel()
-    var plateLabelsView = UIView()
-    var plateWeightsLabel = UILabel()
-    var catLabel = UILabel()
+    // MARK: UI Properties
+    lazy var plateLabelsView: UIView = {
+        var plateLabelsView = UIView()
+        plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
+        plateLabelsView.backgroundColor = .systemBackground
+        view.addSubview(plateLabelsView)
+        return plateLabelsView
+    }()
+    
+    lazy var explanationLabel: UILabel = {
+        var explanationLabel = UILabel()
+        explanationLabel.translatesAutoresizingMaskIntoConstraints = false
+        explanationLabel.textColor = .label
+        explanationLabel.textAlignment = .center
+        explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight))\(units) with a \(barWeight)\(units) bar:"
+        explanationLabel.numberOfLines = 0
+        view.addSubview(explanationLabel)
+        return explanationLabel
+    }()
+
+    lazy var plateWeightsLabel: UILabel = {
+        var plateWeightsLabel = UILabel()
+        plateWeightsLabel.translatesAutoresizingMaskIntoConstraints = false
+        plateWeightsLabel.textColor = .label
+        plateWeightsLabel.textAlignment = .justified
+        plateWeightsLabel.numberOfLines = 0
+        view.addSubview(plateWeightsLabel)
+        return plateWeightsLabel
+    }()
+    
+    lazy var catLabel: UILabel = {
+        var catLabel = UILabel()
+        catLabel.translatesAutoresizingMaskIntoConstraints = false
+        catLabel.textColor = .label
+        catLabel.textAlignment = .center
+        catLabel.numberOfLines = 0
+        catLabel.text = "Pick this up and you'll be lifting the weight of \(findThisWeightInCats(totalWeight: totalWeight)) cats."
+        view.addSubview(catLabel)
+        return catLabel
+    }()
     
     // MARK: - View Lifecycle
     override func loadView() {
         super.loadView()
         
         view.backgroundColor = UIColor(patternImage: UIImage(named: "confetti-gym-mats")!)
-        configureSubviews()
         setConstraints()
     }
     
@@ -99,36 +134,9 @@ class PlateCountViewController: UIViewController {
     }
 }
 
-// MARK: - Programmatic UI
-
 extension PlateCountViewController {
     
-    func configureSubviews() {
-        plateLabelsView.translatesAutoresizingMaskIntoConstraints = false
-        plateLabelsView.backgroundColor = .systemBackground
-        view.addSubview(plateLabelsView)
-        
-        explanationLabel.translatesAutoresizingMaskIntoConstraints = false
-        explanationLabel.textColor = .label
-        explanationLabel.textAlignment = .center
-        explanationLabel.text = "Here's what you'll need to load \(Int(totalWeight))\(units) with a \(barWeight)\(units) bar:"
-        explanationLabel.numberOfLines = 0
-        view.addSubview(explanationLabel)
-        
-        plateWeightsLabel.translatesAutoresizingMaskIntoConstraints = false
-        plateWeightsLabel.textColor = .label
-        plateWeightsLabel.textAlignment = .justified
-        plateWeightsLabel.numberOfLines = 0
-        view.addSubview(plateWeightsLabel)
-        
-        catLabel.translatesAutoresizingMaskIntoConstraints = false
-        catLabel.textColor = .label
-        catLabel.textAlignment = .center
-        catLabel.numberOfLines = 0
-        catLabel.text = "Pick this up and you'll be lifting the weight of \(findThisWeightInCats(totalWeight: totalWeight)) cats."
-        view.addSubview(catLabel)
-    }
-    
+    // MARK: UI Constraints
     func setConstraints() {
         let verticalPadding: CGFloat = 50
         
