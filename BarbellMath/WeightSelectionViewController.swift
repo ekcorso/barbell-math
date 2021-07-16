@@ -15,7 +15,7 @@ class WeightSelectionViewController: UIViewController {
     lazy var directionsLabel: UILabel = {
         var directionsLabel = UILabel()
         directionsLabel.text = "How much weight do you want to lift?"
-        directionsLabel.textColor = .black
+        directionsLabel.textColor = .label
         directionsLabel.textAlignment = .center
         directionsLabel.numberOfLines = 0
         directionsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -44,7 +44,7 @@ class WeightSelectionViewController: UIViewController {
         unitSelectionStackView.alignment = .fill
         unitSelectionStackView.axis = .horizontal
         unitSelectionStackView.distribution = .equalSpacing
-        unitSelectionStackView.backgroundColor = .white
+        unitSelectionStackView.backgroundColor = .systemBackground
         unitSelectionStackView.addArrangedSubview(unitSpacerView1)
         unitSelectionStackView.addArrangedSubview(unitLabel)
         unitSelectionStackView.addArrangedSubview(unitSelector)
@@ -57,8 +57,8 @@ class WeightSelectionViewController: UIViewController {
         view.addSubview(unitLabel)
         unitLabel.translatesAutoresizingMaskIntoConstraints = false
         unitLabel.text = "Units"
-        unitLabel.textColor = .black
-        unitLabel.backgroundColor = .white
+        unitLabel.textColor = .label
+        unitLabel.backgroundColor = .systemBackground
         return unitLabel
     }()
 
@@ -114,8 +114,8 @@ class WeightSelectionViewController: UIViewController {
         weightLabel.translatesAutoresizingMaskIntoConstraints = false
         weightLabel.text = "Total Weight"
         weightLabel.textAlignment = .left
-        weightLabel.textColor = .black
-        weightLabel.backgroundColor = .white
+        weightLabel.textColor = .label
+        weightLabel.backgroundColor = .systemBackground
         return weightLabel
     }()
     
@@ -124,10 +124,11 @@ class WeightSelectionViewController: UIViewController {
         view.addSubview(weightTextField)
         weightTextField.translatesAutoresizingMaskIntoConstraints = false
         weightTextField.placeholder = "Weight"
+        //weightTextField.layer.cornerRadius = 10
         weightTextField.textAlignment = .center
-        weightTextField.borderStyle = .line
-        weightTextField.textColor = .black
-        weightTextField.backgroundColor = .white
+        weightTextField.textColor = .label
+        weightTextField.borderStyle = .roundedRect
+        weightTextField.backgroundColor = .systemGray6
         weightTextField.keyboardType = .numberPad
 
         
@@ -156,7 +157,7 @@ class WeightSelectionViewController: UIViewController {
         barSelectionStackView.alignment = .fill
         barSelectionStackView.axis = .horizontal
         barSelectionStackView.distribution = .equalSpacing
-        barSelectionStackView.backgroundColor = .white
+        barSelectionStackView.backgroundColor = .systemBackground
         barSelectionStackView.addArrangedSubview(barSpacerView1)
         barSelectionStackView.addArrangedSubview(barLabel)
         barSelectionStackView.addArrangedSubview(barSelector)
@@ -169,8 +170,8 @@ class WeightSelectionViewController: UIViewController {
         view.addSubview(barLabel)
         barLabel.translatesAutoresizingMaskIntoConstraints = false
         barLabel.text = "Bar Size"
-        barLabel.textColor = .black
-        barLabel.backgroundColor = .white
+        barLabel.textColor = .label
+        barLabel.backgroundColor = .systemBackground
         return barLabel
     }()
     
@@ -212,12 +213,12 @@ class WeightSelectionViewController: UIViewController {
     lazy var submitButton: UIButton = {
         let submitButton = UIButton()
         view.addSubview(submitButton)
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.setTitle("Show me how to load it", for: UIControl.State.normal)
-        submitButton.titleLabel?.textColor = .black
+        submitButton.titleLabel?.textColor = .white
         submitButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         submitButton.backgroundColor = .systemTeal
-        submitButton.layer.cornerRadius = 4
-        submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.layer.cornerRadius = 8
         submitButton.addTarget(self, action: #selector(submitUserSelections), for: .touchUpInside)
         return submitButton
     }()
@@ -232,7 +233,7 @@ class WeightSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         setConstraints()
     }
