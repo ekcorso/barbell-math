@@ -73,7 +73,7 @@ class PlateCountViewController: UIViewController {
         
         var plateMathCalculator = PlateMathCalculator()
         if units == Units.lbs.rawValue {
-            let plateQuantities = plateMathCalculator.doPlateMathInLbs(totalWeight:totalWeight , barWeight: barWeight)
+            let plateQuantities = plateMathCalculator.doPlateMathInLbs(totalWeight:totalWeight, barWeight: barWeight)
             updateLabelsForLbs(plateQuantities: plateQuantities)
         } else {
             let plateQuantities = plateMathCalculator.doPlateMathInKgs(totalWeight: totalWeight, barWeight: barWeight)
@@ -81,6 +81,7 @@ class PlateCountViewController: UIViewController {
         }
     }
     
+    // MARK: Actions
     func findThisWeightInCats(totalWeight: Double?) -> Int {
         var weightInCats = 0.0
         if let totalWeight = totalWeight {

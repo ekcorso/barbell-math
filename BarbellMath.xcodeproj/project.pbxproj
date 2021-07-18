@@ -19,6 +19,7 @@
 		FCCA9087253FC7C0009D15C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */; };
 		FCE1948B26740447007E3FD6 /* BarSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1948A26740447007E3FD6 /* BarSize.swift */; };
 		FCE1948D26740478007E3FD6 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1948C26740478007E3FD6 /* Units.swift */; };
+		FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF28FCF26A3CAB200930F0F /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		FCCA9088253FC7C0009D15C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCE1948A26740447007E3FD6 /* BarSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSize.swift; sourceTree = "<group>"; };
 		FCE1948C26740478007E3FD6 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
+		FCF28FCF26A3CAB200930F0F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCE1948C26740478007E3FD6 /* Units.swift */,
 				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
+				FCF28FCF26A3CAB200930F0F /* Validator.swift */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
 				FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */,
@@ -158,6 +161,7 @@
 			files = (
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
 				FC02EA7D268BFEA400F54FA7 /* Plate.swift in Sources */,
+				FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */,
