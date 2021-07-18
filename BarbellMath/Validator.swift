@@ -27,27 +27,38 @@ class Validator {
 //        }
 //    }
     
-    func isNumeric(userEntry: String) -> Bool {
-        if let _ = Double(userEntry) {
+//    func isNumeric(userEntry: String) -> Bool {
+//        if let _ = Double(userEntry) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+    
+    func isWholeNumber(userEntry: String) -> Bool {
+        if let _ = Int(userEntry) {
             return true
         } else {
             return false
         }
+        //Confirm whether casting an int to a double could ever fail? Should be fine to make this a double later
     }
     
-    func isWholeNumber(userEntry: String?) -> Bool {
-        
-        return false
+    func isMultipleOf5(userEntry: String) -> Bool {
+        if Int(userEntry)! % 5 == 0 {
+            return true
+        } else {
+            return false
+        }
+        //This check could fail if userEntry is nil, but should always be run after
     }
     
-    func isMultipleOf5(userEntry: String?) -> Bool {
-        
-        return false
-    }
-    
-    func isAtLeast50lbs(userEntry: String?) -> Bool {
-        
-        return false
+    func isAtLeast50lbs(userEntry: String) -> Bool {
+        if Int(userEntry)! >= 50 {
+            return true
+        } else {
+            return false
+        }
     }
         
     func showAlert(type: String) {
