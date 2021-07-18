@@ -247,19 +247,30 @@ class WeightSelectionViewController: UIViewController {
 
     @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
+        let validator = Validator()
         
-        if let text = weightTextField.text {
-            if let weightAsDouble = Double(text) {
-                viewController.totalWeight = weightAsDouble
-                viewController.units = unitsSetTo()
-                viewController.barWeight = barSetTo()
+        guard let userEntry = weightTextField.text else {
+            let weightMustNotNBeEmptyAlert = validator.showAlert(message: "Weight field must not be empty.")
+            self.present(weightMustNotNBeEmptyAlert, animated: true)
+            return
+        }
+        
+        if validator.isWholeNumber(userEntry: userEntry) {
+            if validator.isMultipleOf5(userEntry: userEntry) {
+                if validator.isAtLeast50lbs(userEntry: userEntry) {
+                    viewController.totalWeight = Double(userEntry)!
+                    viewController.units = unitsSetTo()
+                    viewController.barWeight = barSetTo()
+                } else {
+                    let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
+                    self.present(mustLiftMoreWeightAlert, animated: true)
+                }
             } else {
-                print("Weight is not a number")
-                let alert = UIAlertController(title: "That's not a number...", message: "Please re-enter the weight you want to lift as a numeric value", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default)
-                alert.addAction(okAction)
-                self.present(alert, animated: true)
-            }
+                let mustBeMultpleOf5Alert = validator.showAlert(message: "Weight must be a multiple of 5.")
+                self.present(mustBeMultpleOf5Alert, animated: true)            }
+        } else {
+            let mustBeAnIntAlert = validator.showAlert(message: "Weight must be entered as an integer value.")
+            self.present(mustBeAnIntAlert, animated: true)
         }
         
         navigationController?.pushViewController(viewController, animated: true)
