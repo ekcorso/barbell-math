@@ -248,6 +248,7 @@ class WeightSelectionViewController: UIViewController {
     @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
         let validator = Validator()
+        var searchData = SearchData()
         
         guard let userEntry = weightTextField.text else {
             let weightMustNotNBeEmptyAlert = validator.showAlert(message: "Weight field must not be empty.")
@@ -258,9 +259,13 @@ class WeightSelectionViewController: UIViewController {
         if validator.isWholeNumber(userEntry: userEntry) {
             if validator.isMultipleOf5(userEntry: userEntry) {
                 if validator.isAtLeast50lbs(userEntry: userEntry) {
-                    viewController.totalWeight = Double(userEntry)!
-                    viewController.units = unitsSetTo()
-                    viewController.barWeight = barSetTo()
+//                    viewController.totalWeight = Double(userEntry)!
+//                    viewController.units = unitsSetTo()
+//                    viewController.barWeight = barSetTo()
+                    searchData.barWeight = barSetTo()
+                    searchData.units = unitsSetTo()
+                    searchData.weight = Double(userEntry)
+                    viewController.searchData = searchData
                 } else {
                     let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
                     self.present(mustLiftMoreWeightAlert, animated: true)

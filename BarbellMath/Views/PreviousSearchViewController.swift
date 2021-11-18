@@ -9,6 +9,7 @@
 import UIKit
 
 class PreviousSearchViewController: UITableViewController {
+    var previousResults = [SearchData]()
 
     override func viewDidLoad() {
         super.viewDidLoad()

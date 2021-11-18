@@ -15,6 +15,7 @@ class PlateCountViewController: UIViewController {
     var units: String = Units.lbs.rawValue
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
+    var searchData: SearchData?
     
     // MARK: UI Properties
     lazy var plateLabelsView: UIView = {
