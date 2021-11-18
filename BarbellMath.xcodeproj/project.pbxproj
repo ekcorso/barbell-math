@@ -21,6 +21,8 @@
 		FCE1948D26740478007E3FD6 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE1948C26740478007E3FD6 /* Units.swift */; };
 		FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF28FCF26A3CAB200930F0F /* Validator.swift */; };
 		FCFC209E2746CD9F00D18B9E /* PreviousSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */; };
+		FCFC20A02746D16600D18B9E /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC209F2746D16600D18B9E /* SearchResult.swift */; };
+		FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20A12746D68200D18B9E /* SearchData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		FCE1948C26740478007E3FD6 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		FCF28FCF26A3CAB200930F0F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchViewController.swift; sourceTree = "<group>"; };
+		FCFC209F2746D16600D18B9E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResult.swift; path = "BarbellMath/Data Model/SearchResult.swift"; sourceTree = SOURCE_ROOT; };
+		FCFC20A12746D68200D18B9E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				FC5EB20025ABC08100AC8379 /* BarLoad.swift */,
 				FC02EA7C268BFEA400F54FA7 /* Plate.swift */,
 				FCE1948C26740478007E3FD6 /* Units.swift */,
+				FCFC209F2746D16600D18B9E /* SearchResult.swift */,
+				FCFC20A12746D68200D18B9E /* SearchData.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -191,11 +197,13 @@
 				FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */,
 				FCFC209E2746CD9F00D18B9E /* PreviousSearchViewController.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
+				FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */,
 				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
+				FCFC20A02746D16600D18B9E /* SearchResult.swift in Sources */,
 				FCE1948B26740447007E3FD6 /* BarSize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
