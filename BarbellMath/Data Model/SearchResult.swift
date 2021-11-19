@@ -11,5 +11,5 @@ import Foundation
 struct SearchResult {
     var barLoadInLbs: BarLoadInLbs?
     var barLoadInKgs: BarLoadInKgs?
-    var quantityOfCats: Double
+    var quantityOfCats: Int?
 }
