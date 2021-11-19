@@ -11,7 +11,7 @@ import UIKit
 struct PlateMathCalculator {
     
     //This func takes a starting weight and a plate size and returns the quantity of that plate than can be evenly (as both an Int and an even number) divided into the total. This slices off a quantity of each plate size that can be loaded in pairs.
-    func findPlateQuantity(weight: Double, plateSize: Double) -> Double {
+    private func findPlateQuantity(weight: Double, plateSize: Double) -> Double {
         var plateQuantity = 0.0
         
         let isEvenNumberOfPlates = Int(weight / plateSize) % 2 == 0
@@ -26,7 +26,7 @@ struct PlateMathCalculator {
     }
     
     //This func takes a starting weight and plate size and returns only the remaining weight after an even number of the given plate size has been sliced off the total.
-    func calculateRemainingWeight(weight: Double, plateSize: Double) -> Double {
+    private func calculateRemainingWeight(weight: Double, plateSize: Double) -> Double {
         var weightRemainder = 0.0
         
         let isEvenNumberOfPlates = Int(weight / plateSize) % 2 == 0
@@ -87,5 +87,14 @@ struct PlateMathCalculator {
             }
         }
         return BarLoadInKgs(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
+    }
+    
+    func findThisWeightInCats(totalWeight: Double?) -> Int {
+        var weightInCats = 0.0
+        if let totalWeight = totalWeight {
+            weightInCats = totalWeight / 9.0
+            return Int(weightInCats)
+        }
+        return Int(weightInCats)
     }
 }
