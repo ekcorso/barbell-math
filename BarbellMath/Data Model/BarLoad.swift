@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct BarLoadInLbs {
+struct BarLoadInLbs: Codable {
     var quantity45LbPlates: Double = 0
     var quantity25LbPlates: Double = 0
     var quantity10LbPlates: Double = 0
@@ -16,7 +16,7 @@ struct BarLoadInLbs {
     var quantity2_5LbPlates: Double = 0
 }
 
-struct BarLoadInKgs {
+struct BarLoadInKgs: Codable {
     var quantity20KgPlates: Double = 0
     var quantity15KgPlates: Double = 0
     var quantity10KgPlates: Double = 0

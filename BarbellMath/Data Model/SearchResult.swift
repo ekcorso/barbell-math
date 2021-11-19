@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct SearchResult {
+struct SearchResult: Codable {
+    var totalWeight: Double?
     var barLoadInLbs: BarLoadInLbs?
     var barLoadInKgs: BarLoadInKgs?
     var quantityOfCats: Int?

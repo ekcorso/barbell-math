@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchData {
+struct SearchData: Codable {
     var weight: Double!
     var units: String!
     var barWeight: Int!
@@ -23,6 +23,7 @@ struct SearchData {
         }
         
         result.quantityOfCats = plateMathCalculator.findThisWeightInCats(totalWeight: weight)
+        result.totalWeight = weight
         
         return result
     }
