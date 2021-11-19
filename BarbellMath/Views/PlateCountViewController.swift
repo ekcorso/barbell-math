@@ -53,9 +53,23 @@ class PlateCountViewController: UIViewController {
         catLabel.textColor = .label
         catLabel.textAlignment = .center
         catLabel.numberOfLines = 0
-        catLabel.text = "Pick this up and you'll be lifting the weight of \(findThisWeightInCats(totalWeight: totalWeight)) cats."
+        catLabel.text = "Pick this up and you'll be lifting the weight of \(PlateMathCalculator().findThisWeightInCats(totalWeight: totalWeight)) cats."
         view.addSubview(catLabel)
         return catLabel
+    }()
+    
+    lazy var previousSearchesButton: UIButton = {
+        var previousSearchesButton = UIButton()
+        previousSearchesButton.translatesAutoresizingMaskIntoConstraints = false
+        previousSearchesButton.setTitle("See Previous Lifts", for: UIControl.State.normal)
+        previousSearchesButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        previousSearchesButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        previousSearchesButton.backgroundColor = .systemTeal
+        previousSearchesButton.layer.cornerRadius = 8
+        previousSearchesButton.addTarget(self, action: #selector(previousSearchesTapped), for: .touchUpInside)
+        view.addSubview(previousSearchesButton)
+        
+        return previousSearchesButton
     }()
     
     // MARK: - View Lifecycle
@@ -83,13 +97,13 @@ class PlateCountViewController: UIViewController {
     }
     
     // MARK: Actions
-    func findThisWeightInCats(totalWeight: Double?) -> Int {
-        var weightInCats = 0.0
-        if let totalWeight = totalWeight {
-            weightInCats = totalWeight / 9.0
-            return Int(weightInCats)
+    
+    @objc func previousSearchesTapped() {
+        let vc = PreviousSearchViewController()
+        if let searchData = self.searchData {
+            vc.previousResults.append(searchData)
         }
-        return Int(weightInCats)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func updateLabelsForLbs(plateQuantities: BarLoadInLbs) {
@@ -159,6 +173,9 @@ extension PlateCountViewController {
             catLabel.topAnchor.constraint(equalTo: plateWeightsLabel.bottomAnchor, constant: 30),
             catLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             catLabel.widthAnchor.constraint(equalTo: explanationLabel.widthAnchor),
+            
+            previousSearchesButton.topAnchor.constraint(equalTo: catLabel.bottomAnchor, constant: 30),
+            previousSearchesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
 }
