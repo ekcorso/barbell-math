@@ -10,9 +10,15 @@ import UIKit
 
 class PlateCountViewController: UIViewController {
     // MARK: - Properties
-    var totalWeight: Double = 0
-    var barWeight: Int = BarSizeInLbs.fourtyFive.asInt()
-    var units: String = Units.lbs.rawValue
+    var totalWeight: Double {
+        return searchData?.weight ?? 0.0
+    }
+    var barWeight: Int {
+        return searchData?.barWeight ?? BarSizeInLbs.fourtyFive.asInt()
+    }
+    var units: String {
+        return searchData?.units ?? Units.lbs.rawValue
+    }
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
     var searchData: SearchData?
@@ -100,9 +106,6 @@ class PlateCountViewController: UIViewController {
     
     @objc func previousSearchesTapped() {
         let vc = PreviousSearchViewController()
-        if let searchData = self.searchData {
-            vc.previousResults.append(searchData)
-        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
