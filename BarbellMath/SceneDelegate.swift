@@ -22,9 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
         
-        let weightSelectionViewController = WeightSelectionViewController()
-        let navigationController = UINavigationController(rootViewController: weightSelectionViewController)
-        window?.rootViewController = navigationController
+        let tabBar = TabBarViewController()
+        window?.rootViewController = tabBar
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -25,6 +25,7 @@
 		FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20A12746D68200D18B9E /* SearchData.swift */; };
 		FCFC20E62748539900D18B9E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E52748539900D18B9E /* Utilities.swift */; };
 		FCFC20E8274853BB00D18B9E /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E7274853BB00D18B9E /* DataStorage.swift */; };
+		FCFC20EA274C01D600D18B9E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FCFC20A12746D68200D18B9E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
 		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = "BarbellMath/Data Model/Utilities.swift"; sourceTree = SOURCE_ROOT; };
 		FCFC20E7274853BB00D18B9E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		FCFC209A2746CD0400D18B9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */,
 				FCFC20E52748539900D18B9E /* Utilities.swift */,
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCFC20EA274C01D600D18B9E /* TabBarViewController.swift in Sources */,
 				FCCA907F253FC7B6009D15C1 /* PlateCountViewController.swift in Sources */,
 				FC02EA7D268BFEA400F54FA7 /* Plate.swift in Sources */,
 				FCFC20E62748539900D18B9E /* Utilities.swift in Sources */,
