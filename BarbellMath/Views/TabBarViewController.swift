@@ -22,4 +22,11 @@ class TabBarViewController: UITabBarController {
             UINavigationController(rootViewController: $0)
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        previousSearchViewController.previousSearches = DataStorage().retrieve() ?? [SearchData]()
+    }
+    
 }

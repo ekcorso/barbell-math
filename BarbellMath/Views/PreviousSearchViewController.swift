@@ -9,14 +9,7 @@
 import UIKit
 
 class PreviousSearchViewController: UITableViewController {
-    var previousSearches: [SearchData] = {
-        if let results = DataStorage().retrieve() {
-            return results
-        } else {
-            print("no results found in PreviousSearchesVC")
-            return [SearchData]()
-        }
-    }()
+    var previousSearches = [SearchData]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +19,15 @@ class PreviousSearchViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let results = DataStorage().retrieve() {
+            previousSearches = results
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

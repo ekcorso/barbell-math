@@ -239,6 +239,7 @@ class WeightSelectionViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.allSearches = DataStorage().retrieve()
     }
     
