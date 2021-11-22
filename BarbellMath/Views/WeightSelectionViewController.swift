@@ -9,7 +9,8 @@
 import UIKit
 
 class WeightSelectionViewController: UIViewController {
-
+    var allSearches: [SearchData]?
+    
     // MARK: - UI Properties
     
     lazy var directionsLabel: UILabel = {
@@ -235,6 +236,8 @@ class WeightSelectionViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
+        self.allSearches = DataStorage().retrieve()
+        
         setConstraints()
     }
     
@@ -259,12 +262,12 @@ class WeightSelectionViewController: UIViewController {
         if validator.isWholeNumber(userEntry: userEntry) {
             if validator.isMultipleOf5(userEntry: userEntry) {
                 if validator.isAtLeast50lbs(userEntry: userEntry) {
-//                    viewController.totalWeight = Double(userEntry)!
-//                    viewController.units = unitsSetTo()
-//                    viewController.barWeight = barSetTo()
                     searchData.barWeight = barSetTo()
                     searchData.units = unitsSetTo()
                     searchData.weight = Double(userEntry)
+                    
+                    allSearches?.append(searchData)
+                    try? DataStorage().save(searchData: allSearches ?? [SearchData]())
                     viewController.searchData = searchData
                 } else {
                     let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
