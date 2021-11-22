@@ -9,7 +9,14 @@
 import UIKit
 
 class PreviousSearchViewController: UITableViewController {
-    var previousResults = [SearchData]()
+    var previousSearches: [SearchData] = {
+        if let results = DataStorage().retrieve() {
+            return results
+        } else {
+            print("no results found in PreviousSearchesVC")
+            return [SearchData]()
+        }
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,23 +38,22 @@ class PreviousSearchViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return previousResults.count
+        return previousSearches.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = String(previousResults[indexPath.row].weight)
+        //Let's format the cell more here
+        cell.textLabel?.text = String(previousSearches[indexPath.row].weight)
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) {
             let vc = PlateCountViewController()
-            vc.searchData = previousResults[indexPath.row]
+            vc.searchData = previousSearches[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
-        }
     }
 
     /*
