@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         
         let weightSelectionViewController = WeightSelectionViewController()
-        //let plateCountViewController = PlateCountViewController()
         let navigationController = UINavigationController(rootViewController: weightSelectionViewController)
         window?.rootViewController = navigationController
     }
