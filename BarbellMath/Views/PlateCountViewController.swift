@@ -64,20 +64,6 @@ class PlateCountViewController: UIViewController {
         return catLabel
     }()
     
-    lazy var previousSearchesButton: UIButton = {
-        var previousSearchesButton = UIButton()
-        previousSearchesButton.translatesAutoresizingMaskIntoConstraints = false
-        previousSearchesButton.setTitle("See Previous Lifts", for: UIControl.State.normal)
-        previousSearchesButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
-        previousSearchesButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        previousSearchesButton.backgroundColor = .systemTeal
-        previousSearchesButton.layer.cornerRadius = 8
-        previousSearchesButton.addTarget(self, action: #selector(previousSearchesTapped), for: .touchUpInside)
-        view.addSubview(previousSearchesButton)
-        
-        return previousSearchesButton
-    }()
-    
     // MARK: - View Lifecycle
     override func loadView() {
         super.loadView()
@@ -103,11 +89,6 @@ class PlateCountViewController: UIViewController {
     }
     
     // MARK: Actions
-    
-    @objc func previousSearchesTapped() {
-        let vc = PreviousSearchViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
     
     func updateLabelsForLbs(plateQuantities: BarLoadInLbs) {
         
@@ -176,9 +157,6 @@ extension PlateCountViewController {
             catLabel.topAnchor.constraint(equalTo: plateWeightsLabel.bottomAnchor, constant: 30),
             catLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             catLabel.widthAnchor.constraint(equalTo: explanationLabel.widthAnchor),
-            
-            previousSearchesButton.topAnchor.constraint(equalTo: catLabel.bottomAnchor, constant: 30),
-            previousSearchesButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
 }
