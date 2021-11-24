@@ -27,6 +27,7 @@ class PreviousSearchViewController: UITableViewController {
         
         if let results = DataStorage().retrieve() {
             previousSearches = results
+            tableView.reloadData()
         }
     }
     
