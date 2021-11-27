@@ -26,6 +26,7 @@
 		FCFC20E62748539900D18B9E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E52748539900D18B9E /* Utilities.swift */; };
 		FCFC20E8274853BB00D18B9E /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E7274853BB00D18B9E /* DataStorage.swift */; };
 		FCFC20EA274C01D600D18B9E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */; };
+		FCFC20EC274C4D0000D18B9E /* PreviousSearchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = "BarbellMath/Data Model/Utilities.swift"; sourceTree = SOURCE_ROOT; };
 		FCFC20E7274853BB00D18B9E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */,
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */,
+				FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */,
 				FCFC20E52748539900D18B9E /* Utilities.swift */,
 				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
 			);
@@ -209,6 +212,7 @@
 				FCFC209E2746CD9F00D18B9E /* PreviousSearchViewController.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
 				FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */,
+				FCFC20EC274C4D0000D18B9E /* PreviousSearchCellView.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
 				FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */,
 				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
