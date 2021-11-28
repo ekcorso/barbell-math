@@ -10,13 +10,13 @@ import UIKit
 
 class PreviousSearchViewController: UITableViewController {
     var previousSearches = [SearchData]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.title = "Previous Searches"
-
+        tableView.register(PreviousSearchCellView.self, forCellReuseIdentifier: PreviousSearchCellView.identifier)
+        self.title = "History"
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -50,10 +50,19 @@ class PreviousSearchViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        //Let's format the cell more here
-        cell.textLabel?.text = String(previousSearches[indexPath.row].weight)
-        cell.accessoryType = .disclosureIndicator
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PreviousSearchCellView.identifier, for: indexPath) as? PreviousSearchCellView else {
+            return UITableViewCell()
+        }
+        
+        let lift = previousSearches[indexPath.row]
+                
+        let weightText = "\(Int(lift.weight))\(lift.units!)"
+        let attributedWeightText = NSMutableAttributedString(string: weightText)
+        
+        attributedWeightText.addAttribute(.strokeWidth, value: -3, range: NSRange(location: 0, length: attributedWeightText.length))
+        
+        cell.textLabel?.attributedText = attributedWeightText
+        cell.detailTextLabel?.text = "\(String(lift.barWeight))\(lift.units!) bar"
         
         return cell
     }
