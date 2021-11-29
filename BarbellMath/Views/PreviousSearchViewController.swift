@@ -55,14 +55,7 @@ class PreviousSearchViewController: UITableViewController {
         }
         
         let lift = previousSearches[indexPath.row]
-                
-        let weightText = "\(Int(lift.weight))\(lift.units!)"
-        let attributedWeightText = NSMutableAttributedString(string: weightText)
-        
-        attributedWeightText.addAttribute(.strokeWidth, value: -3, range: NSRange(location: 0, length: attributedWeightText.length))
-        
-        cell.textLabel?.attributedText = attributedWeightText
-        cell.detailTextLabel?.text = "\(String(lift.barWeight))\(lift.units!) bar"
+        cell.setCellText(lift: lift)
         
         return cell
     }
