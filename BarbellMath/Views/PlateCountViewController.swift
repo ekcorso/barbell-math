@@ -59,6 +59,7 @@ class PlateCountViewController: UIViewController {
         catLabel.textColor = .label
         catLabel.textAlignment = .center
         catLabel.numberOfLines = 0
+        catLabel.font = .italicSystemFont(ofSize: explanationLabel.font.pointSize)
         catLabel.text = "Pick this up and you'll be lifting the weight of \(PlateMathCalculator().findThisWeightInCats(totalWeight: totalWeight)) cats."
         view.addSubview(catLabel)
         return catLabel
