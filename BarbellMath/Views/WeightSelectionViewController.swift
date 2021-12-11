@@ -268,8 +268,15 @@ class WeightSelectionViewController: UIViewController {
                     searchData.units = unitsSetTo()
                     searchData.weight = Double(userEntry)
                     
-                    allSearches?.append(searchData)
-                    try? DataStorage().save(searchData: allSearches ?? [SearchData]())
+                    allSearches?.insert(searchData, at: 0)
+                    
+                    do {
+                        if let allSearches = allSearches {
+                            try DataStorage().save(searchData: allSearches)
+                        }
+                    } catch {
+                        print("Save failed in WSVC submit")
+                    }
                     viewController.searchData = searchData
                 } else {
                     let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
