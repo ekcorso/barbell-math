@@ -22,7 +22,7 @@ struct SearchData: Codable {
             result.barLoadInKgs = plateMathCalculator.doPlateMathInKgs(totalWeight: weight, barWeight: barWeight)
         }
         
-        result.quantityOfCats = plateMathCalculator.findThisWeightInCats(totalWeight: weight)
+        result.quantityOfCats = plateMathCalculator.findThisWeightInCats(totalWeight: weight, units: units)
         result.totalWeight = weight
         
         return result
