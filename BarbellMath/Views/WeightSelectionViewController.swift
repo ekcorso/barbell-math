@@ -274,8 +274,13 @@ class WeightSelectionViewController: UIViewController {
         }
         
         guard validator.isAtLeast50lbs(userEntry: userEntry) else {
-            let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
-            self.present(mustLiftMoreWeightAlert, animated: true)
+            if unitsSetTo() == "lbs" {
+                let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
+                self.present(mustLiftMoreWeightAlert, animated: true)
+            } else if unitsSetTo() == "kgs" {
+                let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 110kgs.")
+                self.present(mustLiftMoreWeightAlert, animated: true)
+            }
             return
         }
             
