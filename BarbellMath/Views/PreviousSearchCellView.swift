@@ -23,7 +23,12 @@ class PreviousSearchCellView: UITableViewCell {
         attributedWeightText.addAttribute(.strokeWidth, value: -3, range: NSRange(location: 0, length: attributedWeightText.length))
         
         textLabel?.attributedText = attributedWeightText
-        detailTextLabel?.text = "\(String(lift.barWeight))\(lift.units!) bar"
+        
+        if lift.units == "lbs" {
+            detailTextLabel?.text = "\(String(lift.barWeight))lb bar"
+        } else if lift.units == "kgs" {
+            detailTextLabel?.text = "\(String(lift.barWeight))kg bar"
+        }
     }
     
     required init?(coder: NSCoder) {
