@@ -261,41 +261,43 @@ class WeightSelectionViewController: UIViewController {
             return
         }
         
-        if validator.isWholeNumber(userEntry: userEntry) {
-            if validator.isMultipleOf5(userEntry: userEntry) {
-                if validator.isAtLeast50lbs(userEntry: userEntry) {
-                    searchData.barWeight = barSetTo()
-                    searchData.units = unitsSetTo()
-                    searchData.weight = Double(userEntry)
-                    
-                    if allSearches != nil {
-                        self.allSearches!.insert(searchData, at: 0)
-                    } else {
-                        allSearches = [searchData]
-                    }
-                    
-                    if let allSearches = allSearches {
-                        do {
-                            try DataStorage().save(searchData: allSearches)
-                        } catch {
-                            print("Save failed in WSVC submit")
-                        }
-                    }
-                    
-                    viewController.searchData = searchData
-                } else {
-                    let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
-                    self.present(mustLiftMoreWeightAlert, animated: true)
-                }
-            } else {
-                let mustBeMultpleOf5Alert = validator.showAlert(message: "Weight must be a multiple of 5.")
-                self.present(mustBeMultpleOf5Alert, animated: true)
-            }
-        } else {
+        guard validator.isWholeNumber(userEntry: userEntry) else {
             let mustBeAnIntAlert = validator.showAlert(message: "Weight must be entered as an integer value.")
             self.present(mustBeAnIntAlert, animated: true)
+            return
         }
         
+        guard validator.isMultipleOf5(userEntry: userEntry) else {
+            let mustBeMultpleOf5Alert = validator.showAlert(message: "Weight must be a multiple of 5.")
+            self.present(mustBeMultpleOf5Alert, animated: true)
+            return
+        }
+        
+        guard validator.isAtLeast50lbs(userEntry: userEntry) else {
+            let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
+            self.present(mustLiftMoreWeightAlert, animated: true)
+            return
+        }
+            
+        searchData.barWeight = barSetTo()
+        searchData.units = unitsSetTo()
+        searchData.weight = Double(userEntry)
+        
+        if allSearches != nil {
+            self.allSearches!.insert(searchData, at: 0)
+        } else {
+            allSearches = [searchData]
+        }
+        
+        if let allSearches = allSearches {
+            do {
+                try DataStorage().save(searchData: allSearches)
+            } catch {
+                print("Save failed in WSVC submit")
+            }
+        }
+        
+        viewController.searchData = searchData
         navigationController?.pushViewController(viewController, animated: true)
     }
     
