@@ -48,7 +48,7 @@
 		FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchViewController.swift; sourceTree = "<group>"; };
 		FCFC209F2746D16600D18B9E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResult.swift; path = "BarbellMath/Data Model/SearchResult.swift"; sourceTree = SOURCE_ROOT; };
 		FCFC20A12746D68200D18B9E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
-		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = "BarbellMath/Data Model/Utilities.swift"; sourceTree = SOURCE_ROOT; };
+		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = BarbellMath/Helpers/Utilities.swift; sourceTree = SOURCE_ROOT; };
 		FCFC20E7274853BB00D18B9E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchCellView.swift; sourceTree = "<group>"; };
@@ -104,7 +104,6 @@
 				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
 				FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */,
 				FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */,
-				FCFC20E52748539900D18B9E /* Utilities.swift */,
 				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
 			);
 			path = Views;
@@ -129,6 +128,7 @@
 			children = (
 				FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */,
 				FCF28FCF26A3CAB200930F0F /* Validator.swift */,
+				FCFC20E52748539900D18B9E /* Utilities.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
