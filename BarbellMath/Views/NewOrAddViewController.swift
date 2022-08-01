@@ -54,15 +54,12 @@ class NewOrAddViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Add Weight To Bar", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = .green
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 5, right: -10)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 12, bottom: 5, right: 12)
+        button.layer.borderColor = UIColor.systemGreen.cgColor
+        button.layer.borderWidth = 2
         button.layer.cornerRadius = 10
-//        var configuration = UIButton.Configuration.filled()
-//        configuration.title = "Add weight to bar"
-//        configuration.baseBackgroundColor = .orange
-////        configuration.image
-//        configuration.contentInsets = NSDirectionalEdgeInsets(top: 3, leading: 3, bottom: 3, trailing: 3)
         return button
     }()
     
@@ -71,12 +68,13 @@ class NewOrAddViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Start New Load", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.titleLabel?.textColor = .white
-        button.backgroundColor = .purple
-        button.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+        button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 12, bottom: 5, right: 12)
+        button.layer.borderColor = UIColor.systemPurple.cgColor
+        button.layer.borderWidth = 2
         button.layer.cornerRadius = 10
         return button
     }()
-
 }
 
