@@ -7,6 +7,16 @@
 ## About
 BarbellMath is a calculator that determines the quantities of various plates needed to load a barbell to a specified weight. This app is available for download in the [App Store](https://apps.apple.com/us/app/barbell-math/id1576083820).
 
+## Features
+- **Bar Selection:** Choose from standard bar sizes.
+- **Unit Conversion:** Input weight in either kilos or pounds.
+- **Weight Calculation:** Get a detailed breakdown of the required plates.
+- **History:** Access previous calculations for quick reference.
+- **Fun Extra:** See your lifting weight expressed in a real-world equivalent (the number of cats) for deepening intuitive understanding of the weight. One "standard cat" is approximately 9lbs.
+
+## Demo
+Coming soon...
+
 ## Installation
 1. Clone the repository: `git clone https://github.com/yourusername/Barbell-Math.git`
 2. Open the project in Xcode: `open BarbellMath.xcodeproj`
