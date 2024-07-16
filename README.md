@@ -5,7 +5,7 @@
 **Bonus: you'll also gain some perspective on your lifting prowess by having it expressed as a quantity of cats.**
 
 ## About
-BarbellMath is a calculator that determines the quantities of various plates needed to load a barbell to a specified weight. This app is available for download in the [App Store](https://apps.apple.com/us/app/barbell-math/id1576083820).
+Barbell-Math is a calculator that determines the quantities of various plates needed to load a barbell to a specified weight. This app is available for download in the [App Store](https://apps.apple.com/us/app/barbell-math/id1576083820).
 
 ## Features
 - **Bar Selection:** Choose from standard bar sizes.
@@ -18,7 +18,7 @@ BarbellMath is a calculator that determines the quantities of various plates nee
 Coming soon...
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/yourusername/Barbell-Math.git`
+1. Clone the repository: `git clone https://github.com/ekcorso/barbell-math.git`
 2. Open the project in Xcode: `open BarbellMath.xcodeproj`
 3. Build and run the app on your simulator or device.
 
