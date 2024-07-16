@@ -15,7 +15,11 @@ Barbell-Math is a calculator that determines the quantities of various plates ne
 - **Fun Extra:** See your lifting weight expressed in a real-world equivalent (the number of cats) for deepening intuitive understanding of the weight. One "standard cat" is approximately 9lbs.
 
 ## Demo
-Coming soon...
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://images.squarespace-cdn.com/content/v1/610433fc625e6038cb6d9db4/b81e61ce-42ec-4c1e-9ca7-c9cfe954af1f/BarbellMath_Weight_Selection_View.png" alt= "Barbell-Math Weight Selection View"  width="200"/>
+  <img src="https://images.squarespace-cdn.com/content/v1/610433fc625e6038cb6d9db4/9da2a935-b4d1-41f0-ab27-81787a221778/BarbellMath_Plate_Count_View.png" alt="Barbell-Math Plate Count View" width="200"/>
+  <img src="https://images.squarespace-cdn.com/content/v1/610433fc625e6038cb6d9db4/1721165500020-6UE5WLMROJCBMDJGE5EZ/BarbellMath_History_View.png" alt="Barbell-Math Calculator View" alt="Barbell-Math History View" width="200"/>
+</div>
 
 ## Installation
 1. Clone the repository: `git clone https://github.com/ekcorso/barbell-math.git`
