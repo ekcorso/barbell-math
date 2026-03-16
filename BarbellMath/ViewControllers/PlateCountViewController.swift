@@ -14,7 +14,7 @@ class PlateCountViewController: UIViewController {
         return searchData?.weight ?? 0.0
     }
     var barWeight: Int {
-        return searchData?.barWeight ?? BarSizeInLbs.fourtyFive.asInt()
+        return searchData?.barWeight ?? BarSizeInLbs.fourtyFive.rawValue
     }
     var units: String {
         return searchData?.units ?? Units.lbs.rawValue

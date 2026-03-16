@@ -176,8 +176,8 @@ class WeightSelectionViewController: UIViewController {
         return barLabel
     }()
     
-    let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.asString(), BarSizeInLbs.thirtyFive.asString()]
-    let barSelectorItemsInKgs = [BarSizeInKilos.twenty.asString(), BarSizeInKilos.fifteen.asString()]
+    let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.displayString, BarSizeInLbs.thirtyFive.displayString]
+    let barSelectorItemsInKgs = [BarSizeInKilos.twenty.displayString, BarSizeInKilos.fifteen.displayString]
     
     lazy var barSelector: UISegmentedControl = {
         var barSelector = UISegmentedControl(items: [])
@@ -324,13 +324,13 @@ class WeightSelectionViewController: UIViewController {
         switch unitsSetTo() {
         case Units.lbs.rawValue:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: BarSizeInLbs.fourtyFive.asString(), at: 0, animated: false)
-            barSelector.insertSegment(withTitle: BarSizeInLbs.thirtyFive.asString(), at: 1, animated: false)
+            barSelector.insertSegment(withTitle: BarSizeInLbs.fourtyFive.displayString, at: 0, animated: false)
+            barSelector.insertSegment(withTitle: BarSizeInLbs.thirtyFive.displayString, at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         case Units.kgs.rawValue:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: BarSizeInKilos.twenty.asString(), at: 0, animated: false)
-            barSelector.insertSegment(withTitle: BarSizeInKilos.fifteen.asString(), at: 1, animated: false)
+            barSelector.insertSegment(withTitle: BarSizeInKilos.twenty.displayString, at: 0, animated: false)
+            barSelector.insertSegment(withTitle: BarSizeInKilos.fifteen.displayString, at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         default:
             print("This unit selection is unhandled")
@@ -341,19 +341,19 @@ class WeightSelectionViewController: UIViewController {
         switch barSelector.selectedSegmentIndex {
         case .standardBarSizeIndex:
             if unitsSetTo() == Units.lbs.rawValue {
-                return BarSizeInLbs.fourtyFive.asInt()
+                return BarSizeInLbs.fourtyFive.rawValue
             } else {
-                return BarSizeInKilos.twenty.asInt()
+                return BarSizeInKilos.twenty.rawValue
             }
         case .smallerBarSizeIndex:
             if unitsSetTo() == Units.lbs.rawValue {
-                return BarSizeInLbs.thirtyFive.asInt()
+                return BarSizeInLbs.thirtyFive.rawValue
             } else {
-                return BarSizeInKilos.fifteen.asInt()
+                return BarSizeInKilos.fifteen.rawValue
             }
         default:
             print("This bar size selection is unhandled")
-            return BarSizeInLbs.fourtyFive.asInt()
+            return BarSizeInLbs.fourtyFive.rawValue
         }
     }
 }

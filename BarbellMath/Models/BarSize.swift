@@ -8,43 +8,29 @@
 
 import Foundation
 
-enum BarSizeInLbs: Int {
-    case thirtyFive
-    case fourtyFive
+protocol BarSize: RawRepresentable, CaseIterable where RawValue == Int {
+    var displayString: String { get }
+}
+
+enum BarSizeInLbs: Int, BarSize {
+    case thirtyFive = 35
+    case fourtyFive = 45
     
-    func asInt() -> Int {
+    var displayString: String {
         switch self {
         case .thirtyFive:
-            return 35
+            "35lb"
         case .fourtyFive:
-            return 45
-        }
-    }
-    
-    func asString() -> String {
-        switch self {
-        case .thirtyFive:
-            return "35lb"
-        case .fourtyFive:
-            return "45lb"
+            "45lb"
         }
     }
 }
 
-enum BarSizeInKilos: Int {
-    case twenty
-    case fifteen
+enum BarSizeInKilos: Int, BarSize {
+    case fifteen = 15
+    case twenty = 20
     
-    func asInt() -> Int {
-        switch self {
-        case .twenty:
-            return 20
-        case .fifteen:
-            return 15
-        }
-    }
-    
-    func asString() -> String {
+    var displayString: String {
         switch self {
         case .twenty:
             return "20kg"
@@ -52,5 +38,4 @@ enum BarSizeInKilos: Int {
             return "15kg"
         }
     }
-    
 }
