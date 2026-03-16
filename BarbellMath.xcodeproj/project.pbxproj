@@ -46,9 +46,9 @@
 		FCE1948C26740478007E3FD6 /* Units.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		FCF28FCF26A3CAB200930F0F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchViewController.swift; sourceTree = "<group>"; };
-		FCFC209F2746D16600D18B9E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchResult.swift; path = "BarbellMath/Data Model/SearchResult.swift"; sourceTree = SOURCE_ROOT; };
+		FCFC209F2746D16600D18B9E /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		FCFC20A12746D68200D18B9E /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
-		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utilities.swift; path = BarbellMath/Helpers/Utilities.swift; sourceTree = SOURCE_ROOT; };
+		FCFC20E52748539900D18B9E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FCFC20E7274853BB00D18B9E /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchCellView.swift; sourceTree = "<group>"; };
@@ -65,6 +65,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC7FB9722F68808E006F7A49 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */,
+				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
+				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
+				FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		FCCA906E253FC7B6009D15C1 = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +98,9 @@
 				FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */,
 				FCCA907C253FC7B6009D15C1 /* SceneDelegate.swift */,
 				FCFC209C2746CD3A00D18B9E /* Helpers */,
-				FCFC209B2746CD1300D18B9E /* Data Model */,
+				FCFC209B2746CD1300D18B9E /* Models */,
 				FCFC209A2746CD0400D18B9E /* Views */,
+				FC7FB9722F68808E006F7A49 /* ViewControllers */,
 				FCCA9080253FC7B6009D15C1 /* Main.storyboard */,
 				FCCA9083253FC7C0009D15C1 /* Assets.xcassets */,
 				FCCA9085253FC7C0009D15C1 /* LaunchScreen.storyboard */,
@@ -100,16 +112,12 @@
 		FCFC209A2746CD0400D18B9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FCFC20E9274C01D500D18B9E /* TabBarViewController.swift */,
-				FCCA907E253FC7B6009D15C1 /* PlateCountViewController.swift */,
-				FCFC209D2746CD9F00D18B9E /* PreviousSearchViewController.swift */,
 				FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */,
-				FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		FCFC209B2746CD1300D18B9E /* Data Model */ = {
+		FCFC209B2746CD1300D18B9E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				FCE1948A26740447007E3FD6 /* BarSize.swift */,
@@ -120,7 +128,7 @@
 				FCFC20A12746D68200D18B9E /* SearchData.swift */,
 				FCFC20E7274853BB00D18B9E /* DataStorage.swift */,
 			);
-			path = "Data Model";
+			path = Models;
 			sourceTree = "<group>";
 		};
 		FCFC209C2746CD3A00D18B9E /* Helpers */ = {
