@@ -379,6 +379,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 35FN5AB6A3;
 				INFOPLIST_FILE = BarbellMath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.00;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -401,6 +402,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 35FN5AB6A3;
 				INFOPLIST_FILE = BarbellMath/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.00;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
