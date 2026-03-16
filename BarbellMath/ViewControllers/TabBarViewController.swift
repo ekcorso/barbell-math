@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import SwiftUI
 
 class TabBarViewController: UITabBarController {
-    let weightSelectionViewController = WeightSelectionViewController()
+    // TODO: Remove UIHostingController when SwiftUI migration is complete
+    let weightSelectionHostingController = UIHostingController(rootView: WeightSelectionView())
     let previousSearchViewController = PreviousSearchViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        weightSelectionViewController.tabBarItem = UITabBarItem(title: "Load Bar", image: UIImage(systemName: "slider.horizontal.3"), tag: 0)
+
+        weightSelectionHostingController.tabBarItem = UITabBarItem(title: "Load Bar", image: UIImage(systemName: "slider.horizontal.3"), tag: 0)
         previousSearchViewController.tabBarItem = UITabBarItem(title: "History", image: UIImage(systemName: "clock.arrow.circlepath"), tag: 1)
-        
-        viewControllers = [weightSelectionViewController, previousSearchViewController].map {
-            UINavigationController(rootViewController: $0)
-        }
+
+        viewControllers = [
+            weightSelectionHostingController,
+            UINavigationController(rootViewController: previousSearchViewController)
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
