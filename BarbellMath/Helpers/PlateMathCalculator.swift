@@ -89,13 +89,14 @@ struct PlateMathCalculator {
         return BarLoadInKgs(quantity20KgPlates: platesNeededToLoadBar[0], quantity15KgPlates: platesNeededToLoadBar[1], quantity10KgPlates: platesNeededToLoadBar[2], quantity5KgPlates: platesNeededToLoadBar[3], quantity2_5KgPlates: platesNeededToLoadBar[4], quantity1_25KgPlates: platesNeededToLoadBar[5])
     }
     
-    func findThisWeightInCats(totalWeight: Double?, units: String) -> Int {
+    func findThisWeightInCats(totalWeight: Double?, units: Units) -> Int {
         var weightInCats = 0.0
         guard let totalWeight = totalWeight else { return 0 }
         
-        if units == "lbs" {
+        switch units {
+        case .lbs:
             weightInCats = totalWeight / 9.0
-        } else if units == "kgs" {
+        case .kgs:
             weightInCats = totalWeight / 4.1
         }
 

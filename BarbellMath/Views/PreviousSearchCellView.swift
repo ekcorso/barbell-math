@@ -17,16 +17,17 @@ class PreviousSearchCellView: UITableViewCell {
     }
     
     func setCellText(lift: SearchData) {
-        let weightText = "\(Int(lift.weight))\(lift.units!)"
+        let weightText = "\(Int(lift.weight))\(lift.units)"
         let attributedWeightText = NSMutableAttributedString(string: weightText)
         
         attributedWeightText.addAttribute(.strokeWidth, value: -3, range: NSRange(location: 0, length: attributedWeightText.length))
         
         textLabel?.attributedText = attributedWeightText
         
-        if lift.units == "lbs" {
+        switch lift.units {
+        case .lbs:
             detailTextLabel?.text = "\(String(lift.barWeight))lb bar"
-        } else if lift.units == "kgs" {
+        case .kgs:
             detailTextLabel?.text = "\(String(lift.barWeight))kg bar"
         }
     }

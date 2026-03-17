@@ -254,7 +254,7 @@ class WeightSelectionViewController: UIViewController {
     @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
         let validator = Validator()
-        var searchData = SearchData()
+        var searchData = SearchData(weight: 0.0, units: .kgs, barWeight: 45) // Just dummy data to keep this building mid-migration
         
         guard let userEntry = weightTextField.text else {
             let weightMustNotNBeEmptyAlert = validator.showAlert(message: "Weight field must not be empty.")
@@ -285,9 +285,9 @@ class WeightSelectionViewController: UIViewController {
             return
         }
             
-        searchData.barWeight = barSetTo()
-        searchData.units = unitsSetTo()
-        searchData.weight = Double(userEntry)
+//        searchData.barWeight = barSetTo()
+//        searchData.units = unitsSetTo()
+//        searchData.weight = Double(userEntry)
         
         if allSearches != nil {
             self.allSearches!.insert(searchData, at: 0)

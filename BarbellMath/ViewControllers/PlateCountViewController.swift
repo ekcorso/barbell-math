@@ -16,8 +16,8 @@ class PlateCountViewController: UIViewController {
     var barWeight: Int {
         return searchData?.barWeight ?? BarSizeInLbs.fourtyFive.rawValue
     }
-    var units: String {
-        return searchData?.units ?? Units.lbs.rawValue
+    var units: Units {
+        return searchData?.units ?? .kgs
     }
     var quantityOfCats: Double = 0
     var plateQuantityText: String?
@@ -80,10 +80,11 @@ class PlateCountViewController: UIViewController {
         //Add action for back button that clears the previous vc?
         
         var plateMathCalculator = PlateMathCalculator()
-        if units == Units.lbs.rawValue {
+        switch units {
+        case .lbs:
             let plateQuantities = plateMathCalculator.doPlateMathInLbs(totalWeight:totalWeight, barWeight: barWeight)
             updateLabelsForLbs(plateQuantities: plateQuantities)
-        } else {
+        case .kgs:
             let plateQuantities = plateMathCalculator.doPlateMathInKgs(totalWeight: totalWeight, barWeight: barWeight)
             updateLabelsForKgs(plateQuantities: plateQuantities)
         }

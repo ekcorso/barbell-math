@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Units: String, CaseIterable {
+enum Units: String, CaseIterable, Codable {
     case lbs
     case kgs
 }
