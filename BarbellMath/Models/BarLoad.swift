@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Legacy Implementation, remove when migration is complete
 struct BarLoadInLbs: Codable {
     var quantity45LbPlates: Double = 0
     var quantity25LbPlates: Double = 0
