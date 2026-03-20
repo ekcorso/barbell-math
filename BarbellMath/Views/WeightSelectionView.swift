@@ -43,7 +43,7 @@ struct WeightSelectionView: View {
                         Picker("", selection: $viewModel.selectedBarWeight) {
                             ForEach(viewModel.barSizes, id: \.self) { size in
                                 Text("\(size)")
-                                    .tag(size) // Need to lookup how tag works here. Should the size be passed directly, not
+                                    .tag(size)
                             }
                         }
                         .pickerStyle(.segmented)

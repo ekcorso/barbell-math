@@ -35,6 +35,7 @@ enum BarSize: CaseIterable, Codable, Hashable {
     }
     
     // Let's move this display logic out of the model
+    // Could also construct this from weight + units to make it more flexible
     var displayString: String {
         switch self {
         case .thirtyFiveLbs:
