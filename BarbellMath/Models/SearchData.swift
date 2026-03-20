@@ -24,17 +24,9 @@ struct SearchData: Codable {
     
     private func getSearchResult() -> SearchResult? {
         var result = SearchResult() // TODO: Refactor to use dependency injection instead of doing it this way
-        var plateMathCalculator = PlateMathCalculator()
-        
-            switch units {
-            case .lbs:
-                result.barLoadInLbs = plateMathCalculator.doPlateMathInLbs(totalWeight: weight, barWeight: barWeight)
-            case .kgs:
-                result.barLoadInKgs = plateMathCalculator.doPlateMathInKgs(totalWeight: weight, barWeight: barWeight)
-            }
             
-            result.quantityOfCats = plateMathCalculator.findThisWeightInCats(totalWeight: weight, units: units)
-            result.totalWeight = weight
+        result.barLoad = PlateMathCalculator().calculate(weight: weight, barSize: barWeight, units: units)
+        result.totalWeight = weight
         
         return result
     }

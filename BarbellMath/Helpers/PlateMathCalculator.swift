@@ -103,3 +103,21 @@ struct PlateMathCalculator {
         return Int(weightInCats)
     }
 }
+
+// Extension to hold the simplified calculate method during migration
+extension PlateMathCalculator {
+    func calculate(weight: Double, barSize: BarSize, units: Units) -> BarLoad {
+        let plateChoices = Plate.choices(for: units)
+        
+        var remainingWeightToLoad = weight - barSize.weightValue
+        
+        let loads: [PlateLoad] = plateChoices.map { plateSize in
+            let plateQuantity = findPlateQuantity(weight: remainingWeightToLoad, plateSize: plateSize)
+            remainingWeightToLoad = calculateRemainingWeight(weight: remainingWeightToLoad, plateSize: plateSize)
+            return PlateLoad(plateSize: plateSize, quantity: Int(plateQuantity), units: units)
+        }
+        
+        let cats = findThisWeightInCats(totalWeight: weight, units: units)
+        return BarLoad(plateLoadPerSize: loads, quantityInCats: cats)
+    }
+}
