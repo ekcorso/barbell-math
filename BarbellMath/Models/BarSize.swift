@@ -8,33 +8,42 @@
 
 import Foundation
 
-protocol BarSize: RawRepresentable, CaseIterable where RawValue == Int {
-    var displayString: String { get }
-}
-
-enum BarSizeInLbs: Int, BarSize {
-    case thirtyFive = 35
-    case fourtyFive = 45
+enum BarSize: CaseIterable, Codable, Hashable {
+    case thirtyFiveLbs   // 35
+    case fourtyFiveLbs   // 45
+    case fifteenKg       // 15
+    case twentyKg        // 20
     
-    var displayString: String {
+    var weightValue: Double {
         switch self {
-        case .thirtyFive:
-            "35lb"
-        case .fourtyFive:
-            "45lb"
+        case .thirtyFiveLbs: 35
+        case .fourtyFiveLbs: 45
+        case .fifteenKg:     15
+        case .twentyKg:      20
         }
     }
-}
-
-enum BarSizeInKilos: Int, BarSize {
-    case fifteen = 15
-    case twenty = 20
     
+    var units: Units {
+        switch self {
+        case .thirtyFiveLbs, .fourtyFiveLbs: .lbs
+        case .fifteenKg, .twentyKg:          .kgs
+        }
+    }
+    
+    static func choices(for units: Units) -> [BarSize] {
+        allCases.filter { $0.units == units }
+    }
+    
+    // Let's move this display logic out of the model
     var displayString: String {
         switch self {
-        case .twenty:
+        case .thirtyFiveLbs:
+            return "35lb"
+        case .fourtyFiveLbs:
+            return "45lb"
+        case .twentyKg:
             return "20kg"
-        case .fifteen:
+        case .fifteenKg:
             return "15kg"
         }
     }

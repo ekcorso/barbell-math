@@ -41,10 +41,10 @@ struct PlateMathCalculator {
     }
     
     //Takes a given weight and returns an array containing the quantity of each plate necessary to load the bar.
-    mutating func doPlateMathInLbs(totalWeight: Double, barWeight: Int) -> BarLoadInLbs {
+    mutating func doPlateMathInLbs(totalWeight: Double, barWeight: BarSize) -> BarLoadInLbs {
         let lbPlateChoices = Plate().lbPlateChoices
         
-        var weightToBeLoaded = totalWeight - Double(barWeight)
+        var weightToBeLoaded = totalWeight - barWeight.weightValue
         var platesNeededToLoadBar = [Double]()
         
         for plate in lbPlateChoices {
@@ -67,10 +67,10 @@ struct PlateMathCalculator {
                                  quantity2_5LbPlates: platesNeededToLoadBar[4])
     }
     
-    mutating func doPlateMathInKgs(totalWeight: Double, barWeight: Int) -> BarLoadInKgs {
+    mutating func doPlateMathInKgs(totalWeight: Double, barWeight: BarSize) -> BarLoadInKgs {
         let kgPlateChoices = Plate().kgPlateChoices
         
-        var weightToBeLoaded = totalWeight - Double(barWeight)
+        var weightToBeLoaded = totalWeight - barWeight.weightValue
         var platesNeededToLoadBar = [Double]()
         
         for plate in kgPlateChoices {

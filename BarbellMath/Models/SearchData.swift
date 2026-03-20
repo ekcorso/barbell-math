@@ -12,10 +12,10 @@ import Foundation
 struct SearchData: Codable {
     var weight: Double
     var units: Units
-    var barWeight: Int
+    var barWeight: BarSize
     var result: SearchResult?
     
-    init(weight: Double, units: Units, barWeight: Int) {
+    init(weight: Double, units: Units, barWeight: BarSize) {
         self.weight = weight
         self.units = units
         self.barWeight = barWeight

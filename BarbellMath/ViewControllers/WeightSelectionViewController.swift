@@ -177,8 +177,8 @@ class WeightSelectionViewController: UIViewController {
         return barLabel
     }()
     
-    let barSelectorItemsInLbs = [BarSizeInLbs.fourtyFive.displayString, BarSizeInLbs.thirtyFive.displayString]
-    let barSelectorItemsInKgs = [BarSizeInKilos.twenty.displayString, BarSizeInKilos.fifteen.displayString]
+    let barSelectorItemsInLbs = [BarSize.fourtyFiveLbs.displayString, BarSize.thirtyFiveLbs.displayString]
+    let barSelectorItemsInKgs = [BarSize.twentyKg.displayString, BarSize.fifteenKg.displayString]
     
     lazy var barSelector: UISegmentedControl = {
         var barSelector = UISegmentedControl(items: [])
@@ -254,7 +254,7 @@ class WeightSelectionViewController: UIViewController {
     @objc func submitUserSelections() {
         let viewController = PlateCountViewController()
         let validator = Validator()
-        var searchData = SearchData(weight: 0.0, units: .kgs, barWeight: 45) // Just dummy data to keep this building mid-migration
+        let searchData = SearchData(weight: 0.0, units: .kgs, barWeight: BarSize.fourtyFiveLbs) // Just dummy data to keep this building mid-migration
         
         guard let userEntry = weightTextField.text else {
             let weightMustNotNBeEmptyAlert = validator.showAlert(message: "Weight field must not be empty.")
@@ -325,36 +325,28 @@ class WeightSelectionViewController: UIViewController {
         switch unitsSetTo() {
         case Units.lbs.rawValue:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: BarSizeInLbs.fourtyFive.displayString, at: 0, animated: false)
-            barSelector.insertSegment(withTitle: BarSizeInLbs.thirtyFive.displayString, at: 1, animated: false)
+            barSelector.insertSegment(withTitle: BarSize.fourtyFiveLbs.displayString, at: 0, animated: false)
+            barSelector.insertSegment(withTitle: BarSize.thirtyFiveLbs.displayString, at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         case Units.kgs.rawValue:
             barSelector.removeAllSegments()
-            barSelector.insertSegment(withTitle: BarSizeInKilos.twenty.displayString, at: 0, animated: false)
-            barSelector.insertSegment(withTitle: BarSizeInKilos.fifteen.displayString, at: 1, animated: false)
+            barSelector.insertSegment(withTitle: BarSize.twentyKg.displayString, at: 0, animated: false)
+            barSelector.insertSegment(withTitle: BarSize.fifteenKg.displayString, at: 1, animated: false)
             barSelector.selectedSegmentIndex = 0
         default:
             print("This unit selection is unhandled")
         }
     }
     
-    @objc func barSetTo() -> Int {
+    func barSetTo() -> BarSize {
         switch barSelector.selectedSegmentIndex {
         case .standardBarSizeIndex:
-            if unitsSetTo() == Units.lbs.rawValue {
-                return BarSizeInLbs.fourtyFive.rawValue
-            } else {
-                return BarSizeInKilos.twenty.rawValue
-            }
+            return unitsSetTo() == Units.lbs.rawValue ? .fourtyFiveLbs : .twentyKg
         case .smallerBarSizeIndex:
-            if unitsSetTo() == Units.lbs.rawValue {
-                return BarSizeInLbs.thirtyFive.rawValue
-            } else {
-                return BarSizeInKilos.fifteen.rawValue
-            }
+            return unitsSetTo() == Units.lbs.rawValue ? .thirtyFiveLbs : .fifteenKg
         default:
             print("This bar size selection is unhandled")
-            return BarSizeInLbs.fourtyFive.rawValue
+            return .fourtyFiveLbs
         }
     }
 }

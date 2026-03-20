@@ -26,9 +26,9 @@ class PreviousSearchCellView: UITableViewCell {
         
         switch lift.units {
         case .lbs:
-            detailTextLabel?.text = "\(String(lift.barWeight))lb bar"
+            detailTextLabel?.text = "\(String(lift.barWeight.weightValue))lb bar"
         case .kgs:
-            detailTextLabel?.text = "\(String(lift.barWeight))kg bar"
+            detailTextLabel?.text = "\(String(lift.barWeight.weightValue))kg bar"
         }
     }
     
