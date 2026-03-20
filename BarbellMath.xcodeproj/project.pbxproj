@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FC02EA7D268BFEA400F54FA7 /* Plate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC02EA7C268BFEA400F54FA7 /* Plate.swift */; };
 		FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */; };
+		FC070BB32F69B35F00945374 /* PlateCountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC070BB22F69B35300945374 /* PlateCountViewModel.swift */; };
+		FC070BB52F69B39100945374 /* PlateCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC070BB42F69B38900945374 /* PlateCountView.swift */; };
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
 		FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* BarLoad.swift */; };
 		FC7FB9772F68834C006F7A49 /* WeightSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		FC02EA7C268BFEA400F54FA7 /* Plate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plate.swift; sourceTree = "<group>"; };
 		FC04E8A4266163B6005F7F8C /* WeightSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionViewController.swift; sourceTree = "<group>"; };
+		FC070BB22F69B35300945374 /* PlateCountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateCountViewModel.swift; sourceTree = "<group>"; };
+		FC070BB42F69B38900945374 /* PlateCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateCountView.swift; sourceTree = "<group>"; };
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
 		FC5EB20025ABC08100AC8379 /* BarLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarLoad.swift; sourceTree = "<group>"; };
 		FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */,
+				FC070BB22F69B35300945374 /* PlateCountViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				FC7FB9782F6883D9006F7A49 /* WeightSelectionView.swift */,
+				FC070BB42F69B38900945374 /* PlateCountView.swift */,
 				FCFC20EB274C4D0000D18B9E /* PreviousSearchCellView.swift */,
 			);
 			path = Views;
@@ -233,6 +239,7 @@
 				FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */,
 				FCFC209E2746CD9F00D18B9E /* PreviousSearchViewController.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
+				FC070BB32F69B35F00945374 /* PlateCountViewModel.swift in Sources */,
 				FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */,
 				FCFC20EC274C4D0000D18B9E /* PreviousSearchCellView.swift in Sources */,
 				FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */,
@@ -240,6 +247,7 @@
 				FC04E8A5266163B6005F7F8C /* WeightSelectionViewController.swift in Sources */,
 				FCCA907D253FC7B6009D15C1 /* SceneDelegate.swift in Sources */,
 				FC7FB9792F6883DE006F7A49 /* WeightSelectionView.swift in Sources */,
+				FC070BB52F69B39100945374 /* PlateCountView.swift in Sources */,
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
 				FCFC20E8274853BB00D18B9E /* DataStorage.swift in Sources */,
 				FCFC20A02746D16600D18B9E /* SearchResult.swift in Sources */,
