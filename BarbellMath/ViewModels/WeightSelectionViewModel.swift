@@ -43,15 +43,8 @@ class WeightSelectionViewModel: ObservableObject {
     
     // TODO: Finish migrating the alert pattern. Refator to simplify this and migrate to SwiftUI.
     func submitUserSelections() {
-        let validator = Validator()
         let doubleWeight = Double(totalWeight) ?? 225 // TODO: This is just a patch, finish migrating the totalWeight to be a num them remove this
         var searchData = SearchData(weight: doubleWeight, units: self.selectedUnit, barWeight: self.selectedBarWeight)
-        
-        guard !totalWeight.isEmpty  else {
-            let weightMustNotNBeEmptyAlert = validator.showAlert(message: "Weight field must not be empty.")
-//            self.present(weightMustNotNBeEmptyAlert, animated: true)
-            return
-        }
         
         guard validator.isWholeNumber(userEntry: totalWeight) else {
             let mustBeAnIntAlert = validator.showAlert(message: "Weight must be entered as an integer value.")

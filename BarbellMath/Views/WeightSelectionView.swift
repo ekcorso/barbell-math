@@ -53,8 +53,9 @@ struct WeightSelectionView: View {
                     Button("Show me how to load it") {
                         viewModel.submitUserSelections()
                     }
+                    .disabled(viewModel.totalWeight.isEmpty)
                     .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                    .background(Color.blue)
+                    .background(viewModel.totalWeight.isEmpty ? .gray : .blue)
                     .foregroundStyle(.white)
                     .clipShape(Capsule())
                 }
