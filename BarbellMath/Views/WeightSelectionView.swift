@@ -69,6 +69,11 @@ struct WeightSelectionView: View {
                     PlateCountView(plateCountViewModel: plateCountViewModel)
                 }
             }
+            .sheet(item: $viewModel.validationError) { error in
+                ValidationAlertView(alertMessage: viewModel.alertMessageFor(error))
+                    .presentationDetents([.medium])
+                    .presentationBackground(Color(.secondarySystemBackground))
+            }
         }
     }
 }

@@ -18,6 +18,8 @@ class WeightSelectionViewModel: ObservableObject {
     
     @Published var selectedBarWeight: BarSize = BarSize.fourtyFiveLbs
     
+    @Published var validationError: TotalValidationError? = nil
+    
     // TODO: Store this as a Double
     @Published var totalWeight: String = ""
     
@@ -46,28 +48,11 @@ class WeightSelectionViewModel: ObservableObject {
         let doubleWeight = Double(totalWeight) ?? 225 // TODO: This is just a patch, finish migrating the totalWeight to be a num them remove this
         var searchData = SearchData(weight: doubleWeight, units: self.selectedUnit, barWeight: self.selectedBarWeight)
         
-        guard validator.isWholeNumber(userEntry: totalWeight) else {
-            let mustBeAnIntAlert = validator.showAlert(message: "Weight must be entered as an integer value.")
-//            self.present(mustBeAnIntAlert, animated: true)
-            return
-        }
-        
-        guard validator.isMultipleOf5(userEntry: totalWeight) else {
-            let mustBeMultpleOf5Alert = validator.showAlert(message: "Weight must be a multiple of 5.")
-//            self.present(mustBeMultpleOf5Alert, animated: true)
-            return
-        }
-        
-        guard validator.isAtLeast50lbs(userEntry: totalWeight) else {
-            switch selectedUnit {
-            case .lbs:
-                let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 50lbs.")
-//                self.present(mustLiftMoreWeightAlert, animated: true)
-            case .kgs:
-                let mustLiftMoreWeightAlert = validator.showAlert(message: "Weight must be at least 110kgs.")
-//                self.present(mustLiftMoreWeightAlert, animated: true)
-            }
-            
+        // Valid user's entry
+        do {
+            try Validator().isValid(total: Double(totalWeight) ?? 0.0)
+        } catch {
+            validationError = error
             return
         }
             
@@ -92,5 +77,19 @@ class WeightSelectionViewModel: ObservableObject {
         
         self.plateCountViewModel = PlateCountViewModel(searchData: searchData)
         self.navigateToPlateCount = true
+    }
+    
+    func alertMessageFor(_ error: TotalValidationError) -> String {
+        switch error {
+        case .notInteger: "Weight must be entered as an integer value."
+        case .notDivisibleByFive: "Weight must be a multiple of 5."
+        case .belowMinimumWeight:
+            switch selectedUnit {
+            case .lbs:
+                "Weight must be at least 50lbs."
+            case .kgs:
+                "Weight must be at least 110kgs."
+            }
+        }
     }
 }
