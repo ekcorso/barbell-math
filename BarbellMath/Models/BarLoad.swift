@@ -1,5 +1,5 @@
 //
-//  Plate.swift
+//  LegacyBarLoad.swift
 //  BarbellMath
 //
 //  Created by Emily Corso on 1/10/21.
