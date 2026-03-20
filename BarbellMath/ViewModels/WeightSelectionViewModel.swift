@@ -20,6 +20,12 @@ class WeightSelectionViewModel: ObservableObject {
     
     // TODO: Store this as a Double
     @Published var totalWeight: String = ""
+    
+    // MARK: Navigation Properties
+    @Published var plateCountViewModel: PlateCountViewModel? = nil
+    @Published var navigateToPlateCount = false
+    
+    // MARK: Properties
     var barSizes: [BarSize] { BarSize.choices(for: self.selectedUnit) }
     
     var allSearches: [SearchData]?
@@ -33,6 +39,8 @@ class WeightSelectionViewModel: ObservableObject {
         
     var barSizeText: String = "Bar Size"
 
+    // MARK: Functions
+    
     // TODO: Finish migrating the alert pattern. Refator to simplify this and migrate to SwiftUI.
     func submitUserSelections() {
         let validator = Validator()
@@ -89,8 +97,7 @@ class WeightSelectionViewModel: ObservableObject {
             }
         }
         
-        let plateCountViewModel = PlateCountViewModel(searchData: searchData)
-        let plateCountView = PlateCountView(plateCountViewModel: plateCountViewModel)
-        // TODO: Navigate to the PlateCountView
+        self.plateCountViewModel = PlateCountViewModel(searchData: searchData)
+        self.navigateToPlateCount = true
     }
 }

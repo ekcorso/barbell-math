@@ -13,53 +13,61 @@ struct WeightSelectionView: View {
 
     
     var body: some View {
-        VStack {
-            Text(viewModel.startingQuestion)
-                .foregroundStyle(.primary)
-            
+        NavigationStack {
             VStack {
-                HStack {
-                    Text(viewModel.totalWeightText)
-                        .foregroundStyle(.black)
-                    TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
-                        .textFieldStyle(.roundedBorder)
+                Text(viewModel.startingQuestion)
+                    .foregroundStyle(.primary)
+                
+                VStack {
+                    HStack {
+                        Text(viewModel.totalWeightText)
+                            .foregroundStyle(.black)
+                        TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
+                            .textFieldStyle(.roundedBorder)
+                            .tint(.primary)
+                    }
+                    
+                    HStack {
+                        Text(viewModel.unitText)
+                        Picker("", selection: $viewModel.selectedUnit) {
+                            ForEach(Units.allCases, id: \.self) {
+                                Text($0.rawValue)
+                            }
+                        }
+                        .pickerStyle(.segmented)
                         .tint(.primary)
-                }
-                
-                HStack {
-                    Text(viewModel.unitText)
-                    Picker("", selection: $viewModel.selectedUnit) {
-                        ForEach(Units.allCases, id: \.self) {
-                            Text($0.rawValue)
-                        }
                     }
-                    .pickerStyle(.segmented)
-                    .tint(.primary)
-                }
-                
-                HStack {
-                    Text(viewModel.barSizeText)
-                    Picker("", selection: $viewModel.selectedBarWeight) {
-                        ForEach(viewModel.barSizes.indices, id: \.self) { index in
-                            let size = viewModel.barSizes[index]
-                            Text(size.displayString)
-                                .tag(size.rawValue)
+                    
+                    HStack {
+                        Text(viewModel.barSizeText)
+                        Picker("", selection: $viewModel.selectedBarWeight) {
+                            ForEach(viewModel.barSizes, id: \.self) { size in
+                                Text("\(size)")
+                                    .tag(size) // Need to lookup how tag works here. Should the size be passed directly, not
+                            }
                         }
+                        .pickerStyle(.segmented)
+                        .tint(.primary)
                     }
-                    .pickerStyle(.segmented)
-                    .tint(.primary)
+                    
+                    Button("Show me how to load it") {
+                        viewModel.submitUserSelections()
+                    }
+                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                    .background(Color.blue)
+                    .foregroundStyle(.white)
+                    .clipShape(Capsule())
                 }
-                
-                Button("Show me how to load it") {
-                    viewModel.submitUserSelections()
-                }
-                .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                .background(Color.blue)
-                .foregroundStyle(.white)
-                .clipShape(Capsule())
+                .foregroundStyle(.primary)
+                .padding(EdgeInsets(top: 8, leading: 40, bottom: 8, trailing: 40))
             }
-            .foregroundStyle(.primary)
-            .padding(EdgeInsets(top: 8, leading: 40, bottom: 8, trailing: 40))
+            .navigationTitle("Barbell Math")
+            .toolbarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: $viewModel.navigateToPlateCount) {
+                if let plateCountViewModel = viewModel.plateCountViewModel {
+                    PlateCountView(plateCountViewModel: plateCountViewModel)
+                }
+            }
         }
     }
 }
