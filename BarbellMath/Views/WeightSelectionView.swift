@@ -19,45 +19,10 @@ struct WeightSelectionView: View {
                     .foregroundStyle(.primary)
                 
                 VStack {
-                    HStack {
-                        Text(viewModel.totalWeightText)
-                            .foregroundStyle(.black)
-                        TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
-                            .textFieldStyle(.roundedBorder)
-                            .tint(.primary)
-                    }
-                    
-                    HStack {
-                        Text(viewModel.unitText)
-                        Picker("", selection: $viewModel.selectedUnit) {
-                            ForEach(Units.allCases, id: \.self) {
-                                Text($0.rawValue)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .tint(.primary)
-                    }
-                    
-                    HStack {
-                        Text(viewModel.barSizeText)
-                        Picker("", selection: $viewModel.selectedBarWeight) {
-                            ForEach(viewModel.barSizes, id: \.self) { size in
-                                Text("\(size.displayString)")
-                                    .tag(size)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .tint(.primary)
-                    }
-                    
-                    Button("Show me how to load it") {
-                        viewModel.submitUserSelections()
-                    }
-                    .disabled(viewModel.totalWeight.isEmpty)
-                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                    .background(viewModel.totalWeight.isEmpty ? .gray : .blue)
-                    .foregroundStyle(.white)
-                    .clipShape(Capsule())
+                    totalWeightField
+                    unitsPicker
+                    barPicker
+                    submitButton
                 }
                 .foregroundStyle(.primary)
                 .padding(EdgeInsets(top: 8, leading: 40, bottom: 8, trailing: 40))
@@ -75,6 +40,54 @@ struct WeightSelectionView: View {
                     .presentationBackground(Color(.secondarySystemBackground))
             }
         }
+    }
+    
+    private var barPicker: some View {
+        HStack {
+            Text(viewModel.barSizeText)
+            Picker("", selection: $viewModel.selectedBarWeight) {
+                ForEach(viewModel.barSizes, id: \.self) { size in
+                    Text("\(size.displayString)")
+                        .tag(size)
+                }
+            }
+            .pickerStyle(.segmented)
+            .tint(.primary)
+        }
+    }
+    
+    private var unitsPicker: some View {
+        HStack {
+            Text(viewModel.unitText)
+            Picker("", selection: $viewModel.selectedUnit) {
+                ForEach(Units.allCases, id: \.self) {
+                    Text($0.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .tint(.primary)
+        }
+    }
+    
+    private var totalWeightField: some View {
+        HStack {
+            Text(viewModel.totalWeightText)
+                .foregroundStyle(.black)
+            TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
+                .textFieldStyle(.roundedBorder)
+                .tint(.primary)
+        }
+    }
+    
+    private var submitButton: some View {
+        Button("Show me how to load it") {
+            viewModel.submitUserSelections()
+        }
+        .disabled(viewModel.totalWeight.isEmpty)
+        .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+        .background(viewModel.totalWeight.isEmpty ? .gray : .blue)
+        .foregroundStyle(.white)
+        .clipShape(Capsule())
     }
 }
 
