@@ -42,7 +42,7 @@ struct WeightSelectionView: View {
                         Text(viewModel.barSizeText)
                         Picker("", selection: $viewModel.selectedBarWeight) {
                             ForEach(viewModel.barSizes, id: \.self) { size in
-                                Text("\(size)")
+                                Text("\(size.displayString)")
                                     .tag(size)
                             }
                         }
