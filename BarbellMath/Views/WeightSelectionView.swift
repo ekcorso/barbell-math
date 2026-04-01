@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WeightSelectionView: View {
     @StateObject private var viewModel = WeightSelectionViewModel()
-
+    let horizontalPadding = 20.0
     
     var body: some View {
         NavigationStack {
