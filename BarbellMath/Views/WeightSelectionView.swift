@@ -11,22 +11,23 @@ import SwiftUI
 struct WeightSelectionView: View {
     @StateObject private var viewModel = WeightSelectionViewModel()
     @FocusState private var isTotalWeightFieldFocused: Bool
-    let horizontalPadding = 20.0
+    let horizontalPadding = 40.0
     
     var body: some View {
         NavigationStack {
             VStack {
                 Text(viewModel.startingQuestion)
                     .foregroundStyle(.primary)
-                
                 VStack {
-                    totalWeightField
-                    unitsPicker
-                    barPicker
+                    Grid(alignment: .leading) {
+                        totalWeightField
+                        unitsPicker
+                        barPicker
+                    }
                     submitButton
                 }
                 .foregroundStyle(.primary)
-                .padding(EdgeInsets(top: 8, leading: 40, bottom: 8, trailing: 40))
+                .padding(EdgeInsets(top: 8, leading: horizontalPadding, bottom: 8, trailing: horizontalPadding))
             }
             .navigationTitle("Barbell Math")
             .toolbarTitleDisplayMode(.inline)
@@ -44,7 +45,7 @@ struct WeightSelectionView: View {
     }
     
     private var barPicker: some View {
-        HStack {
+        GridRow {
             Text(viewModel.barSizeText)
             Picker("", selection: $viewModel.selectedBarWeight) {
                 ForEach(viewModel.barSizes, id: \.self) { size in
@@ -61,7 +62,7 @@ struct WeightSelectionView: View {
     }
     
     private var unitsPicker: some View {
-        HStack {
+        GridRow {
             Text(viewModel.unitText)
             Picker("", selection: $viewModel.selectedUnit) {
                 ForEach(Units.allCases, id: \.self) {
@@ -77,7 +78,7 @@ struct WeightSelectionView: View {
     }
     
     private var totalWeightField: some View {
-        HStack {
+        GridRow {
             Text(viewModel.totalWeightText)
                 .foregroundStyle(.black)
             TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
