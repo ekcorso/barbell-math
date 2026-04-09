@@ -74,6 +74,7 @@ struct WeightSelectionView: View {
             Text(viewModel.totalWeightText)
                 .foregroundStyle(.black)
             TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
+                .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
                 .tint(.primary)
         }
