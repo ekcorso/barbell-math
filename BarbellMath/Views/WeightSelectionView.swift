@@ -10,6 +10,7 @@ import SwiftUI
 
 struct WeightSelectionView: View {
     @StateObject private var viewModel = WeightSelectionViewModel()
+    @FocusState private var isTotalWeightFieldFocused: Bool
     let horizontalPadding = 20.0
     
     var body: some View {
@@ -51,6 +52,9 @@ struct WeightSelectionView: View {
                         .tag(size)
                 }
             }
+            .onChange(of: viewModel.selectedBarWeight) {
+                isTotalWeightFieldFocused = false
+            }
             .pickerStyle(.segmented)
             .tint(.primary)
         }
@@ -67,6 +71,9 @@ struct WeightSelectionView: View {
             .pickerStyle(.segmented)
             .tint(.primary)
         }
+        .onChange(of: viewModel.selectedBarWeight) {
+            isTotalWeightFieldFocused = false
+        }
     }
     
     private var totalWeightField: some View {
@@ -75,6 +82,7 @@ struct WeightSelectionView: View {
                 .foregroundStyle(.black)
             TextField(viewModel.totalWeightPrompt, text: $viewModel.totalWeight)
                 .keyboardType(.numberPad)
+                .focused($isTotalWeightFieldFocused)
                 .textFieldStyle(.roundedBorder)
                 .tint(.primary)
         }
@@ -82,6 +90,7 @@ struct WeightSelectionView: View {
     
     private var submitButton: some View {
         Button("Show me how to load it") {
+            isTotalWeightFieldFocused = false
             viewModel.submitUserSelections()
         }
         .disabled(viewModel.totalWeight.isEmpty)
