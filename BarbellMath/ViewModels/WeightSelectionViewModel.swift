@@ -43,6 +43,10 @@ class WeightSelectionViewModel: ObservableObject {
 
     // MARK: Functions
     
+    init() {
+        self.allSearches = DataStorage().retrieve()
+    }
+    
     // TODO: Finish migrating the alert pattern. Refator to simplify this and migrate to SwiftUI.
     func submitUserSelections() {
         let doubleWeight = Double(totalWeight) ?? 225 // TODO: This is just a patch, finish migrating the totalWeight to be a num them remove this
