@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Legacy implememtation -- remove this when the SwiftUI migration is complete
 class PreviousSearchViewController: UITableViewController {
     var previousSearches = [SearchData]()
     

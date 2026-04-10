@@ -13,6 +13,8 @@
 		FC070BB52F69B39100945374 /* PlateCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC070BB42F69B38900945374 /* PlateCountView.swift */; };
 		FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */; };
 		FC5EB20125ABC08100AC8379 /* BarLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5EB20025ABC08100AC8379 /* BarLoad.swift */; };
+		FC61CE892F8730F5000A1AE0 /* PreviousSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC61CE882F8730ED000A1AE0 /* PreviousSearchView.swift */; };
+		FC61CE8B2F873101000A1AE0 /* PreviousSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC61CE8A2F8730FD000A1AE0 /* PreviousSearchViewModel.swift */; };
 		FC7FB9772F68834C006F7A49 /* WeightSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */; };
 		FC7FB9792F6883DE006F7A49 /* WeightSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7FB9782F6883D9006F7A49 /* WeightSelectionView.swift */; };
 		FCCA907B253FC7B6009D15C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCCA907A253FC7B6009D15C1 /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 		FC070BB42F69B38900945374 /* PlateCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateCountView.swift; sourceTree = "<group>"; };
 		FC466C0525A4175A00B6021F /* PlateMathCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateMathCalculator.swift; sourceTree = "<group>"; };
 		FC5EB20025ABC08100AC8379 /* BarLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarLoad.swift; sourceTree = "<group>"; };
+		FC61CE882F8730ED000A1AE0 /* PreviousSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchView.swift; sourceTree = "<group>"; };
+		FC61CE8A2F8730FD000A1AE0 /* PreviousSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSearchViewModel.swift; sourceTree = "<group>"; };
 		FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionViewModel.swift; sourceTree = "<group>"; };
 		FC7FB9782F6883D9006F7A49 /* WeightSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightSelectionView.swift; sourceTree = "<group>"; };
 		FCCA9077253FC7B6009D15C1 /* BarbellMath.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarbellMath.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +93,7 @@
 		FC7FB9752F688312006F7A49 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				FC61CE8A2F8730FD000A1AE0 /* PreviousSearchViewModel.swift */,
 				FC7FB9762F688339006F7A49 /* WeightSelectionViewModel.swift */,
 				FC070BB22F69B35300945374 /* PlateCountViewModel.swift */,
 			);
@@ -132,6 +137,7 @@
 		FCFC209A2746CD0400D18B9E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FC61CE882F8730ED000A1AE0 /* PreviousSearchView.swift */,
 				FCE723CA2F6DD24000854AF1 /* ValidationAlertView.swift */,
 				FC7FB9782F6883D9006F7A49 /* WeightSelectionView.swift */,
 				FC070BB42F69B38900945374 /* PlateCountView.swift */,
@@ -242,6 +248,7 @@
 				FCF28FD026A3CAB200930F0F /* Validator.swift in Sources */,
 				FCFC209E2746CD9F00D18B9E /* PreviousSearchViewController.swift in Sources */,
 				FCE1948D26740478007E3FD6 /* Units.swift in Sources */,
+				FC61CE8B2F873101000A1AE0 /* PreviousSearchViewModel.swift in Sources */,
 				FC070BB32F69B35F00945374 /* PlateCountViewModel.swift in Sources */,
 				FCFC20A22746D68200D18B9E /* SearchData.swift in Sources */,
 				FCFC20EC274C4D0000D18B9E /* PreviousSearchCellView.swift in Sources */,
@@ -255,6 +262,7 @@
 				FC466C0625A4175A00B6021F /* PlateMathCalculator.swift in Sources */,
 				FCFC20E8274853BB00D18B9E /* DataStorage.swift in Sources */,
 				FCFC20A02746D16600D18B9E /* SearchResult.swift in Sources */,
+				FC61CE892F8730F5000A1AE0 /* PreviousSearchView.swift in Sources */,
 				FCE1948B26740447007E3FD6 /* BarSize.swift in Sources */,
 				FC7FB9772F68834C006F7A49 /* WeightSelectionViewModel.swift in Sources */,
 			);

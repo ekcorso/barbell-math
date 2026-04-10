@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Migrated to PreviousSearchView — delete this file when UIKit cleanup is done
 class PreviousSearchCellView: UITableViewCell {
     static let identifier = "CustomCell"
     
